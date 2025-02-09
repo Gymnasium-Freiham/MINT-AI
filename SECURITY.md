@@ -6,7 +6,7 @@ We only support current versions and a few times the version above.
 
 | Version | Supported          |
 | ------- | ------------------ |
-| 1.0.0   | :x:                |
+| 1.0.0 ⚠️ Warning! Too Deprecated Version! Do not works anymore!   | :x:                |
 | 2.0.0   | :x:                |
 | 2.0.1   | :white_check_mark: |
 | 2.1.0   | :white_check_mark: |
