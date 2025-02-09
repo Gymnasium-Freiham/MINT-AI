@@ -1,5 +1,9 @@
 # -*- coding: utf-8 -*-
 import sys
+import subprocess
+def install(package):
+    subprocess.check_call([sys.executable, "-m", "pip", "install", package])
+install("PyQt5")
 from PyQt5.QtWidgets import QApplication, QWidget, QVBoxLayout, QPushButton, QLabel, QHBoxLayout, QTextEdit, QMessageBox
 from PyQt5.QtGui import QPixmap, QFont, QPalette, QColor
 from PyQt5.QtCore import QProcess, Qt
