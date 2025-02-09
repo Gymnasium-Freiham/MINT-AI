@@ -7,8 +7,6 @@ import sys
 import tkinter as tk
 from tkinter import messagebox
 import os
-
-from groq import Groq
 if activation==False:
     sys.exit("Error-code: 0x43R43DESACTIVATED36")
 
