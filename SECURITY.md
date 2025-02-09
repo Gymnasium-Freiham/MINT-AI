@@ -16,8 +16,8 @@ We only support current versions and a few times the version above.
 
 | Version | Supported          |
 | ------- | ------------------ |
-|  2.0 | :x:                |
-|  3.0  | ⚠️            |
+|  2.0+ | :x:                |
+|  3.0+  | ⚠️            |
 |  3.9  | :white_check_mark: |
 | 3.10   | :white_check_mark: |
 |  3.11  | :white_check_mark: |
