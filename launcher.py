@@ -1,4 +1,18 @@
 # -*- coding: utf-8 -*-
+import os
+
+# Wechseln Sie zum Benutzerverzeichnis
+user_directory = os.path.expanduser('~')
+os.chdir(user_directory)
+
+# Definieren Sie den Pfad zum gewünschten Arbeitsverzeichnis
+desired_directory = os.path.join(user_directory, 'MINT-AI-main')
+
+# Wechseln Sie in das Arbeitsverzeichnis
+os.chdir(desired_directory)
+
+print(f"Arbeitsverzeichnis erfolgreich zu {desired_directory} gewechselt")
+
 import sys
 import subprocess
 def install(package):
