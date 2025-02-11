@@ -1,17 +1,25 @@
-# -*- coding: utf-8 -*-
 import os
+import winreg
 
-# Wechseln Sie zum Benutzerverzeichnis
-user_directory = os.path.expanduser('~')
-os.chdir(user_directory)
+def get_install_dir():
+    try:
+        with winreg.OpenKey(winreg.HKEY_CURRENT_USER, r"Software\MINT-AI") as key:
+            install_dir, _ = winreg.QueryValueEx(key, "InstallDir")
+            return install_dir
+    except FileNotFoundError:
+        print("Installationsverzeichnis nicht gefunden")
+        return None
 
-# Definieren Sie den Pfad zum gewünschten Arbeitsverzeichnis
-desired_directory = os.path.join(user_directory, 'MINT-AI-main')
+def change_working_directory(install_dir):
+    if install_dir:
+        os.chdir(install_dir)
+        print(f"Arbeitsverzeichnis erfolgreich zu {install_dir} gewechselt")
+    else:
+        print("Fehler beim Wechseln des Arbeitsverzeichnisses")
 
-# Wechseln Sie in das Arbeitsverzeichnis
-os.chdir(desired_directory)
-
-print(f"Arbeitsverzeichnis erfolgreich zu {desired_directory} gewechselt")
+if __name__ == "__main__":
+    install_dir = get_install_dir()
+    change_working_directory(install_dir)
 
 import sys
 import subprocess
