@@ -8,6 +8,7 @@ from PyQt5.QtCore import Qt, QThread, pyqtSignal
 class UpdateThread(QThread):
     update_progress = pyqtSignal(int)
     update_status = pyqtSignal(str)
+    update_finished = pyqtSignal()  # Signal for completion
 
     def __init__(self, parent=None):
         super().__init__(parent)
@@ -22,6 +23,7 @@ class UpdateThread(QThread):
             else:
                 self.update_status.emit(line.strip())
         self.process.wait()
+        self.update_finished.emit()  # Emit completion signal
 
 class UpdateGUI(QWidget):
     def __init__(self):
@@ -30,6 +32,7 @@ class UpdateGUI(QWidget):
         self.thread = UpdateThread()
         self.thread.update_progress.connect(self.update_progress_bar)
         self.thread.update_status.connect(self.update_status_bar)
+        self.thread.update_finished.connect(self.on_update_finished)  # Connect completion signal
 
     def initUI(self):
         self.setWindowTitle('Update Status')
@@ -63,6 +66,9 @@ class UpdateGUI(QWidget):
     def update_status_bar(self, status):
         self.status_bar.showMessage(status)
         self.status_label.setText(status)
+
+    def on_update_finished(self):
+        self.close()
 
 if __name__ == "__main__":
     app = QApplication(sys.argv)
