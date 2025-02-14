@@ -2,7 +2,7 @@
 import os
 import sys
 import subprocess
-from PyQt5.QtWidgets import QApplication, QWidget, QVBoxLayout, QLabel, QProgressBar, QStatusBar, QPushButton
+from PyQt5.QtWidgets import QApplication, QWidget, QVBoxLayout, QLabel, QProgressBar, QStatusBar, QPushButton, QTimer
 from PyQt5.QtCore import Qt, QThread, pyqtSignal
 
 class UpdateThread(QThread):
@@ -68,7 +68,8 @@ class UpdateGUI(QWidget):
         self.status_label.setText(status)
 
     def on_update_finished(self):
-        self.close()
+        self.status_label.setText("Update abgeschlossen!")
+        QTimer.singleShot(5000, self.close)  # Close the window after 5 seconds
 
 if __name__ == "__main__":
     app = QApplication(sys.argv)
