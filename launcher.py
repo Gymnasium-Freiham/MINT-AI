@@ -137,7 +137,7 @@ class LauncherGUI(QWidget):
         # Updates suchen
         self.text_area.append("Nach Updates suchen...")  # Ausgabe im Textbereich
         try:
-            result = subprocess.run(['python', 'update.py'], capture_output=True, text=True)
+            result = subprocess.run(['python', 'update-isolated.py'], capture_output=True, text=True)
             self.text_area.append(result.stdout)
             if result.returncode != 0:
                 self.text_area.append(result.stderr)
