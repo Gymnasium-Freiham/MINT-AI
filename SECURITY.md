@@ -8,9 +8,12 @@ We only support current versions and a few times the version above.
 | ------- | ------------------ |
 | 1.0.0 ⚠️ Warning! Too Deprecated Version! Do not works anymore!   | :x:                |
 | 2.0.0   | :x:                |
-| 2.0.1   | :white_check_mark: |
+| 2.0.1   | :x: |
 | 2.1.0   | :white_check_mark: |
 | 2.2.0pre1   | :white_check_mark: |
+| 2.2.0pre2   | :white_check_mark: |
+| 2.2.0pre3   | :white_check_mark: |
+| 2.2.0pre4   | :white_check_mark: |
 
 ## Compatibility with Python versions
 
