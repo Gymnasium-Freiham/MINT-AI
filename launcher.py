@@ -1,5 +1,10 @@
 import os
+import sys
 import winreg
+import subprocess
+from PyQt5.QtWidgets import QApplication, QWidget, QVBoxLayout, QPushButton, QLabel, QHBoxLayout, QTextEdit, QMessageBox, QCheckBox, QSystemTrayIcon, QMenu, QAction
+from PyQt5.QtGui import QPixmap, QFont, QPalette, QColor, QIcon
+from PyQt5.QtCore import QProcess, Qt
 
 def get_install_dir():
     try:
@@ -17,19 +22,10 @@ def change_working_directory(install_dir):
     else:
         print("Fehler beim Wechseln des Arbeitsverzeichnisses")
 
-if __name__ == "__main__":
-    install_dir = get_install_dir()
-    change_working_directory(install_dir)
-
-import sys
-import subprocess
 def install(package):
     subprocess.check_call([sys.executable, "-m", "pip", "install", package])
+
 install("PyQt5")
-from PyQt5.QtWidgets import QApplication, QWidget, QVBoxLayout, QPushButton, QLabel, QHBoxLayout, QTextEdit, QMessageBox
-from PyQt5.QtGui import QPixmap, QFont, QPalette, QColor
-from PyQt5.QtCore import QProcess, Qt
-import subprocess
 
 class LauncherGUI(QWidget):
     def __init__(self):
@@ -48,7 +44,13 @@ class LauncherGUI(QWidget):
         
         # Layout
         layout = QVBoxLayout()
-        
+
+        # Ein-/Ausschalter für Schnellzugriffslogos
+        self.logo_checkbox = QCheckBox("Schnellzugriffslogos anzeigen", self)
+        self.logo_checkbox.setChecked(True)
+        self.logo_checkbox.stateChanged.connect(self.toggle_logo)
+        layout.addWidget(self.logo_checkbox)
+
         # Logo (falls vorhanden)
         self.logo_label = QLabel(self)
         self.logo_pixmap = QPixmap("./logo.png")
@@ -94,11 +96,34 @@ class LauncherGUI(QWidget):
         # Setze Layout
         layout.setAlignment(Qt.AlignCenter)
         self.setLayout(layout)
+
+        # System Tray Icon erstellen
+        self.tray_icon = QSystemTrayIcon(self)
+        self.tray_icon.setIcon(QIcon("./logo.png"))
         
+        # System Tray Icon Menü erstellen
+        tray_menu = QMenu(self)
+        show_action = QAction("Show", self)
+        quit_action = QAction("Quit", self)
+        show_action.triggered.connect(self.show)
+        quit_action.triggered.connect(QApplication.instance().quit)
+        tray_menu.addAction(show_action)
+        tray_menu.addAction(quit_action)
+        self.tray_icon.setContextMenu(tray_menu)
+        
+        # System Tray Icon anzeigen
+        self.tray_icon.show()
+
         # QProcess zum Ausführen des Skripts
         self.process = QProcess(self)
         self.process.readyReadStandardOutput.connect(self.read_output)
         self.process.readyReadStandardError.connect(self.read_error)
+        
+    def toggle_logo(self, state):
+        if state == Qt.Checked:
+            self.logo_label.show()
+        else:
+            self.logo_label.hide()
         
     def start_program(self):
         # Hauptprogramm starten
@@ -128,6 +153,9 @@ class LauncherGUI(QWidget):
         self.text_area.append(error)
 
 if __name__ == "__main__":
+    install_dir = get_install_dir()
+    change_working_directory(install_dir)
+
     app = QApplication(sys.argv)
     launcher = LauncherGUI()
     launcher.show()
