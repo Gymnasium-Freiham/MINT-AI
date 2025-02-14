@@ -17,8 +17,14 @@ def download_file(url, filename):
     if response.status_code == 200:
         file_path = os.path.join(directory, filename)
         with open(file_path, 'wb') as file:
+            total_length = int(response.headers.get('content-length', 0))
+            downloaded = 0
             for chunk in response.iter_content(1024):
-                file.write(chunk)
+                if chunk:
+                    file.write(chunk)
+                    downloaded += len(chunk)
+                    progress = int(100 * downloaded / total_length)
+                    print(f'Progress: {progress}')
         print(f'Datei {filename} erfolgreich heruntergeladen und gespeichert.')
     else:
         print(f'Fehler beim Herunterladen der Datei: Status-Code {response.status_code}')
