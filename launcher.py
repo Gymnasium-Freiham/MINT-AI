@@ -2,6 +2,7 @@ import os
 import sys
 import winreg
 import subprocess
+import requests
 from PyQt5.QtWidgets import QApplication, QWidget, QVBoxLayout, QPushButton, QLabel, QHBoxLayout, QTextEdit, QMessageBox, QCheckBox, QSystemTrayIcon, QMenu, QAction
 from PyQt5.QtGui import QPixmap, QFont, QPalette, QColor, QIcon
 from PyQt5.QtCore import QProcess, Qt
@@ -24,6 +25,15 @@ def change_working_directory(install_dir):
 
 def install(package):
     subprocess.check_call([sys.executable, "-m", "pip", "install", package])
+
+def check_internet_connection():
+    url = "http://www.google.com"
+    timeout = 5
+    try:
+        request = requests.get(url, timeout=timeout)
+        return True
+    except (requests.ConnectionError, requests.Timeout) as exception:
+        return False
 
 install("PyQt5")
 
@@ -66,6 +76,11 @@ class LauncherGUI(QWidget):
         self.title_label.setStyleSheet("color: white;")
         layout.addWidget(self.title_label)
         
+        # Verbindungssymbol
+        self.connection_icon = QLabel(self)
+        self.update_connection_icon()
+        layout.addWidget(self.connection_icon)
+
         # Button zum Starten des Hauptprogramms
         self.start_button = QPushButton('Start MINT AI', self)
         self.start_button.setFont(QFont('Arial', 18))
@@ -124,6 +139,14 @@ class LauncherGUI(QWidget):
             self.logo_label.show()
         else:
             self.logo_label.hide()
+    
+    def update_connection_icon(self):
+        if check_internet_connection():
+            self.connection_icon.setPixmap(QPixmap("./wifi-strong.png"))
+            self.connection_icon.setToolTip("Starke Internetverbindung")
+        else:
+            self.connection_icon.setPixmap(QPixmap("./wifi-weak.png"))
+            self.connection_icon.setToolTip("Schwache oder keine Internetverbindung")
         
     def start_program(self):
         # Hauptprogramm starten
@@ -135,14 +158,18 @@ class LauncherGUI(QWidget):
     
     def check_updates(self):
         # Updates suchen
-        self.text_area.append("Nach Updates suchen...")  # Ausgabe im Textbereich
-        try:
-            result = subprocess.run(['python', 'update-isolated.py'], capture_output=True, text=True)
-            self.text_area.append(result.stdout)
-            if result.returncode != 0:
-                self.text_area.append(result.stderr)
-        except Exception as e:
-            QMessageBox.critical(self, "Fehler", f"Fehler beim Suchen nach Updates: {e}")
+        if check_internet_connection():
+            self.text_area.append("Nach Updates suchen...")  # Ausgabe im Textbereich
+            try:
+                result = subprocess.run(['python', 'update-isolated.py'], capture_output=True, text=True)
+                self.text_area.append(result.stdout)
+                if result.returncode != 0:
+                    self.text_area.append(result.stderr)
+            except Exception as e:
+                QMessageBox.critical(self, "Fehler", f"Fehler beim Suchen nach Updates: {e}")
+        else:
+            self.text_area.append("Keine Internetverbindung. Updates konnten nicht gesucht werden.")
+            QMessageBox.warning(self, "Keine Internetverbindung", "Es besteht keine Internetverbindung. Bitte stellen Sie eine Verbindung her, um nach Updates zu suchen.")
         
     def read_output(self):
         output = self.process.readAllStandardOutput().data().decode('latin-1')
