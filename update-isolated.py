@@ -2,8 +2,8 @@
 import os
 import sys
 import subprocess
-from PyQt5.QtWidgets import QApplication, QWidget, QVBoxLayout, QLabel, QProgressBar, QStatusBar, QPushButton, QTimer
-from PyQt5.QtCore import Qt, QThread, pyqtSignal
+from PyQt5.QtWidgets import QApplication, QWidget, QVBoxLayout, QLabel, QProgressBar, QStatusBar, QPushButton
+from PyQt5.QtCore import Qt, QThread, pyqtSignal, QTimer
 
 class UpdateThread(QThread):
     update_progress = pyqtSignal(int)
