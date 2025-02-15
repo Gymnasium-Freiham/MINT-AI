@@ -3,7 +3,7 @@ import sys
 import winreg
 import subprocess
 import requests
-from PyQt5.QtWidgets import QApplication, QWidget, QVBoxLayout, QPushButton, QLabel, QHBoxLayout, QTextEdit, QMessageBox, QCheckBox, QSystemTrayIcon, QMenu, QAction
+from PyQt5.QtWidgets import QApplication, QWidget, QVBoxLayout, QPushButton, QLabel, QHBoxLayout, QTextEdit, QMessageBox, QCheckBox, QSystemTrayIcon, QMenu, QAction, QComboBox, QFormLayout, QGroupBox
 from PyQt5.QtGui import QPixmap, QFont, QPalette, QColor, QIcon
 from PyQt5.QtCore import QProcess, Qt
 
@@ -34,6 +34,18 @@ def check_internet_connection():
         return True
     except (requests.ConnectionError, requests.Timeout) as exception:
         return False
+
+def read_registry_setting(key, value, default=None):
+    try:
+        with winreg.OpenKey(winreg.HKEY_CURRENT_USER, key) as reg_key:
+            result, _ = winreg.QueryValueEx(reg_key, value)
+            return result
+    except FileNotFoundError:
+        return default
+
+def write_registry_setting(key, value, data):
+    with winreg.CreateKey(winreg.HKEY_CURRENT_USER, key) as reg_key:
+        winreg.SetValueEx(reg_key, value, 0, winreg.REG_SZ, data)
 
 install("PyQt5")
 
@@ -102,6 +114,18 @@ class LauncherGUI(QWidget):
         self.exit_button.clicked.connect(self.close)
         layout.addWidget(self.exit_button)
         
+        # Entwickleroptionen
+        self.dev_options_group = QGroupBox("Entwickleroptionen")
+        self.dev_options_layout = QFormLayout()
+
+        self.prevent_updates_checkbox = QCheckBox("Updates verhindern", self)
+        self.prevent_updates_checkbox.setChecked(read_registry_setting(r"Software\MINT-AI", "PreventUpdates", "False") == "True")
+        self.prevent_updates_checkbox.stateChanged.connect(self.save_dev_options)
+        self.dev_options_layout.addRow(self.prevent_updates_checkbox)
+
+        self.dev_options_group.setLayout(self.dev_options_layout)
+        layout.addWidget(self.dev_options_group)
+
         # Textbereich für Ausgabe
         self.text_area = QTextEdit(self)
         self.text_area.setReadOnly(True)
@@ -158,6 +182,11 @@ class LauncherGUI(QWidget):
     
     def check_updates(self):
         # Updates suchen
+        if self.prevent_updates_checkbox.isChecked():
+            self.text_area.append("Updates sind derzeit deaktiviert.")
+            QMessageBox.information(self, "Updates deaktiviert", "Updates sind in den Entwickleroptionen deaktiviert.")
+            return
+
         if check_internet_connection():
             self.text_area.append("Nach Updates suchen...")  # Ausgabe im Textbereich
             try:
@@ -170,6 +199,9 @@ class LauncherGUI(QWidget):
         else:
             self.text_area.append("Keine Internetverbindung. Updates konnten nicht gesucht werden.")
             QMessageBox.warning(self, "Keine Internetverbindung", "Es besteht keine Internetverbindung. Bitte stellen Sie eine Verbindung her, um nach Updates zu suchen.")
+    
+    def save_dev_options(self):
+        write_registry_setting(r"Software\MINT-AI", "PreventUpdates", "True" if self.prevent_updates_checkbox.isChecked() else "False")
         
     def read_output(self):
         output = self.process.readAllStandardOutput().data().decode('latin-1')
