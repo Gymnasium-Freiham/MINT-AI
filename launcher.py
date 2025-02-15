@@ -121,6 +121,10 @@ class LauncherGUI(QWidget):
         self.logo_checkbox.stateChanged.connect(self.save_dev_options)
         self.dev_options_layout.addRow(self.logo_checkbox)
 
+        self.uninstall_button = QPushButton("Uninstall MINT-AI Launcher", self)
+        self.uninstall_button.clicked.connect(self.uninstall_program)
+        self.dev_options_layout.addRow(self.uninstall_button)
+
         self.dev_options_group.setLayout(self.dev_options_layout)
         layout.addWidget(self.dev_options_group)
 
@@ -155,7 +159,28 @@ class LauncherGUI(QWidget):
         self.process = QProcess(self)
         self.process.readyReadStandardOutput.connect(self.read_output)
         self.process.readyReadStandardError.connect(self.read_error)
+    def uninstall_program(self):
+        reply = QMessageBox.question(self, 'Bestätigung', 
+                                     'Sind Sie sicher, dass der MINT-AI-Launcher deinstalliert wird?',
+                                     QMessageBox.Yes | QMessageBox.No, QMessageBox.No)
+
+        if reply == QMessageBox.Yes:
+            reply = QMessageBox.question(self, 'Bestätigung', 
+                                         'Sind Sie wirklich sicher, dass der MINT-AI-Launcher deinstalliert wird?',
+                                         QMessageBox.Yes | QMessageBox.No, QMessageBox.No)
         
+            if reply == QMessageBox.Yes:
+                reply = QMessageBox.question(self, 'Bestätigung', 
+                                             'Ist es sicher Ihre letzte Entscheidung?',
+                                             QMessageBox.Yes | QMessageBox.No, QMessageBox.No)
+            
+                if reply == QMessageBox.Yes:
+                    try:
+                        os.system("sudo ./Uninstall.exe")
+                        QMessageBox.information(self, "Deinstallation", "MINT-AI-Launcher wurde erfolgreich deinstalliert.")
+                        self.close()
+                    except Exception as e:
+                        QMessageBox.critical(self, "Fehler", f"Fehler bei der Deinstallation: {e}")  
     def update_connection_icon(self):
         if check_internet_connection():
             self.connection_icon.setPixmap(QPixmap("./wifi-strong.png"))
