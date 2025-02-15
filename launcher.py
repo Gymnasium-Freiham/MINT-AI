@@ -53,6 +53,7 @@ class LauncherGUI(QWidget):
     def __init__(self):
         super().__init__()
         self.initUI()
+        self.load_dev_options()
         
     def initUI(self):
         self.setWindowTitle('MINT AI Launcher')
@@ -66,12 +67,6 @@ class LauncherGUI(QWidget):
         
         # Layout
         layout = QVBoxLayout()
-
-        # Ein-/Ausschalter für Schnellzugriffslogos
-        self.logo_checkbox = QCheckBox("Schnellzugriffslogos anzeigen", self)
-        self.logo_checkbox.setChecked(True)
-        self.logo_checkbox.stateChanged.connect(self.toggle_logo)
-        layout.addWidget(self.logo_checkbox)
 
         # Logo (falls vorhanden)
         self.logo_label = QLabel(self)
@@ -119,9 +114,12 @@ class LauncherGUI(QWidget):
         self.dev_options_layout = QFormLayout()
 
         self.prevent_updates_checkbox = QCheckBox("Updates verhindern", self)
-        self.prevent_updates_checkbox.setChecked(read_registry_setting(r"Software\MINT-AI", "PreventUpdates", "False") == "True")
         self.prevent_updates_checkbox.stateChanged.connect(self.save_dev_options)
         self.dev_options_layout.addRow(self.prevent_updates_checkbox)
+
+        self.logo_checkbox = QCheckBox("Schnellzugriffslogos deaktivieren", self)
+        self.logo_checkbox.stateChanged.connect(self.save_dev_options)
+        self.dev_options_layout.addRow(self.logo_checkbox)
 
         self.dev_options_group.setLayout(self.dev_options_layout)
         layout.addWidget(self.dev_options_group)
@@ -158,12 +156,6 @@ class LauncherGUI(QWidget):
         self.process.readyReadStandardOutput.connect(self.read_output)
         self.process.readyReadStandardError.connect(self.read_error)
         
-    def toggle_logo(self, state):
-        if state == Qt.Checked:
-            self.logo_label.show()
-        else:
-            self.logo_label.hide()
-    
     def update_connection_icon(self):
         if check_internet_connection():
             self.connection_icon.setPixmap(QPixmap("./wifi-strong.png"))
@@ -202,7 +194,22 @@ class LauncherGUI(QWidget):
     
     def save_dev_options(self):
         write_registry_setting(r"Software\MINT-AI", "PreventUpdates", "True" if self.prevent_updates_checkbox.isChecked() else "False")
-        
+        write_registry_setting(r"Software\MINT-AI", "DisableLogos", "True" if self.logo_checkbox.isChecked() else "False")
+        self.toggle_logo()
+
+    def toggle_logo(self):
+        if self.logo_checkbox.isChecked():
+            self.logo_label.hide()
+        else:
+            self.logo_label.show()
+    
+    def load_dev_options(self):
+        if read_registry_setting(r"Software\MINT-AI", "PreventUpdates", "False") == "True":
+            self.prevent_updates_checkbox.setChecked(True)
+        if read_registry_setting(r"Software\MINT-AI", "DisableLogos", "False") == "True":
+            self.logo_checkbox.setChecked(True)
+            self.logo_label.hide()
+
     def read_output(self):
         output = self.process.readAllStandardOutput().data().decode('latin-1')
         self.text_area.append(output)
