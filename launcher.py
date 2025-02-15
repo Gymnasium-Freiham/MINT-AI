@@ -3,6 +3,9 @@ import sys
 import winreg
 import subprocess
 import requests
+def install(package):
+    subprocess.check_call([sys.executable, "-m", "pip", "install", package])
+install("PyQt5")
 from PyQt5.QtWidgets import QApplication, QWidget, QVBoxLayout, QPushButton, QLabel, QHBoxLayout, QTextEdit, QMessageBox, QCheckBox, QSystemTrayIcon, QMenu, QAction, QComboBox, QFormLayout, QGroupBox
 from PyQt5.QtGui import QPixmap, QFont, QPalette, QColor, QIcon
 from PyQt5.QtCore import QProcess, Qt
@@ -22,9 +25,6 @@ def change_working_directory(install_dir):
         print(f"Arbeitsverzeichnis erfolgreich zu {install_dir} gewechselt")
     else:
         print("Fehler beim Wechseln des Arbeitsverzeichnisses")
-
-def install(package):
-    subprocess.check_call([sys.executable, "-m", "pip", "install", package])
 
 def check_internet_connection():
     url = "http://www.google.com"
