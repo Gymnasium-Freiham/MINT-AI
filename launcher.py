@@ -3,9 +3,6 @@ import sys
 import winreg
 import subprocess
 import requests
-def install(package):
-    subprocess.check_call([sys.executable, "-m", "pip", "install", package])
-install("PyQt5")
 from PyQt5.QtWidgets import QApplication, QWidget, QVBoxLayout, QPushButton, QLabel, QHBoxLayout, QTextEdit, QMessageBox, QCheckBox, QSystemTrayIcon, QMenu, QAction, QComboBox, QFormLayout, QGroupBox
 from PyQt5.QtGui import QPixmap, QFont, QPalette, QColor, QIcon
 from PyQt5.QtCore import QProcess, Qt
@@ -25,6 +22,9 @@ def change_working_directory(install_dir):
         print(f"Arbeitsverzeichnis erfolgreich zu {install_dir} gewechselt")
     else:
         print("Fehler beim Wechseln des Arbeitsverzeichnisses")
+
+def install(package):
+    subprocess.check_call([sys.executable, "-m", "pip", "install", package])
 
 def check_internet_connection():
     url = "http://www.google.com"
@@ -125,6 +125,10 @@ class LauncherGUI(QWidget):
         self.uninstall_button.clicked.connect(self.uninstall_program)
         self.dev_options_layout.addRow(self.uninstall_button)
 
+        self.GameButton = QPushButton("Start Game", self)
+        self.GameButton.clicked.connect(self.start_game)
+        self.dev_options_layout.addRow(self.GameButton)
+
         self.dev_options_group.setLayout(self.dev_options_layout)
         layout.addWidget(self.dev_options_group)
 
@@ -159,6 +163,16 @@ class LauncherGUI(QWidget):
         self.process = QProcess(self)
         self.process.readyReadStandardOutput.connect(self.read_output)
         self.process.readyReadStandardError.connect(self.read_error)
+    def start_game(self):
+        # Hauptprogramm starten
+        self.text_area.append("Das Game wird gestartet...")  # Ausgabe im Textbereich
+        try:
+            self.process.start("./Bowling-jump-new.exe")
+        except Exception as e:
+            QMessageBox.critical(self, "Fehler", f"Fehler beim Starten des Skripts: {e}")
+    
+        
+
     def uninstall_program(self):
         reply = QMessageBox.question(self, 'Bestätigung', 
                                      'Sind Sie sicher, dass der MINT-AI-Launcher deinstalliert wird?',
@@ -188,7 +202,7 @@ class LauncherGUI(QWidget):
         else:
             self.connection_icon.setPixmap(QPixmap("./wifi-weak.png"))
             self.connection_icon.setToolTip("Schwache oder keine Internetverbindung")
-        
+    
     def start_program(self):
         # Hauptprogramm starten
         self.text_area.append("Das Hauptprogramm wird gestartet...")  # Ausgabe im Textbereich
