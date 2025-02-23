@@ -129,6 +129,10 @@ class LauncherGUI(QWidget):
         self.GameButton.clicked.connect(self.start_game)
         self.dev_options_layout.addRow(self.GameButton)
 
+        # Checkbox für Rendering-Option
+        self.opengl_checkbox = QCheckBox("OpenGL3 Rendering verwenden", self)
+        self.dev_options_layout.addRow(self.opengl_checkbox)
+
         self.dev_options_group.setLayout(self.dev_options_layout)
         layout.addWidget(self.dev_options_group)
 
@@ -163,15 +167,20 @@ class LauncherGUI(QWidget):
         self.process = QProcess(self)
         self.process.readyReadStandardOutput.connect(self.read_output)
         self.process.readyReadStandardError.connect(self.read_error)
+
     def start_game(self):
         # Hauptprogramm starten
         self.text_area.append("Das Game wird gestartet...")  # Ausgabe im Textbereich
         try:
-            self.process.start("./Bowling-jump-new.exe")
+            if self.opengl_checkbox.isChecked():
+                self.process.start("./Bowling-jump-new.exe", ["--rendering-driver", "opengl3"])
+            else:
+                self.process.start("./Bowling-jump-new.exe")
         except Exception as e:
             QMessageBox.critical(self, "Fehler", f"Fehler beim Starten des Skripts: {e}")
-    
-        
+
+
+
 
     def uninstall_program(self):
         reply = QMessageBox.question(self, 'Bestätigung', 
@@ -212,7 +221,7 @@ class LauncherGUI(QWidget):
             QMessageBox.critical(self, "Fehler", f"Fehler beim Starten des Skripts: {e}")
     
     def check_updates(self):
-        # Updates suchen
+        # Updates suchensa
         if self.prevent_updates_checkbox.isChecked():
             self.text_area.append("Updates sind derzeit deaktiviert.")
             QMessageBox.information(self, "Updates deaktiviert", "Updates sind in den Entwickleroptionen deaktiviert.")
