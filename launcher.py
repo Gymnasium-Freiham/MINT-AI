@@ -3,9 +3,9 @@ import sys
 import winreg
 import subprocess
 import requests
-from PyQt5.QtWidgets import QApplication, QWidget, QVBoxLayout, QPushButton, QLabel, QHBoxLayout, QTextEdit, QMessageBox, QCheckBox, QSystemTrayIcon, QMenu, QAction, QComboBox, QFormLayout, QGroupBox
-from PyQt5.QtGui import QPixmap, QFont, QPalette, QColor, QIcon
-from PyQt5.QtCore import QProcess, Qt
+from PyQt5.QtWidgets import QApplication, QWidget, QVBoxLayout, QPushButton, QLabel, QHBoxLayout, QTextEdit, QMessageBox, QCheckBox, QSystemTrayIcon, QMenu, QAction, QComboBox, QFormLayout, QGroupBox, QInputDialog, QProgressBar
+from PyQt5.QtGui import QPixmap, QFont, QPalette, QColor, QIcon, QMovie
+from PyQt5.QtCore import QProcess, Qt, QTimer
 
 def get_install_dir():
     try:
@@ -48,6 +48,48 @@ def write_registry_setting(key, value, data):
         winreg.SetValueEx(reg_key, value, 0, winreg.REG_SZ, data)
 
 install("PyQt5")
+
+class LoadingScreen(QWidget):
+    def __init__(self):
+        super().__init__()
+        self.initUI()
+        
+    def initUI(self):
+        self.setWindowTitle('Laden...')
+        self.setGeometry(100, 100, 400, 300)
+        
+        layout = QVBoxLayout()
+        
+        # Ladebalken
+        self.progress_bar = QProgressBar(self)
+        self.progress_bar.setRange(0, 100)
+        layout.addWidget(self.progress_bar)
+        
+        # Animiertes Logo
+        self.animated_logo = QLabel(self)
+        self.movie = QMovie("./logo.gif")
+        self.animated_logo.setMovie(self.movie)
+        layout.addWidget(self.animated_logo)
+        
+        self.setLayout(layout)
+        
+        self.movie.start()
+        
+        self.timer = QTimer(self)
+        self.timer.timeout.connect(self.update_progress)
+        self.timer.start(50)  # Update alle 50ms
+
+    def update_progress(self):
+        value = self.progress_bar.value() + 1
+        self.progress_bar.setValue(value)
+        if value >= 100:
+            self.timer.stop()
+            self.close()
+            self.start_main_app()
+
+    def start_main_app(self):
+        self.main_app = LauncherGUI()
+        self.main_app.show()
 
 class LauncherGUI(QWidget):
     def __init__(self):
@@ -169,18 +211,20 @@ class LauncherGUI(QWidget):
         self.process.readyReadStandardError.connect(self.read_error)
 
     def start_game(self):
-        # Hauptprogramm starten
-        self.text_area.append("Das Game wird gestartet...")  # Ausgabe im Textbereich
-        try:
-            if self.opengl_checkbox.isChecked():
-                self.process.start("./Bowling-jump-new.exe", ["--rendering-driver", "opengl3"])
-            else:
-                self.process.start("./Bowling-jump-new.exe")
-        except Exception as e:
-            QMessageBox.critical(self, "Fehler", f"Fehler beim Starten des Skripts: {e}")
-
-
-
+        # Passwortabfrage
+        password, ok = QInputDialog.getText(self, 'Passwort eingeben', 'Bitte geben Sie das Passwort ein:')
+        
+        if ok and password == '9999':
+            self.text_area.append("Das Game wird gestartet...")  # Ausgabe im Textbereich
+            try:
+                if self.opengl_checkbox.isChecked():
+                    self.process.start("./Bowling-jump-new.exe", ["--rendering-driver", "opengl3"])
+                else:
+                    self.process.start("./Bowling-jump-new.exe")
+            except Exception as e:
+                QMessageBox.critical(self, "Fehler", f"Fehler beim Starten des Skripts: {e}")
+        else:
+            QMessageBox.warning(self, "Falsches Passwort", "Das eingegebene Passwort ist falsch.")
 
     def uninstall_program(self):
         reply = QMessageBox.question(self, 'Bestätigung', 
@@ -209,7 +253,7 @@ class LauncherGUI(QWidget):
             self.connection_icon.setPixmap(QPixmap("./wifi-strong.png"))
             self.connection_icon.setToolTip("Starke Internetverbindung")
         else:
-            self.connection_icon.setPixmap(QPixmap("./wifi-weak.png"))
+            self.connection_icon.setPixmap("./wifi-weak.png")
             self.connection_icon.setToolTip("Schwache oder keine Internetverbindung")
     
     def start_program(self):
@@ -271,6 +315,9 @@ if __name__ == "__main__":
     change_working_directory(install_dir)
 
     app = QApplication(sys.argv)
-    launcher = LauncherGUI()
-    launcher.show()
+    
+    # Ladebildschirm anzeigen
+    loading_screen = LoadingScreen()
+    loading_screen.show()
+    
     sys.exit(app.exec_())
