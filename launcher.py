@@ -7,7 +7,33 @@ import tempfile
 import shutil
 from PyQt5.QtWidgets import QApplication, QWidget, QVBoxLayout, QPushButton, QLabel, QHBoxLayout, QTextEdit, QMessageBox, QCheckBox, QSystemTrayIcon, QMenu, QAction, QComboBox, QFormLayout, QGroupBox, QInputDialog, QProgressBar, QFileDialog
 from PyQt5.QtGui import QPixmap, QFont, QPalette, QColor, QIcon, QMovie
-from PyQt5.QtCore import QProcess, Qt, QTimer
+from PyQt5.QtCore import QProcess, Qt, QTimer, QEvent
+import webbrowser
+from urllib.parse import urlparse, parse_qs
+
+def register_url_scheme():
+    try:
+        with winreg.CreateKey(winreg.HKEY_CURRENT_USER, r"Software\Classes\mintai") as key:
+            winreg.SetValueEx(key, "", 0, winreg.REG_SZ, "URL:mintai Protocol")
+            winreg.SetValueEx(key, "URL Protocol", 0, winreg.REG_SZ, "")
+        with winreg.CreateKey(winreg.HKEY_CURRENT_USER, r"Software\Classes\mintai\shell\open\command") as key:
+            winreg.SetValueEx(key, "", 0, winreg.REG_SZ, f'"{sys.executable}" "{os.path.abspath(__file__)}" "%1"')
+        print("URL-Schema 'mintai' erfolgreich registriert")
+    except Exception as e:
+        print(f"Fehler beim Registrieren des URL-Schemas: {e}")
+
+
+def handle_custom_url(url):
+    parsed_url = urlparse(url)
+    if parsed_url.scheme == 'mintai' and parsed_url.netloc == 'install-addon':
+        query_params = parse_qs(parsed_url.query)
+        addon_url = query_params.get('url', [None])[0]
+        if addon_url:
+            app.main_window.download_and_load_addon(addon_url)
+
+def open_addon_store():
+    store_path = os.path.join(os.path.dirname(__file__), 'addon_store.html')
+    webbrowser.open(f'file://{store_path}')
 
 def load_addon(addon_path):
     if os.path.exists(addon_path):
@@ -15,6 +41,15 @@ def load_addon(addon_path):
             exec(file.read(), globals())
     else:
         print(f"Addon {addon_path} nicht gefunden")
+
+def load_all_addons(addons_dir):
+    if os.path.exists(addons_dir) and os.path.isdir(addons_dir):
+        for file_name in os.listdir(addons_dir):
+            if file_name.endswith('.mintaiaddon'):
+                addon_path = os.path.join(addons_dir, file_name)
+                load_addon(addon_path)
+    else:
+        print(f"Addons-Verzeichnis {addons_dir} nicht gefunden oder ist kein Verzeichnis")
 
 def get_install_dir():
     try:
@@ -106,6 +141,7 @@ class LauncherGUI(QWidget):
         self.initUI()
         self.load_dev_options()
         self.temp_addon_files = []
+        app.installEventFilter(self)
 
     def initUI(self):
         self.setWindowTitle('MINT AI Launcher')
@@ -167,6 +203,13 @@ class LauncherGUI(QWidget):
         self.install_addon_button.setStyleSheet("background-color: purple; color: white; padding: 10px;")
         self.install_addon_button.clicked.connect(self.install_addon)
         layout.addWidget(self.install_addon_button)
+        
+        # Button zum Öffnen des Addon-Stores
+        self.open_store_button = QPushButton('Addon Store öffnen', self)
+        self.open_store_button.setFont(QFont('Arial', 18))
+        self.open_store_button.setStyleSheet("background-color: orange; color: white; padding: 10px;")
+        self.open_store_button.clicked.connect(open_addon_store)
+        layout.addWidget(self.open_store_button)
         
         # Entwickleroptionen
         self.dev_options_group = QGroupBox("Entwickleroptionen")
@@ -238,12 +281,22 @@ class LauncherGUI(QWidget):
                 self.text_area.append(f"Addon {file_name} erfolgreich geladen.")
         else:
             # Auswahl zwischen den vorgegebenen Addons
-            addon_choice, ok = QInputDialog.getItem(self, "Addon auswählen", "Wählen Sie ein Addon aus:", ["Blackbig", "Blueforever"], 0, False)
+            addon_choice, ok = QInputDialog.getItem(self, "Addon auswählen", "Wählen Sie ein Addon aus:", ["Blackbig", "Blueforever", "Dark", "Light", "Blue", "Green", "Red"], 0, False)
             if ok and addon_choice:
                 if addon_choice == "Blackbig":
                     url = "https://raw.githubusercontent.com/Gymnasium-Freiham/MINT-AI-Addons/refs/heads/main/style-blackbig/addon-newstyle.mintaiaddon"
                 elif addon_choice == "Blueforever":
                     url = "https://raw.githubusercontent.com/Gymnasium-Freiham/MINT-AI-Addons/refs/heads/main/style-blueforever/addon-newstyle.mintaiaddon"
+                elif addon_choice == "Dark":
+                    url = "https://raw.githubusercontent.com/Gymnasium-Freiham/MINT-AI-Addons/refs/heads/main/style-dark/addon-newstyle.mintaiaddon"
+                elif addon_choice == "Light":
+                    url = "https://raw.githubusercontent.com/Gymnasium-Freiham/MINT-AI-Addons/refs/heads/main/style-light/addon-newstyle.mintaiaddon"
+                elif addon_choice == "Blue":
+                    url = "https://raw.githubusercontent.com/Gymnasium-Freiham/MINT-AI-Addons/refs/heads/main/style-blue/addon-newstyle.mintaiaddon"
+                elif addon_choice == "Green":
+                    url = "https://raw.githubusercontent.com/Gymnasium-Freiham/MINT-AI-Addons/refs/heads/main/style-green/addon-newstyle.mintaiaddon"
+                elif addon_choice == "Red":
+                    url = "https://raw.githubusercontent.com/Gymnasium-Freiham/MINT-AI-Addons/refs/heads/main/style-red/addon-newstyle.mintaiaddon"
                 self.download_and_load_addon(url)
 
     def download_and_load_addon(self, url):
@@ -251,14 +304,32 @@ class LauncherGUI(QWidget):
             response = requests.get(url)
             response.raise_for_status()
             addon_code = response.text
-            temp_file = tempfile.NamedTemporaryFile(delete=False, suffix=".mintaiaddon")
-            with open(temp_file.name, 'w') as file:
+            install_dir = get_install_dir()
+            addons_dir = os.path.join(install_dir, 'addons')
+            if not os.path.exists(addons_dir):
+                os.makedirs(addons_dir)
+            addon_name = os.path.basename(url)
+            addon_path = os.path.join(addons_dir, addon_name)
+            with open(addon_path, 'w') as file:
                 file.write(addon_code)
-            self.temp_addon_files.append(temp_file.name)
-            load_addon(temp_file.name)
-            self.text_area.append(f"Addon von {url} erfolgreich geladen.")
+            self.text_area.append(f"Addon von {url} erfolgreich heruntergeladen und gespeichert.")
+            self.start_program()
         except requests.RequestException as e:
             QMessageBox.critical(self, "Fehler", f"Fehler beim Herunterladen des Addons: {e}")
+
+
+
+    def apply_addon_effects(self, addon_file):
+        # Beispiel: Ändern Sie die Hintergrundfarbe basierend auf dem geladenen Addon
+        if "blueforever" in addon_file.lower():
+            palette = self.palette()
+            palette.setColor(QPalette.Window, QColor(0, 0, 255))  # Blau
+            self.setPalette(palette)
+        elif "blackbig" in addon_file.lower():
+            palette = self.palette()
+            palette.setColor(QPalette.Window, QColor(0, 0, 0))  # Schwarz
+            self.setPalette(palette)
+        # Fügen Sie hier weitere Addon-Effekte hinzu
 
     def closeEvent(self, event):
         # Temporäre Addon-Dateien löschen
@@ -269,7 +340,9 @@ class LauncherGUI(QWidget):
                 print(f"Fehler beim Löschen der temporären Datei {temp_file}: {e}")
         event.accept()
 
-
+    def set_main_window(window):
+        app.main_window = window
+        app.main_window.show()
     def start_game(self):
         # Passwortabfrage
         password, ok = QInputDialog.getText(self, 'Passwort eingeben', 'Bitte geben Sie das Passwort ein:')
@@ -285,6 +358,13 @@ class LauncherGUI(QWidget):
                 QMessageBox.critical(self, "Fehler", f"Fehler beim Starten des Skripts: {e}")
         else:
             QMessageBox.warning(self, "Falsches Passwort", "Das eingegebene Passwort ist falsch.")
+    
+    def eventFilter(self, obj, event):
+        if event.type() == QEvent.FileOpen:
+            url = event.url().toString()
+            handle_custom_url(url)
+            return True
+        return super().eventFilter(obj, event)
 
     def uninstall_program(self):
         reply = QMessageBox.question(self, 'Bestätigung', 
@@ -370,9 +450,25 @@ class LauncherGUI(QWidget):
         error = self.process.readAllStandardError().data().decode('latin-1')
         self.text_area.append(error)
 
+    
+def check_and_start_server():
+    try:
+        response = requests.get('http://localhost:5001/install_dir')
+        if response.status_code == 200:
+            print("Server läuft bereits auf Port 5001")
+            return
+    except requests.ConnectionError:
+        print("Server läuft nicht, starte server.py")
+        os.startfile(f'{install_dir}\server.py')
+
 if __name__ == "__main__":
     install_dir = get_install_dir()
+    check_and_start_server()
+    
+
     change_working_directory(install_dir)
+
+    register_url_scheme()
 
     app = QApplication(sys.argv)
     
@@ -380,11 +476,8 @@ if __name__ == "__main__":
     loading_screen = LoadingScreen()
     loading_screen.show()
 
-    # Addon ausführen
-    addon_path = os.path.join(install_dir, 'addons', 'addon-newstyle.mintaiaddon')
-    if os.path.exists(addon_path):
-        load_addon(addon_path)
-    else:
-        print(f"Addon {addon_path} nicht gefunden")
+    # Alle Addons ausführen
+    addons_dir = os.path.join(install_dir, 'addons')
+    load_all_addons(addons_dir)
     
     sys.exit(app.exec_())
