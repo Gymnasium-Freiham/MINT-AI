@@ -3,6 +3,8 @@ import sys
 import winreg
 import subprocess
 import requests
+import tempfile
+import shutil
 from PyQt5.QtWidgets import QApplication, QWidget, QVBoxLayout, QPushButton, QLabel, QHBoxLayout, QTextEdit, QMessageBox, QCheckBox, QSystemTrayIcon, QMenu, QAction, QComboBox, QFormLayout, QGroupBox, QInputDialog, QProgressBar, QFileDialog
 from PyQt5.QtGui import QPixmap, QFont, QPalette, QColor, QIcon, QMovie
 from PyQt5.QtCore import QProcess, Qt, QTimer
@@ -103,7 +105,8 @@ class LauncherGUI(QWidget):
         super().__init__()
         self.initUI()
         self.load_dev_options()
-        
+        self.temp_addon_files = []
+
     def initUI(self):
         self.setWindowTitle('MINT AI Launcher')
         self.setGeometry(100, 100, 800, 600)
@@ -225,13 +228,46 @@ class LauncherGUI(QWidget):
         self.process.readyReadStandardError.connect(self.read_error)
 
     def install_addon(self):
-        options = QFileDialog.Options()
-        options |= QFileDialog.ReadOnly
-        file_name, _ = QFileDialog.getOpenFileName(self, "Addon auswählen", "", "Addon Dateien (*.mintaiaddon);;Alle Dateien (*)", options=options)
-        if file_name:
-            load_addon(file_name)
-            self.text_area.append(f"Addon {file_name} erfolgreich geladen.")
+        downloaded, ok = QInputDialog.getText(self, "Addon installieren", "Haben Sie ein Addon heruntergeladen? (ja/nein)")
+        if ok and downloaded.lower() == 'ja':
+            options = QFileDialog.Options()
+            options |= QFileDialog.ReadOnly
+            file_name, _ = QFileDialog.getOpenFileName(self, "Addon auswählen", "", "Addon Dateien (*.mintaiaddon);;Alle Dateien (*)", options=options)
+            if file_name:
+                load_addon(file_name)
+                self.text_area.append(f"Addon {file_name} erfolgreich geladen.")
+        else:
+            # Auswahl zwischen den vorgegebenen Addons
+            addon_choice, ok = QInputDialog.getItem(self, "Addon auswählen", "Wählen Sie ein Addon aus:", ["Blackbig", "Blueforever"], 0, False)
+            if ok and addon_choice:
+                if addon_choice == "Blackbig":
+                    url = "https://raw.githubusercontent.com/Gymnasium-Freiham/MINT-AI-Addons/refs/heads/main/style-blackbig/addon-newstyle.mintaiaddon"
+                elif addon_choice == "Blueforever":
+                    url = "https://raw.githubusercontent.com/Gymnasium-Freiham/MINT-AI-Addons/refs/heads/main/style-blueforever/addon-newstyle.mintaiaddon"
+                self.download_and_load_addon(url)
 
+    def download_and_load_addon(self, url):
+        try:
+            response = requests.get(url)
+            response.raise_for_status()
+            addon_code = response.text
+            temp_file = tempfile.NamedTemporaryFile(delete=False, suffix=".mintaiaddon")
+            with open(temp_file.name, 'w') as file:
+                file.write(addon_code)
+            self.temp_addon_files.append(temp_file.name)
+            load_addon(temp_file.name)
+            self.text_area.append(f"Addon von {url} erfolgreich geladen.")
+        except requests.RequestException as e:
+            QMessageBox.critical(self, "Fehler", f"Fehler beim Herunterladen des Addons: {e}")
+
+    def closeEvent(self, event):
+        # Temporäre Addon-Dateien löschen
+        for temp_file in self.temp_addon_files:
+            try:
+                os.remove(temp_file)
+            except OSError as e:
+                print(f"Fehler beim Löschen der temporären Datei {temp_file}: {e}")
+        event.accept()
 
 
     def start_game(self):
