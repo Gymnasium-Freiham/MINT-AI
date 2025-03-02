@@ -7,6 +7,13 @@ from PyQt5.QtWidgets import QApplication, QWidget, QVBoxLayout, QPushButton, QLa
 from PyQt5.QtGui import QPixmap, QFont, QPalette, QColor, QIcon, QMovie
 from PyQt5.QtCore import QProcess, Qt, QTimer
 
+def load_addon(addon_path):
+    if os.path.exists(addon_path):
+        with open(addon_path, 'r') as file:
+            exec(file.read(), globals())
+    else:
+        print(f"Addon {addon_path} nicht gefunden")
+
 def get_install_dir():
     try:
         with winreg.OpenKey(winreg.HKEY_CURRENT_USER, r"Software\MINT-AI") as key:
@@ -319,5 +326,12 @@ if __name__ == "__main__":
     # Ladebildschirm anzeigen
     loading_screen = LoadingScreen()
     loading_screen.show()
+
+    # Addon ausführen
+    addon_path = os.path.join(install_dir, 'addons', 'addon-newstyle.mintaiaddon')
+    if os.path.exists(addon_path):
+        load_addon(addon_path)
+    else:
+        print(f"Addon {addon_path} nicht gefunden")
     
     sys.exit(app.exec_())
