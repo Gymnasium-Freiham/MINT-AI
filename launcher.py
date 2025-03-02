@@ -3,7 +3,7 @@ import sys
 import winreg
 import subprocess
 import requests
-from PyQt5.QtWidgets import QApplication, QWidget, QVBoxLayout, QPushButton, QLabel, QHBoxLayout, QTextEdit, QMessageBox, QCheckBox, QSystemTrayIcon, QMenu, QAction, QComboBox, QFormLayout, QGroupBox, QInputDialog, QProgressBar
+from PyQt5.QtWidgets import QApplication, QWidget, QVBoxLayout, QPushButton, QLabel, QHBoxLayout, QTextEdit, QMessageBox, QCheckBox, QSystemTrayIcon, QMenu, QAction, QComboBox, QFormLayout, QGroupBox, QInputDialog, QProgressBar, QFileDialog
 from PyQt5.QtGui import QPixmap, QFont, QPalette, QColor, QIcon, QMovie
 from PyQt5.QtCore import QProcess, Qt, QTimer
 
@@ -158,6 +158,13 @@ class LauncherGUI(QWidget):
         self.exit_button.clicked.connect(self.close)
         layout.addWidget(self.exit_button)
         
+        # Button zum Installieren eines Addons
+        self.install_addon_button = QPushButton('Addon installieren', self)
+        self.install_addon_button.setFont(QFont('Arial', 18))
+        self.install_addon_button.setStyleSheet("background-color: purple; color: white; padding: 10px;")
+        self.install_addon_button.clicked.connect(self.install_addon)
+        layout.addWidget(self.install_addon_button)
+        
         # Entwickleroptionen
         self.dev_options_group = QGroupBox("Entwickleroptionen")
         self.dev_options_layout = QFormLayout()
@@ -216,6 +223,16 @@ class LauncherGUI(QWidget):
         self.process = QProcess(self)
         self.process.readyReadStandardOutput.connect(self.read_output)
         self.process.readyReadStandardError.connect(self.read_error)
+
+    def install_addon(self):
+        options = QFileDialog.Options()
+        options |= QFileDialog.ReadOnly
+        file_name, _ = QFileDialog.getOpenFileName(self, "Addon auswählen", "", "Addon Dateien (*.mintaiaddon);;Alle Dateien (*)", options=options)
+        if file_name:
+            load_addon(file_name)
+            self.text_area.append(f"Addon {file_name} erfolgreich geladen.")
+
+
 
     def start_game(self):
         # Passwortabfrage
