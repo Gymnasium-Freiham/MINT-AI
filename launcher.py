@@ -235,6 +235,13 @@ class LauncherGUI(QWidget):
         self.opengl_checkbox = QCheckBox("OpenGL3 Rendering verwenden", self)
         self.dev_options_layout.addRow(self.opengl_checkbox)
 
+        # Button zum Deinstallieren eines Addons
+        self.uninstall_addon_button = QPushButton('Addon deinstallieren', self)
+        self.uninstall_addon_button.setFont(QFont('Arial', 18))
+        self.uninstall_addon_button.setStyleSheet("background-color: red; color: white; padding: 5px;")
+        self.uninstall_addon_button.clicked.connect(self.uninstall_addon)
+        self.dev_options_layout.addRow(self.uninstall_addon_button)
+
         self.dev_options_group.setLayout(self.dev_options_layout)
         layout.addWidget(self.dev_options_group)
 
@@ -247,6 +254,28 @@ class LauncherGUI(QWidget):
         # Setze Layout
         layout.setAlignment(Qt.AlignCenter)
         self.setLayout(layout)
+
+    def uninstall_addon(self):
+        install_dir = get_install_dir()
+        addons_dir = os.path.join(install_dir, 'addons')
+        if not os.path.exists(addons_dir):
+            QMessageBox.warning(self, "Fehler", "Keine Addons installiert.")
+            return
+
+        addons = [f for f in os.listdir(addons_dir) if f.endswith('.mintaiaddon')]
+        if not addons:
+            QMessageBox.warning(self, "Fehler", "Keine Addons installiert.")
+            return
+
+        addon_choice, ok = QInputDialog.getItem(self, "Addon deinstallieren", "Wählen Sie ein Addon aus:", addons, 0, False)
+        if ok and addon_choice:
+            addon_path = os.path.join(addons_dir, addon_choice)
+            try:
+                os.remove(addon_path)
+                self.text_area.append(f"Addon {addon_choice} erfolgreich deinstalliert.")
+            except Exception as e:
+                QMessageBox.critical(self, "Fehler", f"Fehler beim Deinstallieren des Addons: {e}")
+
 
         # System Tray Icon erstellen
         self.tray_icon = QSystemTrayIcon(self)
