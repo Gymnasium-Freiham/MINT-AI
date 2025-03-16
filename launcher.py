@@ -70,14 +70,6 @@ def change_working_directory(install_dir):
 def install(package):
     subprocess.check_call([sys.executable, "-m", "pip", "install", package])
 
-def check_internet_connection():
-    url = "http://www.google.com"
-    timeout = 5
-    try:
-        request = requests.get(url, timeout=timeout)
-        return True
-    except (requests.ConnectionError, requests.Timeout) as exception:
-        return False
 
 def read_registry_setting(key, value, default=None):
     try:
@@ -171,10 +163,6 @@ class LauncherGUI(QWidget):
         self.title_label.setStyleSheet("color: white;")
         layout.addWidget(self.title_label)
         
-        # Verbindungssymbol
-        self.connection_icon = QLabel(self)
-        self.update_connection_icon()
-        layout.addWidget(self.connection_icon)
 
         # Button zum Starten des Hauptprogramms
         self.start_button = QPushButton('Start MINT AI', self)
@@ -226,14 +214,6 @@ class LauncherGUI(QWidget):
         self.uninstall_button = QPushButton("Uninstall MINT-AI Launcher", self)
         self.uninstall_button.clicked.connect(self.uninstall_program)
         self.dev_options_layout.addRow(self.uninstall_button)
-
-        self.GameButton = QPushButton("Start Game", self)
-        self.GameButton.clicked.connect(self.start_game)
-        self.dev_options_layout.addRow(self.GameButton)
-
-        # Checkbox für Rendering-Option
-        self.opengl_checkbox = QCheckBox("OpenGL3 Rendering verwenden", self)
-        self.dev_options_layout.addRow(self.opengl_checkbox)
 
         # Button zum Deinstallieren eines Addons
         self.uninstall_addon_button = QPushButton('Addon deinstallieren', self)
@@ -372,21 +352,6 @@ class LauncherGUI(QWidget):
     def set_main_window(window):
         app.main_window = window
         app.main_window.show()
-    def start_game(self):
-        # Passwortabfrage
-        password, ok = QInputDialog.getText(self, 'Passwort eingeben', 'Bitte geben Sie das Passwort ein:')
-        
-        if ok and password == '9999':
-            self.text_area.append("Das Game wird gestartet...")  # Ausgabe im Textbereich
-            try:
-                if self.opengl_checkbox.isChecked():
-                    self.process.start("./Bowling-jump-new.exe", ["--rendering-driver", "opengl3"])
-                else:
-                    self.process.start("./Bowling-jump-new.exe")
-            except Exception as e:
-                QMessageBox.critical(self, "Fehler", f"Fehler beim Starten des Skripts: {e}")
-        else:
-            QMessageBox.warning(self, "Falsches Passwort", "Das eingegebene Passwort ist falsch.")
     
     def eventFilter(self, obj, event):
         if event.type() == QEvent.FileOpen:
@@ -417,14 +382,7 @@ class LauncherGUI(QWidget):
                         self.close()
                     except Exception as e:
                         QMessageBox.critical(self, "Fehler", f"Fehler bei der Deinstallation: {e}")  
-    def update_connection_icon(self):
-        if check_internet_connection():
-            self.connection_icon.setPixmap(QPixmap("./wifi-strong.png"))
-            self.connection_icon.setToolTip("Starke Internetverbindung")
-        else:
-            self.connection_icon.setPixmap("./wifi-weak.png")
-            self.connection_icon.setToolTip("Schwache oder keine Internetverbindung")
-    
+ 
     def start_program(self):
         # Hauptprogramm starten
         self.text_area.append("Das Hauptprogramm wird gestartet...")  # Ausgabe im Textbereich
