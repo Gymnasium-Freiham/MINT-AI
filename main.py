@@ -19,6 +19,8 @@ install("scikit-learn")
 install("numpy")
 install("requests")
 install("groq")
+install("PyQt5")
+install("torch")
 
 from groq import Groq
 import json
@@ -29,6 +31,11 @@ from sklearn.feature_extraction.text import TfidfVectorizer
 from sklearn.svm import SVC
 import os
 import requests
+import torch
+import torch.nn as nn
+from PyQt5.QtWidgets import QApplication
+from functions.locatepeople import IPGeolocationApp
+
 # Lade NLTK-Daten
 nltk.download('punkt')
 nltk.download('wordnet')
@@ -50,6 +57,7 @@ from data import load_training_data, load_and_append_data
 def set_seed(seed):
     np.random.seed(seed)
     random.seed(seed)
+    torch.manual_seed(seed)
 
 set_seed(42)  # Beispiel-Seed
 
@@ -83,6 +91,30 @@ model.fit(X, answers)
 stemmer = PorterStemmer()
 lemmatizer = WordNetLemmatizer()
 modelofAI = input("Wähle ein Modell aus (Gemma2-9b-it[1] MINT-AI[2]):")
+
+# Transformer-Architektur
+class TransformerModel(nn.Module):
+    def __init__(self, input_dim, model_dim, num_heads, num_layers, output_dim):
+        super(TransformerModel, self).__init__()
+        self.embedding = nn.Embedding(input_dim, model_dim)
+        self.transformer = nn.Transformer(model_dim, num_heads, num_layers)
+        self.fc = nn.Linear(model_dim, output_dim)
+
+    def forward(self, src, tgt):
+        src = self.embedding(src)
+        tgt = self.embedding(tgt)
+        output = self.transformer(src, tgt)
+        output = self.fc(output)
+        return output
+
+# Initialisiere das Transformer-Modell
+input_dim = len(vectorizer.vocabulary_)
+model_dim = 512
+num_heads = 8
+num_layers = 6
+output_dim = len(set(answers))
+transformer_model = TransformerModel(input_dim, model_dim, num_heads, num_layers, output_dim)
+
 if modelofAI == "2":
     def preprocess_text(text):
         try:
@@ -142,6 +174,7 @@ if modelofAI == "2":
 
     # Funktion zur Beantwortung von Fragen
     def chatbot_response(question):
+        print(question)
         try:
             # Überprüfen, ob die Frage ein mathematischer Ausdruck ist
             if question.startswith("Berechne"):
@@ -156,6 +189,14 @@ if modelofAI == "2":
             if question.lower().startswith("suche nach"):
                 query = question.split("suche nach")[-1].strip()
                 return search_web(query), None
+
+            # Überprüfen, ob die Frage eine IP-Geolokalisierung erfordert
+            if question.lower().startswith("ip geolocation"):
+                app = QApplication([])
+                window = IPGeolocationApp()
+                window.show()
+                app.exec_()
+                return "IP-Geolokalisierung gestartet.", None
         
             # Überprüfen, ob die Frage eine Begrüßung ist
             greetings = ["hallo", "hi", "hey", "guten tag"]
