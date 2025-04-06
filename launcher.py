@@ -387,7 +387,7 @@ class LauncherGUI(QWidget):
         # Hauptprogramm starten
         self.text_area.append("Das Hauptprogramm wird gestartet...")  # Ausgabe im Textbereich
         try:
-            self.process.start('python', ['test.py'])
+            subprocess.Popen(['python', 'test.py'])
         except Exception as e:
             QMessageBox.critical(self, "Fehler", f"Fehler beim Starten des Skripts: {e}")
     
