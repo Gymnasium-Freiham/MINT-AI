@@ -21,6 +21,7 @@ install("requests")
 install("groq")
 install("PyQt5")
 install("torch")
+install("matplotlib")
 
 from groq import Groq
 import json
@@ -132,14 +133,87 @@ if modelofAI == "2":
             }
         except Exception as e:
             return {"error": str(e)}
+    import matplotlib.pyplot as plt
+
+    def generate_math_plot(expression, filename="plot.png"):
+        try:
+            # Beispiel: Parabel zeichnen
+            if expression == "parabel":
+                x = np.linspace(-10, 10, 400)
+                y = x**2
+                plt.figure()
+                plt.plot(x, y, label="y = x^2")
+                plt.title("Parabel")
+                plt.xlabel("x")
+                plt.ylabel("y")
+                plt.axhline(0, color='black',linewidth=0.5)
+                plt.axvline(0, color='black',linewidth=0.5)
+                plt.grid(color = 'gray', linestyle = '--', linewidth = 0.5)
+                plt.legend()
+                plt.savefig(filename)
+                plt.close()
+                return filename
+            else:
+                return None
+        except Exception as e:
+            print(f"Fehler beim Generieren der Grafik: {e}")
+            return None
 
     # Funktion zur Evaluierung mathematischer Ausdrücke
     def evaluate_math_expression(expression):
         try:
+            # Berechne das Ergebnis
             result = eval(expression)
+
+            # Visualisiere die Rechenschritte
+            filename = visualize_calculation_steps(expression)
+            if filename:
+                show_plot_in_gui(filename)
+
             return f"Das Ergebnis ist: {result}"
         except Exception as e:
             return f"Fehler beim Auswerten des Ausdrucks: {str(e)}"
+    import re
+
+    def visualize_calculation_steps(expression, filename="calculation_steps.png"):
+        try:
+            # Zerlege den Ausdruck in Schritte
+            steps = []
+            current_expression = expression
+
+            # Berechne Schritt für Schritt unter Berücksichtigung der Reihenfolge der Operationen
+            while True:
+                # Finde die innerste Klammer oder den nächsten Operator
+                match = re.search(r"\(([^()]+)\)", current_expression)  # Suche nach Klammern
+                if match:
+                    sub_expression = match.group(1)
+                    result = eval(sub_expression)
+                    steps.append((f"{sub_expression} = {result}", result))
+                    current_expression = current_expression.replace(f"({sub_expression})", str(result))
+                else:
+                    # Keine Klammern mehr, berechne den Rest
+                    result = eval(current_expression)
+                    steps.append((f"{current_expression} = {result}", result))
+                    break
+
+            # Erstelle die Grafik
+            plt.figure(figsize=(10, 6))
+            y_pos = range(len(steps))
+            expressions = [step[0] for step in steps]
+            results = [step[1] for step in steps]
+
+            plt.barh(y_pos, results, color='skyblue')
+            plt.yticks(y_pos, expressions)
+            plt.xlabel("Ergebnisse")
+            plt.title("Rechenschritte")
+            plt.tight_layout()
+            plt.savefig(filename)
+            plt.close()
+            return filename
+        except Exception as e:
+            print(f"Fehler bei der Visualisierung der Rechenschritte: {e}")
+            return None
+
 
     # Funktion zum Öffnen von VS Code
     def open_vscode():
@@ -230,6 +304,19 @@ if modelofAI == "2":
     # Automatisches Lernen aus Interaktionen
     def learn_from_interaction(user_input, expected_response):
         add_to_training_data(user_input, expected_response)
+    from PyQt5.QtWidgets import QLabel, QVBoxLayout, QDialog
+    from PyQt5.QtGui import QPixmap
+
+    def show_plot_in_gui(filename):
+        dialog = QDialog()
+        dialog.setWindowTitle("Mathematische Grafik")
+        layout = QVBoxLayout()
+        label = QLabel()
+        pixmap = QPixmap(filename)
+        label.setPixmap(pixmap)
+        layout.addWidget(label)
+        dialog.setLayout(layout)
+        dialog.exec_()
 
     # Funktion zur Überprüfung und Verbesserung der Antwort
     def validate_response(user_input, response):
@@ -247,7 +334,13 @@ if modelofAI == "2":
             user_input = input("Du: ")
             if user_input.lower() in ["exit", "quit"]:
                 break
-        
+            elif user_input.lower().startswith("zeige mir eine parabel"):
+                filename = generate_math_plot("parabel")
+                if filename:
+                    show_plot_in_gui(filename)
+                    print("Hier ist die Grafik der Parabel.")
+                    continue  # Springe zur nächsten Eingabe
+
             response, nlp_info = chatbot_response(user_input)
         
             if response is None:
@@ -260,6 +353,7 @@ if modelofAI == "2":
         
             print("Chatbot:", response)
             print("NLP Info:", nlp_info)
+
 elif modelofAI == "1":
     while True:
         usersinput = input("Enter your message: ")
