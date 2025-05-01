@@ -4,17 +4,19 @@
 
 We only support current versions and a few times the version above.
 
-| Version | Supported          |
-| ------- | ------------------ |
-| 1.0.0 ⚠️ Warning! Too Deprecated Version! Do not works anymore!   | :x:                |
-| 2.0.0   | :x:                |
-| 2.0.1   | :x: |
-| 2.1.0   | :white_check_mark: |
-| 2.2.0pre1   | :white_check_mark: |
-| 2.2.0pre2   | :white_check_mark: |
-| 2.2.0pre3   | :white_check_mark: |
-| 2.2.0pre4   | :white_check_mark: |
-
+| Version | Supported          | End of Service |
+| ------- | ------------------ | -------------- |
+| 1.0.0 ⚠️ Warning! Too Deprecated Version! Do not works anymore!   | :x:                | November 2024|
+| 2.0.0   | :x:                | December 2024|
+| 2.0.1   | :x: | December 2024 |
+| 2.1.0   | :x: | December 2024 |
+| 2.2.0pre1   | :x: | April 2025 |
+| 2.2.0pre2   | :x: | April 2025 |
+| 2.2.0pre3   | :x: | April 2025 |
+| 2.2.0pre4   | :x: | April 2025 |
+| 2.2.0   | :white_check_mark: | June 2025 |
+| 2.2.0.1   | :white_check_mark: | June 2025 |
+| 2.2.1   | :white_check_mark: | June 2025 |
 ## Compatibility with Python versions
 
 | Version | Supported          |
