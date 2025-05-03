@@ -2,14 +2,64 @@ import os
 import sys
 import winreg
 import subprocess
-import requests
 import tempfile
 import shutil
-from PyQt5.QtWidgets import QApplication, QWidget, QVBoxLayout, QPushButton, QLabel, QHBoxLayout, QTextEdit, QMessageBox, QCheckBox, QSystemTrayIcon, QMenu, QAction, QComboBox, QFormLayout, QGroupBox, QInputDialog, QProgressBar, QFileDialog
-from PyQt5.QtGui import QPixmap, QFont, QPalette, QColor, QIcon, QMovie
-from PyQt5.QtCore import QProcess, Qt, QTimer, QEvent
 import webbrowser
 from urllib.parse import urlparse, parse_qs
+
+# Prüfen, ob der Parameter --no-connection übergeben wurde
+no_connection = "--no-connection" in sys.argv
+
+# Setze eine Umgebungsvariable, die von anderen Skripten gelesen werden kann
+if no_connection:
+    os.environ["NO_CONNECTION"] = "1"
+else:
+    os.environ["NO_CONNECTION"] = "0"
+def install(package):
+    if no_connection:
+        print(f"Überspringe Installation von {package} (kein Internetzugriff erlaubt).")
+        return
+    subprocess.check_call([sys.executable, "-m", "pip", "install", package])
+
+try:
+    import PyQt5
+except ImportError:
+    install("PyQt5")
+try:
+    import requests
+except ImportError:
+    install("requests")
+try:
+    import Flask
+except ImportError:
+    install("Flask")
+try:
+    import Flask_CORS
+except ImportError:
+    install("Flask-CORS")
+from PyQt5.QtWidgets import QApplication, QWidget, QVBoxLayout, QPushButton, QLabel, QHBoxLayout, QTextEdit, QMessageBox, QCheckBox, QSystemTrayIcon, QMenu, QAction, QComboBox, QFormLayout, QGroupBox, QInputDialog, QProgressBar, QFileDialog
+from PyQt5.QtGui import QPixmap, QFont, QPalette, QColor, QIcon, QMovie
+from PyQt5.QtCore import QProcess, Qt, QTimer, QEvent, QThread, pyqtSignal
+import requests
+
+class DependencyInstaller(QThread):
+    progress_updated = pyqtSignal(int)  # Signal für Fortschrittsaktualisierung
+    installation_finished = pyqtSignal()  # Signal, wenn die Installation abgeschlossen ist
+
+    def run(self):
+        dependencies = ["PyQt5", "requests", "Flask", "Flask-CORS"]
+        total = len(dependencies)
+        for i, package in enumerate(dependencies, start=1):
+            if no_connection:
+                print(f"Überspringe Installation von {package} (kein Internetzugriff erlaubt).")
+            else:
+                try:
+                    subprocess.check_call([sys.executable, "-m", "pip", "install", package])
+                except Exception as e:
+                    print(f"Fehler bei der Installation von {package}: {e}")
+            progress = int((i / total) * 100)
+            self.progress_updated.emit(progress)  # Fortschritt aktualisieren
+        self.installation_finished.emit()  # Installation abgeschlossen
 
 def register_url_scheme():
     try:
@@ -67,9 +117,6 @@ def change_working_directory(install_dir):
     else:
         print("Fehler beim Wechseln des Arbeitsverzeichnisses")
 
-def install(package):
-    subprocess.check_call([sys.executable, "-m", "pip", "install", package])
-
 
 def read_registry_setting(key, value, default=None):
     try:
@@ -77,8 +124,7 @@ def read_registry_setting(key, value, default=None):
             result, _ = winreg.QueryValueEx(reg_key, value)
             return result
     except FileNotFoundError:
-        return default
-
+        return defaul
 def write_registry_setting(key, value, data):
     with winreg.CreateKey(winreg.HKEY_CURRENT_USER, key) as reg_key:
         winreg.SetValueEx(reg_key, value, 0, winreg.REG_SZ, data)
@@ -88,11 +134,15 @@ install("PyQt5")
 class LoadingScreen(QWidget):
     def __init__(self):
         super().__init__()
+        self.movie = None  # Initialisiere self.movie als Instanzattribut
         self.initUI()
-        
+        self.installer_thread = DependencyInstaller()
+        self.installer_thread.progress_updated.connect(self.update_progress)
+        self.installer_thread.installation_finished.connect(self.on_installation_finished)
+
     def initUI(self):
         self.setWindowTitle('Laden...')
-        self.setGeometry(100, 100, 400, 300)
+        self.showFullScreen()  # Ladebildschirm im Vollbildmodus anzeigen
         
         layout = QVBoxLayout()
         
@@ -103,29 +153,37 @@ class LoadingScreen(QWidget):
         
         # Animiertes Logo
         self.animated_logo = QLabel(self)
-        self.movie = QMovie("./logo.gif")
+        self.movie = QMovie("./logo.gif")  # Initialisiere das QMovie-Objekt
         self.animated_logo.setMovie(self.movie)
+        self.animated_logo.setAlignment(Qt.AlignCenter)  # Zentriere das GIF
         layout.addWidget(self.animated_logo)
         
         self.setLayout(layout)
         
         self.movie.start()
-        
-        self.timer = QTimer(self)
-        self.timer.timeout.connect(self.update_progress)
-        self.timer.start(50)  # Update alle 50ms
 
-    def update_progress(self):
-        value = self.progress_bar.value() + 1
+    def resizeEvent(self, event):
+        """Skaliere das GIF und das QLabel, wenn das Fenster die Größe ändert."""
+        if self.movie:  # Überprüfe, ob self.movie korrekt initialisiert wurde
+            size = self.size()  # Verwende die Fenstergröße
+            self.animated_logo.resize(size)  # Passe die Größe des QLabel an
+            self.movie.setScaledSize(size)  # Passe die Größe des GIFs an das QLabel an
+        super().resizeEvent(event)
+
+    def start_installation(self):
+        self.installer_thread.start()
+
+    def update_progress(self, value):
         self.progress_bar.setValue(value)
-        if value >= 100:
-            self.timer.stop()
-            self.close()
-            self.start_main_app()
+
+    def on_installation_finished(self):
+        self.close()
+        self.start_main_app()
 
     def start_main_app(self):
         self.main_app = LauncherGUI()
         self.main_app.show()
+
 
 class LauncherGUI(QWidget):
     def __init__(self):
@@ -451,20 +509,21 @@ def check_and_start_server():
 if __name__ == "__main__":
     install_dir = get_install_dir()
     check_and_start_server()
-    
-
     change_working_directory(install_dir)
-
     register_url_scheme()
 
     app = QApplication(sys.argv)
-    
-    # Ladebildschirm anzeigen
-    loading_screen = LoadingScreen()
-    loading_screen.show()
-
     # Alle Addons ausführen
     addons_dir = os.path.join(install_dir, 'addons')
     load_all_addons(addons_dir)
-    
+    # Ladebildschirm anzeigen und Installation starten
+    loading_screen = LoadingScreen()
+    loading_screen.show()
+    loading_screen.start_installation()
+
+
     sys.exit(app.exec_())
+
+        # Alle Addons ausführen
+    addons_dir = os.path.join(install_dir, 'addons')
+    load_all_addons(addons_dir)
