@@ -14,9 +14,9 @@ We only support current versions and a few times the version above.
 | 2.2.0pre2   | :x: | April 2025 |
 | 2.2.0pre3   | :x: | April 2025 |
 | 2.2.0pre4   | :x: | April 2025 |
-| 2.2.0   | :white_check_mark: | June 2025 |
-| 2.2.0.1   | :white_check_mark: | June 2025 |
-| 2.2.1   | :white_check_mark: | June 2025 |
+| 2.2.0   | :x: | June 2025 |
+| 2.2.0.1   | :x: | June 2025 |
+| 2.2.1   | :white_check_mark: | EXTENDED October 2025 |
 ## Compatibility with Python versions
 
 | Version | Supported          |
