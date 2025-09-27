@@ -4,15 +4,27 @@
 activation=True
 import subprocess
 import sys
-import tkinter as tk
-from tkinter import messagebox
+import platform
 import os
 if activation==False:
     sys.exit("Error-code: 0x43R43DESACTIVATED36")
-
+# Detect the operating system
+is_windows = platform.system() == "Windows"
+is_linux = platform.system() == "Linux"
+no_connection = False
 # Installiere notwendige Bibliotheken
-def install(package):
-    subprocess.check_call([sys.executable, "-m", "pip", "install", package])
+if is_windows:
+    def install(package, *args):
+        if no_connection:
+            print(f"Überspringe Installation von {package} (kein Internetzugriff erlaubt).")
+            return
+        subprocess.check_call([sys.executable, "-m", "pip", "install", package, *args])
+else:
+    def install(package, *args):
+        if no_connection:
+            print(f"Überspringe Installation von {package} (kein Internetzugriff erlaubt).")
+            return
+        subprocess.check_call([sys.executable, "-m", "pip", "install", package, *args, "--break-system-packages"])
 
 install("nltk")
 install("scikit-learn")
@@ -20,7 +32,7 @@ install("numpy")
 install("requests")
 install("groq")
 install("PyQt5")
-install("torch")
+install("torch==2.0.1+cpu", "-f", "https://download.pytorch.org/whl/torch_stable.html")
 install("matplotlib")
 
 from groq import Groq
@@ -35,7 +47,6 @@ import requests
 import torch
 import torch.nn as nn
 from PyQt5.QtWidgets import QApplication
-from functions.locatepeople import IPGeolocationApp
 
 # Lade NLTK-Daten
 nltk.download('punkt')
@@ -43,8 +54,7 @@ nltk.download('wordnet')
 nltk.download('averaged_perceptron_tagger')
 nltk.download('maxent_ne_chunker')
 nltk.download('words')
-nltk.download('averaged_perceptron_tagger_eng')
-nltk.download('maxent_ne_chunker_tab')
+nltk.download('punkt_tab')
 client = Groq(api_key="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")
 
 from nltk.tokenize import word_tokenize
@@ -85,8 +95,54 @@ questions = [data['question'] for data in training_data]
 X = vectorizer.fit_transform(questions)
 
 answers = [data['answer'] for data in training_data]
-model = SVC(kernel='linear')
-model.fit(X, answers)
+
+# Define a PyTorch neural network for text classification
+class TextClassifier(nn.Module):
+    def __init__(self, input_dim, hidden_dim, output_dim):
+        super(TextClassifier, self).__init__()
+        self.fc1 = nn.Linear(input_dim, hidden_dim)
+        self.relu = nn.ReLU()
+        self.fc2 = nn.Linear(hidden_dim, output_dim)
+        self.softmax = nn.Softmax(dim=1)
+
+    def forward(self, x):
+        x = self.fc1(x)
+        x = self.relu(x)
+        x = self.fc2(x)
+        return self.softmax(x)
+
+# Initialisiere das Transformer-Modell
+input_dim = len(vectorizer.vocabulary_)
+hidden_dim = 128
+output_dim = len(set(answers))
+text_classifier = TextClassifier(input_dim, hidden_dim, output_dim)
+criterion = nn.CrossEntropyLoss()
+optimizer = torch.optim.Adam(text_classifier.parameters(), lr=0.001)
+
+# Funktion zum Trainieren des PyTorch-Modells
+# Ensure the model's output layer matches the number of classes before training
+def train_model(X, y, epochs=10):
+    global text_classifier, optimizer, criterion
+
+    # Check if the model's output layer matches the number of classes
+    num_classes = max(y) + 1
+    if text_classifier.fc2.out_features != num_classes:
+        text_classifier = TextClassifier(input_dim, hidden_dim, num_classes)
+        optimizer = torch.optim.Adam(text_classifier.parameters(), lr=0.001)
+        criterion = nn.CrossEntropyLoss()
+
+    text_classifier.train()
+    for epoch in range(epochs):
+        optimizer.zero_grad()
+        outputs = text_classifier(torch.tensor(X, dtype=torch.float32))
+        loss = criterion(outputs, torch.tensor(y, dtype=torch.long))
+        loss.backward()
+        optimizer.step()
+
+# Trainiere das Modell mit den anfänglichen Daten
+X_train = X.toarray()
+y_train = [answers.index(answer) for answer in answers]
+train_model(X_train, y_train)
 
 # Zusatzfunktionen für NLP
 stemmer = PorterStemmer()
@@ -277,29 +333,44 @@ if modelofAI == "2":
             if question.lower() in greetings:
                 return "Hallo! Wie kann ich Ihnen helfen?", None
         
-            question_tfidf = vectorizer.transform([question])
-        
-            response = model.predict(question_tfidf)[0]
+            # Preprocess the question
+            question_tfidf = vectorizer.transform([question]).toarray()
+            text_classifier.eval()
+            with torch.no_grad():
+                outputs = text_classifier(torch.tensor(question_tfidf, dtype=torch.float32))
+                predicted_index = torch.argmax(outputs, dim=1).item()
+                response = answers[predicted_index]
+
             nlp_info = preprocess_text(question)
-        
             return response, nlp_info
         except Exception as e:
             return f"Fehler bei der Verarbeitung der Frage: {str(e)}", None
 
-    # Funktion zum Hinzufügen von neuen Fragen und Antworten
+    # Ensure proper reinitialization of the model and optimizer in add_to_training_data
     def add_to_training_data(question, answer, file_path='training_data.json'):
-        global training_data
+        global training_data, text_classifier, optimizer, criterion
+
         new_entry = {"question": question, "answer": answer}
         training_data.append(new_entry)
-    
+
         with open(file_path, 'w', encoding='utf-8') as file:
             json.dump(training_data, file, ensure_ascii=False, indent=4)
-    
-        # Modelle neu trainieren
+
+        # Update the vectorizer and labels
         questions = [data['question'] for data in training_data]
-        X = vectorizer.fit_transform(questions)
+        X = vectorizer.fit_transform(questions).toarray()
         answers = [data['answer'] for data in training_data]
-        model.fit(X, answers)
+        y = [answers.index(answer) for answer in answers]
+
+        # Reinitialize the model if the number of classes has changed
+        new_output_dim = len(set(answers))
+        if new_output_dim != text_classifier.fc2.out_features:
+            text_classifier = TextClassifier(input_dim, hidden_dim, new_output_dim)
+            optimizer = torch.optim.Adam(text_classifier.parameters(), lr=0.001)
+            criterion = nn.CrossEntropyLoss()
+
+        # Retrain the model with the updated dataset
+        train_model(X, y)
 
     # Automatisches Lernen aus Interaktionen
     def learn_from_interaction(user_input, expected_response):
@@ -354,17 +425,17 @@ if modelofAI == "2":
             print("Chatbot:", response)
             print("NLP Info:", nlp_info)
 
-elif modelofAI == "1":
-    while True:
-        usersinput = input("Enter your message: ")
-        chat_completion = client.chat.completions.create(
-            messages=[
-                {
-                    "role": "user",
-                    "content": usersinput,
-                }
-            ],
-            model="llama-3.3-70b-versatile",
-        )
-
-        print(chat_completion.choices[0].message.content)
+#elif modelofAI == "1":
+#    while True:
+#        usersinput = input("Enter your message: ")
+#        chat_completion = client.chat.completions.create(
+#            messages=[
+#               {
+#                    "role": "user",
+#                    "content": usersinput,
+#                }
+#            ],
+#            model="llama-3.3-70b-versatile",
+#        )
+#
+#        print(chat_completion.choices[0].message.content)

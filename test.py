@@ -80,7 +80,7 @@ class TerminalGUI(QMainWindow):
         self.process.started.connect(self.process_started)
         self.process.finished.connect(self.process_finished)
         try:
-            self.process.start('python', ['main.py'])
+            self.process.start('python3', ['main.py'])
         except Exception as e:
             self.text_area.append(f"Fehler beim Starten des Skripts: {e}")
             self.status_bar.setStyleSheet("background-color: red; color: white;")

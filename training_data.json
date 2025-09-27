@@ -50,5 +50,2193 @@
     {
         "question": "Guten Tag",
         "answer": "Ihnen ebenfals!"
+    },
+    {
+        "question": "Was ist die Comic-Serie 'The Amazing Spider-Man'?",
+        "answer": "Die Abenteuer von Peter Parker, einem jungen Mann, der nach einem Spinnenbiss Superkräfte erlangt und als Spider-Man gegen Bösewichte kämpft."
+    },
+    {
+        "question": "Was ist die Comic-Serie 'Batman'?",
+        "answer": "Die Geschichte von Bruce Wayne, der nach dem Mord an seinen Eltern als Batman gegen das Verbrechen in Gotham City kämpft."
+    },
+    {
+        "question": "Was ist die Comic-Serie 'Wonder Woman'?",
+        "answer": "Die Abenteuer von Diana Prince, einer amazonischen Kriegerin, die als Wonder Woman für Gerechtigkeit und Frieden kämpft."
+    },
+    {
+        "question": "Was ist die Comic-Serie 'X-Men'?",
+        "answer": "Eine Gruppe von Mutanten, die ihre übernatürlichen Fähigkeiten nutzen, um die Menschheit zu schützen und gegen Vorurteile zu kämpfen."
+    },
+    {
+        "question": "Was ist die Comic-Serie 'The Walking Dead'?",
+        "answer": "Die Geschichte einer Gruppe von Überlebenden in einer post-apokalyptischen Welt, die von Zombies überrannt wurde."
+    },
+    {
+        "question": "Was ist die Comic-Serie 'Attack on Titan'?",
+        "answer": "In einer Welt, in der riesige humanoide Wesen die Menschheit bedrohen, kämpfen Eren Yeager und seine Freunde ums Überleben."
+    },
+    {
+        "question": "Was ist das Gericht 'Spaghetti Carbonara'?",
+        "answer": "Klassisches italienisches Gericht mit Spaghetti, Speck, Ei, Parmesan und Pfeffer."
+    },
+    {
+        "question": "Was ist das Gericht 'Tom Kha Gai'?",
+        "answer": "Thailändische Hühnersuppe mit Kokosmilch, Zitronengras, Galgant und Koriander."
+    },
+    {
+        "question": "Was ist das Gericht 'Butter Chicken'?",
+        "answer": "Indisches Currygericht mit zartem Hühnerfleisch in cremiger Tomatensauce."
+    },
+    {
+        "question": "Was ist das Gericht 'Creme Brulee'?",
+        "answer": "Französisches Dessert mit einer knusprigen Karamellschicht und einer cremigen Vanillefüllung."
+    },
+    {
+        "question": "Was ist das Gericht 'Caesar Salad'?",
+        "answer": "Salat mit Römersalat, Croutons, Parmesan und Caesar-Dressing."
+    },
+    {
+        "question": "Was ist das Gericht 'Pad Thai'?",
+        "answer": "Thailändisches Nudelgericht mit Reisnudeln, Tofu, Ei, Erdnüssen und Limette."
+    },
+    {
+        "question": "Was ist das Gericht 'Ratatouille'?",
+        "answer": "Französisches Gemüsegericht mit Zucchini, Auberginen, Paprika und Tomaten."
+    },
+    {
+        "question": "Was ist das Gericht 'Tiramisu'?",
+        "answer": "Italienisches Dessert mit Löffelbiskuits, Mascarpone, Kaffee und Kakao."
+    },
+    {
+        "question": "Was ist das Buch 'The Very Hungry Caterpillar'?",
+        "answer": "Die Geschichte einer kleinen Raupe, die sich durch eine Menge Essen frisst, bevor sie sich in einen schönen Schmetterling verwandelt."
+    },
+    {
+        "question": "Was ist das Buch 'Goodnight Moon'?",
+        "answer": "Eine liebevolle Gutenachtgeschichte, in der ein kleines Häschen seine Umgebung vor dem Schlafengehen verabschiedet."
+    },
+    {
+        "question": "Was ist das Buch 'Where the Wild Things Are'?",
+        "answer": "Die Abenteuer eines Jungen namens Max, der in eine Welt voller wilder Kreaturen reist und ihr König wird."
+    },
+    {
+        "question": "Was ist das Buch 'Green Eggs and Ham'?",
+        "answer": "Ein humorvolles Buch über einen Charakter, der verschiedene Arten von grünen Eiern und Schinken ausprobiert."
+    },
+    {
+        "question": "Was ist das Buch 'The Tale of Peter Rabbit'?",
+        "answer": "Die Geschichte eines frechen kleinen Kaninchens, das in den Garten von Mr. McGregor eindringt."
+    },
+    {
+        "question": "Was ist das Buch 'Corduroy'?",
+        "answer": "Die Geschichte eines kleinen Teddybären, der in einem Kaufhaus auf ein Abenteuer geht, um einen fehlenden Knopf zu finden."
+    },
+    {
+        "question": "Was ist das Buch 'Guess How Much I Love You'?",
+        "answer": "Ein herzerwärmendes Buch, in dem ein kleiner Hase und ein großer Hase ihre Liebe zueinander messen."
+    },
+    {
+        "question": "Was ist das Buch 'Winnie the Pooh'?",
+        "answer": "Die Abenteuer von Winnie Puuh, einem liebenswerten Bären, und seinen Freunden im Hundert-Morgen-Wald."
+    },
+    {
+        "question": "Was ist der Film 'Toy Story'?",
+        "answer": "Ein animierter Film über das geheime Leben von Spielzeugen, wenn ihre Besitzer nicht da sind."
+    },
+    {
+        "question": "Was ist der Film 'Finding Nemo'?",
+        "answer": "Eine Abenteuerreise eines Clownfisch-Vaters, der nach seinem vermissten Sohn sucht."
+    },
+    {
+        "question": "Was ist der Film 'The Lion King'?",
+        "answer": "Die Geschichte eines jungen Löwen namens Simba, der lernen muss, seinen Platz im Kreis des Lebens zu finden."
+    },
+    {
+        "question": "Was ist der Film 'Frozen'?",
+        "answer": "Die Geschichte von zwei Schwestern, Anna und Elsa, und Elsas magischen Kräften, die das Königreich Arendelle in ewigen Winter stürzen."
+    },
+    {
+        "question": "Was ist der Film 'Moana'?",
+        "answer": "Ein mutiges Mädchen namens Moana begibt sich auf eine Reise, um ihr Volk zu retten und entdeckt dabei ihre eigene Identität."
+    },
+    {
+        "question": "Was ist der Film 'Despicable Me'?",
+        "answer": "Ein Superschurke namens Gru plant, den Mond zu stehlen, trifft aber auf drei Waisenmädchen, die sein Leben verändern."
+    },
+    {
+        "question": "Was ist der Film 'The Incredibles'?",
+        "answer": "Eine Familie von Superhelden, die sich verstecken müssen, bis sie erneut gezwungen werden, die Welt zu retten."
+    },
+    {
+        "question": "Was ist der Film 'Shrek'?",
+        "answer": "Ein grüner Oger namens Shrek begibt sich auf eine Mission, um Prinzessin Fiona zu retten und Frieden in sein Sumpfheim zu bringen."
+    },
+    {
+        "question": "Was ist die Frucht 'Apple'?",
+        "answer": "A sweet, edible fruit produced by an apple tree."
+    },
+    {
+        "question": "Was ist die Frucht 'Banana'?",
+        "answer": "A long, curved fruit with a yellow skin and soft, sweet, white flesh inside."
+    },
+    {
+        "question": "Was ist die Frucht 'Cherry'?",
+        "answer": "A small, round stone fruit that is typically bright or dark red."
+    },
+    {
+        "question": "Was ist die Frucht 'Date'?",
+        "answer": "A sweet fruit from the date palm tree, typically oval and brown."
+    },
+    {
+        "question": "Was ist die Frucht 'Elderberry'?",
+        "answer": "A small, dark berry from the elder tree, often used in jams and syrups."
+    },
+    {
+        "question": "Was ist das Tier 'Dog'?",
+        "answer": "A domesticated carnivorous mammal that typically has a long snout, an acute sense of smell, non-retractable claws, and a barking, howling, or whining voice."
+    },
+    {
+        "question": "Was ist das Tier 'Cat'?",
+        "answer": "A small domesticated carnivorous mammal with soft fur, a short snout, and retractile claws. It is widely kept as a pet or for catching mice."
+    },
+    {
+        "question": "Was ist das Tier 'Elephant'?",
+        "answer": "A large herbivorous mammal with a trunk and tusks, native to Africa and southern Asia."
+    },
+    {
+        "question": "Was ist das Tier 'Frog'?",
+        "answer": "A small, tailless amphibian with a short squat body, moist smooth skin, and very long hind legs for leaping."
+    },
+    {
+        "question": "Was ist das Tier 'Giraffe'?",
+        "answer": "A large African mammal with a very long neck and forelegs, having a coat patterned with brown patches separated by lighter lines."
+    },
+    {
+        "question": "Was ist Windows Windows 95?",
+        "answer": "Windows 95 introduced the Start menu, taskbar, and focused on multitasking and user-friendly interfaces."
+    },
+    {
+        "question": "Was ist Windows Windows XP?",
+        "answer": "Windows XP combined stability and efficiency with a more refined and user-friendly interface."
+    },
+    {
+        "question": "Was ist Windows Windows Vista?",
+        "answer": "Windows Vista introduced a new visual style and enhanced security features, but was criticized for its performance and compatibility issues."
+    },
+    {
+        "question": "Was ist Windows Windows 7?",
+        "answer": "Windows 7 was a major improvement over Vista, focusing on performance enhancements and usability."
+    },
+    {
+        "question": "Was ist Windows Windows 8?",
+        "answer": "Windows 8 introduced a new Start screen with live tiles and was optimized for touchscreens."
+    },
+    {
+        "question": "Was ist Windows Windows 10?",
+        "answer": "Windows 10 brought back the Start menu and introduced a unified platform for PCs, tablets, and phones."
+    },
+    {
+        "question": "Was ist Windows Windows 11?",
+        "answer": "Windows 11 introduced a new design, improved performance, and enhanced support for virtual desktops and gaming."
+    },
+    {
+        "question": "Was ist das Thema 'Lesen und Verstehen'?",
+        "answer": "Texte lesen und das Gelesene verstehen, Fragen zum Text beantworten."
+    },
+    {
+        "question": "Was ist das Thema 'Grammatik'?",
+        "answer": "Grundlegende Grammatikthemen wie Satzbau, Wortarten und Zeitenlehre."
+    },
+    {
+        "question": "Was ist das Thema 'Rechtschreibung'?",
+        "answer": "Wichtige Regeln der Rechtschreibung und Anwendung in Diktaten und Schreibübungen."
+    },
+    {
+        "question": "Was ist das Thema 'Aufsatz'?",
+        "answer": "Verfassen von Erzählungen, Berichten und Beschreibungen."
+    },
+    {
+        "question": "Was ist das Super Mario Spiel 'Super Mario Bros.'?",
+        "answer": "Ein klassisches Plattformspiel, in dem Mario und Luigi Prinzessin Peach vor Bowser retten müssen."
+    },
+    {
+        "question": "Was ist das Super Mario Spiel 'Super Mario Bros. 3'?",
+        "answer": "Ein Plattformspiel mit neuen Power-Ups, Spielmechaniken und einer Weltkarte."
+    },
+    {
+        "question": "Was ist das Super Mario Spiel 'Super Mario 64'?",
+        "answer": "Das erste 3D-Spiel der Serie, in dem Mario Prinzessin Peach im Schloss vor Bowser retten muss."
+    },
+    {
+        "question": "Was ist das Super Mario Spiel 'Super Mario Sunshine'?",
+        "answer": "Mario muss die tropische Insel Delfino von einer mysteriösen Verschmutzung befreien."
+    },
+    {
+        "question": "Was ist das Super Mario Spiel 'New Super Mario Bros.'?",
+        "answer": "Ein modernes 2D-Plattformspiel mit neuen Power-Ups und Multiplayer-Modus."
+    },
+    {
+        "question": "Was ist das Super Mario Spiel 'Super Mario Galaxy'?",
+        "answer": "Mario reist durch verschiedene Galaxien, um Prinzessin Peach zu retten und Bowser zu besiegen."
+    },
+    {
+        "question": "Was ist das Super Mario Spiel 'Super Mario Odyssey'?",
+        "answer": "Mario reist mit seinem neuen Begleiter Cappy durch verschiedene Welten, um Prinzessin Peach vor Bowser zu retten."
+    },
+    {
+        "question": "Was ist das Thema 'Grundlagen der Informatik'?",
+        "answer": "Einführung in die grundlegenden Konzepte der Informatik, wie Hardware, Software und Netzwerke."
+    },
+    {
+        "question": "Was ist 'Hardware vs. Software'?",
+        "answer": "Unterschiede zwischen Hardware (physische Komponenten eines Computers) und Software (Programme und Betriebssysteme)."
+    },
+    {
+        "question": "Was ist 'Netzwerke'?",
+        "answer": "Grundlegende Konzepte von Netzwerken, einschließlich LAN, WAN und das Internet."
+    },
+    {
+        "question": "Was ist das Thema 'Programmieren'?",
+        "answer": "Einführung in die Programmierung und die Erstellung einfacher Programme mit einer visuellen Programmiersprache."
+    },
+    {
+        "question": "Was ist 'Einführung in Scratch'?",
+        "answer": "Lernen, wie man einfache Programme mit der visuellen Programmiersprache Scratch erstellt."
+    },
+    {
+        "question": "Was ist 'Grundlegende Algorithmen'?",
+        "answer": "Verständnis von grundlegenden Algorithmen und ihrer Implementierung in Scratch."
+    },
+    {
+        "question": "Was ist das Thema 'Datenschutz und Sicherheit'?",
+        "answer": "Verständnis der Bedeutung von Datenschutz und Sicherheit im Internet."
+    },
+    {
+        "question": "Was ist 'Passwörter'?",
+        "answer": "Wie man sichere Passwörter erstellt und warum sie wichtig sind."
+    },
+    {
+        "question": "Was ist 'Datenschutz im Internet'?",
+        "answer": "Maßnahmen zum Schutz der eigenen Daten beim Surfen im Internet."
+    },
+    {
+        "question": "Was ist das Thema 'Bruchrechnen'?",
+        "answer": "Grundlagen des Bruchrechnens, einschließlich Addition, Subtraktion, Multiplikation und Division von Brüchen."
+    },
+    {
+        "question": "Was ist 'Addition von Brüchen'?",
+        "answer": "Zwei oder mehr Brüche werden addiert, indem sie auf einen gemeinsamen Nenner gebracht werden."
+    },
+    {
+        "question": "Was ist 'Multiplikation von Brüchen'?",
+        "answer": "Zwei Brüche werden multipliziert, indem die Zähler und Nenner miteinander multipliziert werden."
+    },
+    {
+        "question": "Was ist das Thema 'Geometrie'?",
+        "answer": "Grundlegende geometrische Konzepte, einschließlich Formen, Winkel und Flächenberechnung."
+    },
+    {
+        "question": "Was ist 'Flächenberechnung'?",
+        "answer": "Berechnung der Fläche von Rechtecken, Dreiecken und Kreisen."
+    },
+    {
+        "question": "Was ist 'Winkelmessung'?",
+        "answer": "Messung von Winkeln mit einem Winkelmesser und Verständnis der verschiedenen Arten von Winkeln."
+    },
+    {
+        "question": "Was ist das Thema 'Prozentrechnung'?",
+        "answer": "Grundlagen der Prozentrechnung, einschließlich Berechnung von Prozentwerten, Grundwerten und Prozentsätzen."
+    },
+    {
+        "question": "Was ist 'Berechnung von Prozentsätzen'?",
+        "answer": "Berechnung des Prozentsatzes eines gegebenen Wertes."
+    },
+    {
+        "question": "Was ist 'Grundwertberechnung'?",
+        "answer": "Bestimmung des Grundwerts, wenn der Prozentsatz und der Prozentwert gegeben sind."
+    },
+    {
+        "question": "Tag",
+        "answer": "Guten Tag"
+    },
+    {
+        "question": "Was ist die Comic-Serie 'The Amazing Spider-Man'?",
+        "answer": "Die Abenteuer von Peter Parker, einem jungen Mann, der nach einem Spinnenbiss Superkräfte erlangt und als Spider-Man gegen Bösewichte kämpft."
+    },
+    {
+        "question": "Was ist die Comic-Serie 'Batman'?",
+        "answer": "Die Geschichte von Bruce Wayne, der nach dem Mord an seinen Eltern als Batman gegen das Verbrechen in Gotham City kämpft."
+    },
+    {
+        "question": "Was ist die Comic-Serie 'Wonder Woman'?",
+        "answer": "Die Abenteuer von Diana Prince, einer amazonischen Kriegerin, die als Wonder Woman für Gerechtigkeit und Frieden kämpft."
+    },
+    {
+        "question": "Was ist die Comic-Serie 'X-Men'?",
+        "answer": "Eine Gruppe von Mutanten, die ihre übernatürlichen Fähigkeiten nutzen, um die Menschheit zu schützen und gegen Vorurteile zu kämpfen."
+    },
+    {
+        "question": "Was ist die Comic-Serie 'The Walking Dead'?",
+        "answer": "Die Geschichte einer Gruppe von Überlebenden in einer post-apokalyptischen Welt, die von Zombies überrannt wurde."
+    },
+    {
+        "question": "Was ist die Comic-Serie 'Attack on Titan'?",
+        "answer": "In einer Welt, in der riesige humanoide Wesen die Menschheit bedrohen, kämpfen Eren Yeager und seine Freunde ums Überleben."
+    },
+    {
+        "question": "Was ist das Gericht 'Spaghetti Carbonara'?",
+        "answer": "Klassisches italienisches Gericht mit Spaghetti, Speck, Ei, Parmesan und Pfeffer."
+    },
+    {
+        "question": "Was ist das Gericht 'Tom Kha Gai'?",
+        "answer": "Thailändische Hühnersuppe mit Kokosmilch, Zitronengras, Galgant und Koriander."
+    },
+    {
+        "question": "Was ist das Gericht 'Butter Chicken'?",
+        "answer": "Indisches Currygericht mit zartem Hühnerfleisch in cremiger Tomatensauce."
+    },
+    {
+        "question": "Was ist das Gericht 'Creme Brulee'?",
+        "answer": "Französisches Dessert mit einer knusprigen Karamellschicht und einer cremigen Vanillefüllung."
+    },
+    {
+        "question": "Was ist das Gericht 'Caesar Salad'?",
+        "answer": "Salat mit Römersalat, Croutons, Parmesan und Caesar-Dressing."
+    },
+    {
+        "question": "Was ist das Gericht 'Pad Thai'?",
+        "answer": "Thailändisches Nudelgericht mit Reisnudeln, Tofu, Ei, Erdnüssen und Limette."
+    },
+    {
+        "question": "Was ist das Gericht 'Ratatouille'?",
+        "answer": "Französisches Gemüsegericht mit Zucchini, Auberginen, Paprika und Tomaten."
+    },
+    {
+        "question": "Was ist das Gericht 'Tiramisu'?",
+        "answer": "Italienisches Dessert mit Löffelbiskuits, Mascarpone, Kaffee und Kakao."
+    },
+    {
+        "question": "Was ist das Buch 'The Very Hungry Caterpillar'?",
+        "answer": "Die Geschichte einer kleinen Raupe, die sich durch eine Menge Essen frisst, bevor sie sich in einen schönen Schmetterling verwandelt."
+    },
+    {
+        "question": "Was ist das Buch 'Goodnight Moon'?",
+        "answer": "Eine liebevolle Gutenachtgeschichte, in der ein kleines Häschen seine Umgebung vor dem Schlafengehen verabschiedet."
+    },
+    {
+        "question": "Was ist das Buch 'Where the Wild Things Are'?",
+        "answer": "Die Abenteuer eines Jungen namens Max, der in eine Welt voller wilder Kreaturen reist und ihr König wird."
+    },
+    {
+        "question": "Was ist das Buch 'Green Eggs and Ham'?",
+        "answer": "Ein humorvolles Buch über einen Charakter, der verschiedene Arten von grünen Eiern und Schinken ausprobiert."
+    },
+    {
+        "question": "Was ist das Buch 'The Tale of Peter Rabbit'?",
+        "answer": "Die Geschichte eines frechen kleinen Kaninchens, das in den Garten von Mr. McGregor eindringt."
+    },
+    {
+        "question": "Was ist das Buch 'Corduroy'?",
+        "answer": "Die Geschichte eines kleinen Teddybären, der in einem Kaufhaus auf ein Abenteuer geht, um einen fehlenden Knopf zu finden."
+    },
+    {
+        "question": "Was ist das Buch 'Guess How Much I Love You'?",
+        "answer": "Ein herzerwärmendes Buch, in dem ein kleiner Hase und ein großer Hase ihre Liebe zueinander messen."
+    },
+    {
+        "question": "Was ist das Buch 'Winnie the Pooh'?",
+        "answer": "Die Abenteuer von Winnie Puuh, einem liebenswerten Bären, und seinen Freunden im Hundert-Morgen-Wald."
+    },
+    {
+        "question": "Was ist der Film 'Toy Story'?",
+        "answer": "Ein animierter Film über das geheime Leben von Spielzeugen, wenn ihre Besitzer nicht da sind."
+    },
+    {
+        "question": "Was ist der Film 'Finding Nemo'?",
+        "answer": "Eine Abenteuerreise eines Clownfisch-Vaters, der nach seinem vermissten Sohn sucht."
+    },
+    {
+        "question": "Was ist der Film 'The Lion King'?",
+        "answer": "Die Geschichte eines jungen Löwen namens Simba, der lernen muss, seinen Platz im Kreis des Lebens zu finden."
+    },
+    {
+        "question": "Was ist der Film 'Frozen'?",
+        "answer": "Die Geschichte von zwei Schwestern, Anna und Elsa, und Elsas magischen Kräften, die das Königreich Arendelle in ewigen Winter stürzen."
+    },
+    {
+        "question": "Was ist der Film 'Moana'?",
+        "answer": "Ein mutiges Mädchen namens Moana begibt sich auf eine Reise, um ihr Volk zu retten und entdeckt dabei ihre eigene Identität."
+    },
+    {
+        "question": "Was ist der Film 'Despicable Me'?",
+        "answer": "Ein Superschurke namens Gru plant, den Mond zu stehlen, trifft aber auf drei Waisenmädchen, die sein Leben verändern."
+    },
+    {
+        "question": "Was ist der Film 'The Incredibles'?",
+        "answer": "Eine Familie von Superhelden, die sich verstecken müssen, bis sie erneut gezwungen werden, die Welt zu retten."
+    },
+    {
+        "question": "Was ist der Film 'Shrek'?",
+        "answer": "Ein grüner Oger namens Shrek begibt sich auf eine Mission, um Prinzessin Fiona zu retten und Frieden in sein Sumpfheim zu bringen."
+    },
+    {
+        "question": "Was ist die Frucht 'Apple'?",
+        "answer": "A sweet, edible fruit produced by an apple tree."
+    },
+    {
+        "question": "Was ist die Frucht 'Banana'?",
+        "answer": "A long, curved fruit with a yellow skin and soft, sweet, white flesh inside."
+    },
+    {
+        "question": "Was ist die Frucht 'Cherry'?",
+        "answer": "A small, round stone fruit that is typically bright or dark red."
+    },
+    {
+        "question": "Was ist die Frucht 'Date'?",
+        "answer": "A sweet fruit from the date palm tree, typically oval and brown."
+    },
+    {
+        "question": "Was ist die Frucht 'Elderberry'?",
+        "answer": "A small, dark berry from the elder tree, often used in jams and syrups."
+    },
+    {
+        "question": "Was ist das Tier 'Dog'?",
+        "answer": "A domesticated carnivorous mammal that typically has a long snout, an acute sense of smell, non-retractable claws, and a barking, howling, or whining voice."
+    },
+    {
+        "question": "Was ist das Tier 'Cat'?",
+        "answer": "A small domesticated carnivorous mammal with soft fur, a short snout, and retractile claws. It is widely kept as a pet or for catching mice."
+    },
+    {
+        "question": "Was ist das Tier 'Elephant'?",
+        "answer": "A large herbivorous mammal with a trunk and tusks, native to Africa and southern Asia."
+    },
+    {
+        "question": "Was ist das Tier 'Frog'?",
+        "answer": "A small, tailless amphibian with a short squat body, moist smooth skin, and very long hind legs for leaping."
+    },
+    {
+        "question": "Was ist das Tier 'Giraffe'?",
+        "answer": "A large African mammal with a very long neck and forelegs, having a coat patterned with brown patches separated by lighter lines."
+    },
+    {
+        "question": "Was ist Windows Windows 95?",
+        "answer": "Windows 95 introduced the Start menu, taskbar, and focused on multitasking and user-friendly interfaces."
+    },
+    {
+        "question": "Was ist Windows Windows XP?",
+        "answer": "Windows XP combined stability and efficiency with a more refined and user-friendly interface."
+    },
+    {
+        "question": "Was ist Windows Windows Vista?",
+        "answer": "Windows Vista introduced a new visual style and enhanced security features, but was criticized for its performance and compatibility issues."
+    },
+    {
+        "question": "Was ist Windows Windows 7?",
+        "answer": "Windows 7 was a major improvement over Vista, focusing on performance enhancements and usability."
+    },
+    {
+        "question": "Was ist Windows Windows 8?",
+        "answer": "Windows 8 introduced a new Start screen with live tiles and was optimized for touchscreens."
+    },
+    {
+        "question": "Was ist Windows Windows 10?",
+        "answer": "Windows 10 brought back the Start menu and introduced a unified platform for PCs, tablets, and phones."
+    },
+    {
+        "question": "Was ist Windows Windows 11?",
+        "answer": "Windows 11 introduced a new design, improved performance, and enhanced support for virtual desktops and gaming."
+    },
+    {
+        "question": "Was ist das Thema 'Lesen und Verstehen'?",
+        "answer": "Texte lesen und das Gelesene verstehen, Fragen zum Text beantworten."
+    },
+    {
+        "question": "Was ist das Thema 'Grammatik'?",
+        "answer": "Grundlegende Grammatikthemen wie Satzbau, Wortarten und Zeitenlehre."
+    },
+    {
+        "question": "Was ist das Thema 'Rechtschreibung'?",
+        "answer": "Wichtige Regeln der Rechtschreibung und Anwendung in Diktaten und Schreibübungen."
+    },
+    {
+        "question": "Was ist das Thema 'Aufsatz'?",
+        "answer": "Verfassen von Erzählungen, Berichten und Beschreibungen."
+    },
+    {
+        "question": "Was ist das Super Mario Spiel 'Super Mario Bros.'?",
+        "answer": "Ein klassisches Plattformspiel, in dem Mario und Luigi Prinzessin Peach vor Bowser retten müssen."
+    },
+    {
+        "question": "Was ist das Super Mario Spiel 'Super Mario Bros. 3'?",
+        "answer": "Ein Plattformspiel mit neuen Power-Ups, Spielmechaniken und einer Weltkarte."
+    },
+    {
+        "question": "Was ist das Super Mario Spiel 'Super Mario 64'?",
+        "answer": "Das erste 3D-Spiel der Serie, in dem Mario Prinzessin Peach im Schloss vor Bowser retten muss."
+    },
+    {
+        "question": "Was ist das Super Mario Spiel 'Super Mario Sunshine'?",
+        "answer": "Mario muss die tropische Insel Delfino von einer mysteriösen Verschmutzung befreien."
+    },
+    {
+        "question": "Was ist das Super Mario Spiel 'New Super Mario Bros.'?",
+        "answer": "Ein modernes 2D-Plattformspiel mit neuen Power-Ups und Multiplayer-Modus."
+    },
+    {
+        "question": "Was ist das Super Mario Spiel 'Super Mario Galaxy'?",
+        "answer": "Mario reist durch verschiedene Galaxien, um Prinzessin Peach zu retten und Bowser zu besiegen."
+    },
+    {
+        "question": "Was ist das Super Mario Spiel 'Super Mario Odyssey'?",
+        "answer": "Mario reist mit seinem neuen Begleiter Cappy durch verschiedene Welten, um Prinzessin Peach vor Bowser zu retten."
+    },
+    {
+        "question": "Was ist das Thema 'Grundlagen der Informatik'?",
+        "answer": "Einführung in die grundlegenden Konzepte der Informatik, wie Hardware, Software und Netzwerke."
+    },
+    {
+        "question": "Was ist 'Hardware vs. Software'?",
+        "answer": "Unterschiede zwischen Hardware (physische Komponenten eines Computers) und Software (Programme und Betriebssysteme)."
+    },
+    {
+        "question": "Was ist 'Netzwerke'?",
+        "answer": "Grundlegende Konzepte von Netzwerken, einschließlich LAN, WAN und das Internet."
+    },
+    {
+        "question": "Was ist das Thema 'Programmieren'?",
+        "answer": "Einführung in die Programmierung und die Erstellung einfacher Programme mit einer visuellen Programmiersprache."
+    },
+    {
+        "question": "Was ist 'Einführung in Scratch'?",
+        "answer": "Lernen, wie man einfache Programme mit der visuellen Programmiersprache Scratch erstellt."
+    },
+    {
+        "question": "Was ist 'Grundlegende Algorithmen'?",
+        "answer": "Verständnis von grundlegenden Algorithmen und ihrer Implementierung in Scratch."
+    },
+    {
+        "question": "Was ist das Thema 'Datenschutz und Sicherheit'?",
+        "answer": "Verständnis der Bedeutung von Datenschutz und Sicherheit im Internet."
+    },
+    {
+        "question": "Was ist 'Passwörter'?",
+        "answer": "Wie man sichere Passwörter erstellt und warum sie wichtig sind."
+    },
+    {
+        "question": "Was ist 'Datenschutz im Internet'?",
+        "answer": "Maßnahmen zum Schutz der eigenen Daten beim Surfen im Internet."
+    },
+    {
+        "question": "Was ist das Thema 'Bruchrechnen'?",
+        "answer": "Grundlagen des Bruchrechnens, einschließlich Addition, Subtraktion, Multiplikation und Division von Brüchen."
+    },
+    {
+        "question": "Was ist 'Addition von Brüchen'?",
+        "answer": "Zwei oder mehr Brüche werden addiert, indem sie auf einen gemeinsamen Nenner gebracht werden."
+    },
+    {
+        "question": "Was ist 'Multiplikation von Brüchen'?",
+        "answer": "Zwei Brüche werden multipliziert, indem die Zähler und Nenner miteinander multipliziert werden."
+    },
+    {
+        "question": "Was ist das Thema 'Geometrie'?",
+        "answer": "Grundlegende geometrische Konzepte, einschließlich Formen, Winkel und Flächenberechnung."
+    },
+    {
+        "question": "Was ist 'Flächenberechnung'?",
+        "answer": "Berechnung der Fläche von Rechtecken, Dreiecken und Kreisen."
+    },
+    {
+        "question": "Was ist 'Winkelmessung'?",
+        "answer": "Messung von Winkeln mit einem Winkelmesser und Verständnis der verschiedenen Arten von Winkeln."
+    },
+    {
+        "question": "Was ist das Thema 'Prozentrechnung'?",
+        "answer": "Grundlagen der Prozentrechnung, einschließlich Berechnung von Prozentwerten, Grundwerten und Prozentsätzen."
+    },
+    {
+        "question": "Was ist 'Berechnung von Prozentsätzen'?",
+        "answer": "Berechnung des Prozentsatzes eines gegebenen Wertes."
+    },
+    {
+        "question": "Was ist 'Grundwertberechnung'?",
+        "answer": "Bestimmung des Grundwerts, wenn der Prozentsatz und der Prozentwert gegeben sind."
+    },
+    {
+        "question": "Tag",
+        "answer": "Tag..."
+    },
+    {
+        "question": "Was ist die Comic-Serie 'The Amazing Spider-Man'?",
+        "answer": "Die Abenteuer von Peter Parker, einem jungen Mann, der nach einem Spinnenbiss Superkräfte erlangt und als Spider-Man gegen Bösewichte kämpft."
+    },
+    {
+        "question": "Was ist die Comic-Serie 'Batman'?",
+        "answer": "Die Geschichte von Bruce Wayne, der nach dem Mord an seinen Eltern als Batman gegen das Verbrechen in Gotham City kämpft."
+    },
+    {
+        "question": "Was ist die Comic-Serie 'Wonder Woman'?",
+        "answer": "Die Abenteuer von Diana Prince, einer amazonischen Kriegerin, die als Wonder Woman für Gerechtigkeit und Frieden kämpft."
+    },
+    {
+        "question": "Was ist die Comic-Serie 'X-Men'?",
+        "answer": "Eine Gruppe von Mutanten, die ihre übernatürlichen Fähigkeiten nutzen, um die Menschheit zu schützen und gegen Vorurteile zu kämpfen."
+    },
+    {
+        "question": "Was ist die Comic-Serie 'The Walking Dead'?",
+        "answer": "Die Geschichte einer Gruppe von Überlebenden in einer post-apokalyptischen Welt, die von Zombies überrannt wurde."
+    },
+    {
+        "question": "Was ist die Comic-Serie 'Attack on Titan'?",
+        "answer": "In einer Welt, in der riesige humanoide Wesen die Menschheit bedrohen, kämpfen Eren Yeager und seine Freunde ums Überleben."
+    },
+    {
+        "question": "Was ist das Gericht 'Spaghetti Carbonara'?",
+        "answer": "Klassisches italienisches Gericht mit Spaghetti, Speck, Ei, Parmesan und Pfeffer."
+    },
+    {
+        "question": "Was ist das Gericht 'Tom Kha Gai'?",
+        "answer": "Thailändische Hühnersuppe mit Kokosmilch, Zitronengras, Galgant und Koriander."
+    },
+    {
+        "question": "Was ist das Gericht 'Butter Chicken'?",
+        "answer": "Indisches Currygericht mit zartem Hühnerfleisch in cremiger Tomatensauce."
+    },
+    {
+        "question": "Was ist das Gericht 'Creme Brulee'?",
+        "answer": "Französisches Dessert mit einer knusprigen Karamellschicht und einer cremigen Vanillefüllung."
+    },
+    {
+        "question": "Was ist das Gericht 'Caesar Salad'?",
+        "answer": "Salat mit Römersalat, Croutons, Parmesan und Caesar-Dressing."
+    },
+    {
+        "question": "Was ist das Gericht 'Pad Thai'?",
+        "answer": "Thailändisches Nudelgericht mit Reisnudeln, Tofu, Ei, Erdnüssen und Limette."
+    },
+    {
+        "question": "Was ist das Gericht 'Ratatouille'?",
+        "answer": "Französisches Gemüsegericht mit Zucchini, Auberginen, Paprika und Tomaten."
+    },
+    {
+        "question": "Was ist das Gericht 'Tiramisu'?",
+        "answer": "Italienisches Dessert mit Löffelbiskuits, Mascarpone, Kaffee und Kakao."
+    },
+    {
+        "question": "Was ist das Buch 'The Very Hungry Caterpillar'?",
+        "answer": "Die Geschichte einer kleinen Raupe, die sich durch eine Menge Essen frisst, bevor sie sich in einen schönen Schmetterling verwandelt."
+    },
+    {
+        "question": "Was ist das Buch 'Goodnight Moon'?",
+        "answer": "Eine liebevolle Gutenachtgeschichte, in der ein kleines Häschen seine Umgebung vor dem Schlafengehen verabschiedet."
+    },
+    {
+        "question": "Was ist das Buch 'Where the Wild Things Are'?",
+        "answer": "Die Abenteuer eines Jungen namens Max, der in eine Welt voller wilder Kreaturen reist und ihr König wird."
+    },
+    {
+        "question": "Was ist das Buch 'Green Eggs and Ham'?",
+        "answer": "Ein humorvolles Buch über einen Charakter, der verschiedene Arten von grünen Eiern und Schinken ausprobiert."
+    },
+    {
+        "question": "Was ist das Buch 'The Tale of Peter Rabbit'?",
+        "answer": "Die Geschichte eines frechen kleinen Kaninchens, das in den Garten von Mr. McGregor eindringt."
+    },
+    {
+        "question": "Was ist das Buch 'Corduroy'?",
+        "answer": "Die Geschichte eines kleinen Teddybären, der in einem Kaufhaus auf ein Abenteuer geht, um einen fehlenden Knopf zu finden."
+    },
+    {
+        "question": "Was ist das Buch 'Guess How Much I Love You'?",
+        "answer": "Ein herzerwärmendes Buch, in dem ein kleiner Hase und ein großer Hase ihre Liebe zueinander messen."
+    },
+    {
+        "question": "Was ist das Buch 'Winnie the Pooh'?",
+        "answer": "Die Abenteuer von Winnie Puuh, einem liebenswerten Bären, und seinen Freunden im Hundert-Morgen-Wald."
+    },
+    {
+        "question": "Was ist der Film 'Toy Story'?",
+        "answer": "Ein animierter Film über das geheime Leben von Spielzeugen, wenn ihre Besitzer nicht da sind."
+    },
+    {
+        "question": "Was ist der Film 'Finding Nemo'?",
+        "answer": "Eine Abenteuerreise eines Clownfisch-Vaters, der nach seinem vermissten Sohn sucht."
+    },
+    {
+        "question": "Was ist der Film 'The Lion King'?",
+        "answer": "Die Geschichte eines jungen Löwen namens Simba, der lernen muss, seinen Platz im Kreis des Lebens zu finden."
+    },
+    {
+        "question": "Was ist der Film 'Frozen'?",
+        "answer": "Die Geschichte von zwei Schwestern, Anna und Elsa, und Elsas magischen Kräften, die das Königreich Arendelle in ewigen Winter stürzen."
+    },
+    {
+        "question": "Was ist der Film 'Moana'?",
+        "answer": "Ein mutiges Mädchen namens Moana begibt sich auf eine Reise, um ihr Volk zu retten und entdeckt dabei ihre eigene Identität."
+    },
+    {
+        "question": "Was ist der Film 'Despicable Me'?",
+        "answer": "Ein Superschurke namens Gru plant, den Mond zu stehlen, trifft aber auf drei Waisenmädchen, die sein Leben verändern."
+    },
+    {
+        "question": "Was ist der Film 'The Incredibles'?",
+        "answer": "Eine Familie von Superhelden, die sich verstecken müssen, bis sie erneut gezwungen werden, die Welt zu retten."
+    },
+    {
+        "question": "Was ist der Film 'Shrek'?",
+        "answer": "Ein grüner Oger namens Shrek begibt sich auf eine Mission, um Prinzessin Fiona zu retten und Frieden in sein Sumpfheim zu bringen."
+    },
+    {
+        "question": "Was ist die Frucht 'Apple'?",
+        "answer": "A sweet, edible fruit produced by an apple tree."
+    },
+    {
+        "question": "Was ist die Frucht 'Banana'?",
+        "answer": "A long, curved fruit with a yellow skin and soft, sweet, white flesh inside."
+    },
+    {
+        "question": "Was ist die Frucht 'Cherry'?",
+        "answer": "A small, round stone fruit that is typically bright or dark red."
+    },
+    {
+        "question": "Was ist die Frucht 'Date'?",
+        "answer": "A sweet fruit from the date palm tree, typically oval and brown."
+    },
+    {
+        "question": "Was ist die Frucht 'Elderberry'?",
+        "answer": "A small, dark berry from the elder tree, often used in jams and syrups."
+    },
+    {
+        "question": "Was ist das Tier 'Dog'?",
+        "answer": "A domesticated carnivorous mammal that typically has a long snout, an acute sense of smell, non-retractable claws, and a barking, howling, or whining voice."
+    },
+    {
+        "question": "Was ist das Tier 'Cat'?",
+        "answer": "A small domesticated carnivorous mammal with soft fur, a short snout, and retractile claws. It is widely kept as a pet or for catching mice."
+    },
+    {
+        "question": "Was ist das Tier 'Elephant'?",
+        "answer": "A large herbivorous mammal with a trunk and tusks, native to Africa and southern Asia."
+    },
+    {
+        "question": "Was ist das Tier 'Frog'?",
+        "answer": "A small, tailless amphibian with a short squat body, moist smooth skin, and very long hind legs for leaping."
+    },
+    {
+        "question": "Was ist das Tier 'Giraffe'?",
+        "answer": "A large African mammal with a very long neck and forelegs, having a coat patterned with brown patches separated by lighter lines."
+    },
+    {
+        "question": "Was ist Windows Windows 95?",
+        "answer": "Windows 95 introduced the Start menu, taskbar, and focused on multitasking and user-friendly interfaces."
+    },
+    {
+        "question": "Was ist Windows Windows XP?",
+        "answer": "Windows XP combined stability and efficiency with a more refined and user-friendly interface."
+    },
+    {
+        "question": "Was ist Windows Windows Vista?",
+        "answer": "Windows Vista introduced a new visual style and enhanced security features, but was criticized for its performance and compatibility issues."
+    },
+    {
+        "question": "Was ist Windows Windows 7?",
+        "answer": "Windows 7 was a major improvement over Vista, focusing on performance enhancements and usability."
+    },
+    {
+        "question": "Was ist Windows Windows 8?",
+        "answer": "Windows 8 introduced a new Start screen with live tiles and was optimized for touchscreens."
+    },
+    {
+        "question": "Was ist Windows Windows 10?",
+        "answer": "Windows 10 brought back the Start menu and introduced a unified platform for PCs, tablets, and phones."
+    },
+    {
+        "question": "Was ist Windows Windows 11?",
+        "answer": "Windows 11 introduced a new design, improved performance, and enhanced support for virtual desktops and gaming."
+    },
+    {
+        "question": "Was ist das Thema 'Lesen und Verstehen'?",
+        "answer": "Texte lesen und das Gelesene verstehen, Fragen zum Text beantworten."
+    },
+    {
+        "question": "Was ist das Thema 'Grammatik'?",
+        "answer": "Grundlegende Grammatikthemen wie Satzbau, Wortarten und Zeitenlehre."
+    },
+    {
+        "question": "Was ist das Thema 'Rechtschreibung'?",
+        "answer": "Wichtige Regeln der Rechtschreibung und Anwendung in Diktaten und Schreibübungen."
+    },
+    {
+        "question": "Was ist das Thema 'Aufsatz'?",
+        "answer": "Verfassen von Erzählungen, Berichten und Beschreibungen."
+    },
+    {
+        "question": "Was ist das Super Mario Spiel 'Super Mario Bros.'?",
+        "answer": "Ein klassisches Plattformspiel, in dem Mario und Luigi Prinzessin Peach vor Bowser retten müssen."
+    },
+    {
+        "question": "Was ist das Super Mario Spiel 'Super Mario Bros. 3'?",
+        "answer": "Ein Plattformspiel mit neuen Power-Ups, Spielmechaniken und einer Weltkarte."
+    },
+    {
+        "question": "Was ist das Super Mario Spiel 'Super Mario 64'?",
+        "answer": "Das erste 3D-Spiel der Serie, in dem Mario Prinzessin Peach im Schloss vor Bowser retten muss."
+    },
+    {
+        "question": "Was ist das Super Mario Spiel 'Super Mario Sunshine'?",
+        "answer": "Mario muss die tropische Insel Delfino von einer mysteriösen Verschmutzung befreien."
+    },
+    {
+        "question": "Was ist das Super Mario Spiel 'New Super Mario Bros.'?",
+        "answer": "Ein modernes 2D-Plattformspiel mit neuen Power-Ups und Multiplayer-Modus."
+    },
+    {
+        "question": "Was ist das Super Mario Spiel 'Super Mario Galaxy'?",
+        "answer": "Mario reist durch verschiedene Galaxien, um Prinzessin Peach zu retten und Bowser zu besiegen."
+    },
+    {
+        "question": "Was ist das Super Mario Spiel 'Super Mario Odyssey'?",
+        "answer": "Mario reist mit seinem neuen Begleiter Cappy durch verschiedene Welten, um Prinzessin Peach vor Bowser zu retten."
+    },
+    {
+        "question": "Was ist das Thema 'Grundlagen der Informatik'?",
+        "answer": "Einführung in die grundlegenden Konzepte der Informatik, wie Hardware, Software und Netzwerke."
+    },
+    {
+        "question": "Was ist 'Hardware vs. Software'?",
+        "answer": "Unterschiede zwischen Hardware (physische Komponenten eines Computers) und Software (Programme und Betriebssysteme)."
+    },
+    {
+        "question": "Was ist 'Netzwerke'?",
+        "answer": "Grundlegende Konzepte von Netzwerken, einschließlich LAN, WAN und das Internet."
+    },
+    {
+        "question": "Was ist das Thema 'Programmieren'?",
+        "answer": "Einführung in die Programmierung und die Erstellung einfacher Programme mit einer visuellen Programmiersprache."
+    },
+    {
+        "question": "Was ist 'Einführung in Scratch'?",
+        "answer": "Lernen, wie man einfache Programme mit der visuellen Programmiersprache Scratch erstellt."
+    },
+    {
+        "question": "Was ist 'Grundlegende Algorithmen'?",
+        "answer": "Verständnis von grundlegenden Algorithmen und ihrer Implementierung in Scratch."
+    },
+    {
+        "question": "Was ist das Thema 'Datenschutz und Sicherheit'?",
+        "answer": "Verständnis der Bedeutung von Datenschutz und Sicherheit im Internet."
+    },
+    {
+        "question": "Was ist 'Passwörter'?",
+        "answer": "Wie man sichere Passwörter erstellt und warum sie wichtig sind."
+    },
+    {
+        "question": "Was ist 'Datenschutz im Internet'?",
+        "answer": "Maßnahmen zum Schutz der eigenen Daten beim Surfen im Internet."
+    },
+    {
+        "question": "Was ist das Thema 'Bruchrechnen'?",
+        "answer": "Grundlagen des Bruchrechnens, einschließlich Addition, Subtraktion, Multiplikation und Division von Brüchen."
+    },
+    {
+        "question": "Was ist 'Addition von Brüchen'?",
+        "answer": "Zwei oder mehr Brüche werden addiert, indem sie auf einen gemeinsamen Nenner gebracht werden."
+    },
+    {
+        "question": "Was ist 'Multiplikation von Brüchen'?",
+        "answer": "Zwei Brüche werden multipliziert, indem die Zähler und Nenner miteinander multipliziert werden."
+    },
+    {
+        "question": "Was ist das Thema 'Geometrie'?",
+        "answer": "Grundlegende geometrische Konzepte, einschließlich Formen, Winkel und Flächenberechnung."
+    },
+    {
+        "question": "Was ist 'Flächenberechnung'?",
+        "answer": "Berechnung der Fläche von Rechtecken, Dreiecken und Kreisen."
+    },
+    {
+        "question": "Was ist 'Winkelmessung'?",
+        "answer": "Messung von Winkeln mit einem Winkelmesser und Verständnis der verschiedenen Arten von Winkeln."
+    },
+    {
+        "question": "Was ist das Thema 'Prozentrechnung'?",
+        "answer": "Grundlagen der Prozentrechnung, einschließlich Berechnung von Prozentwerten, Grundwerten und Prozentsätzen."
+    },
+    {
+        "question": "Was ist 'Berechnung von Prozentsätzen'?",
+        "answer": "Berechnung des Prozentsatzes eines gegebenen Wertes."
+    },
+    {
+        "question": "Was ist 'Grundwertberechnung'?",
+        "answer": "Bestimmung des Grundwerts, wenn der Prozentsatz und der Prozentwert gegeben sind."
+    },
+    {
+        "question": "TAG",
+        "answer": "TAG TAG TAG oder so"
+    },
+    {
+        "question": "TAG",
+        "answer": "TAG"
+    },
+    {
+        "question": "TAG",
+        "answer": "TAG TAG TAG"
+    },
+    {
+        "question": "Was ist die Comic-Serie 'The Amazing Spider-Man'?",
+        "answer": "Die Abenteuer von Peter Parker, einem jungen Mann, der nach einem Spinnenbiss Superkräfte erlangt und als Spider-Man gegen Bösewichte kämpft."
+    },
+    {
+        "question": "Was ist die Comic-Serie 'Batman'?",
+        "answer": "Die Geschichte von Bruce Wayne, der nach dem Mord an seinen Eltern als Batman gegen das Verbrechen in Gotham City kämpft."
+    },
+    {
+        "question": "Was ist die Comic-Serie 'Wonder Woman'?",
+        "answer": "Die Abenteuer von Diana Prince, einer amazonischen Kriegerin, die als Wonder Woman für Gerechtigkeit und Frieden kämpft."
+    },
+    {
+        "question": "Was ist die Comic-Serie 'X-Men'?",
+        "answer": "Eine Gruppe von Mutanten, die ihre übernatürlichen Fähigkeiten nutzen, um die Menschheit zu schützen und gegen Vorurteile zu kämpfen."
+    },
+    {
+        "question": "Was ist die Comic-Serie 'The Walking Dead'?",
+        "answer": "Die Geschichte einer Gruppe von Überlebenden in einer post-apokalyptischen Welt, die von Zombies überrannt wurde."
+    },
+    {
+        "question": "Was ist die Comic-Serie 'Attack on Titan'?",
+        "answer": "In einer Welt, in der riesige humanoide Wesen die Menschheit bedrohen, kämpfen Eren Yeager und seine Freunde ums Überleben."
+    },
+    {
+        "question": "Was ist das Gericht 'Spaghetti Carbonara'?",
+        "answer": "Klassisches italienisches Gericht mit Spaghetti, Speck, Ei, Parmesan und Pfeffer."
+    },
+    {
+        "question": "Was ist das Gericht 'Tom Kha Gai'?",
+        "answer": "Thailändische Hühnersuppe mit Kokosmilch, Zitronengras, Galgant und Koriander."
+    },
+    {
+        "question": "Was ist das Gericht 'Butter Chicken'?",
+        "answer": "Indisches Currygericht mit zartem Hühnerfleisch in cremiger Tomatensauce."
+    },
+    {
+        "question": "Was ist das Gericht 'Creme Brulee'?",
+        "answer": "Französisches Dessert mit einer knusprigen Karamellschicht und einer cremigen Vanillefüllung."
+    },
+    {
+        "question": "Was ist das Gericht 'Caesar Salad'?",
+        "answer": "Salat mit Römersalat, Croutons, Parmesan und Caesar-Dressing."
+    },
+    {
+        "question": "Was ist das Gericht 'Pad Thai'?",
+        "answer": "Thailändisches Nudelgericht mit Reisnudeln, Tofu, Ei, Erdnüssen und Limette."
+    },
+    {
+        "question": "Was ist das Gericht 'Ratatouille'?",
+        "answer": "Französisches Gemüsegericht mit Zucchini, Auberginen, Paprika und Tomaten."
+    },
+    {
+        "question": "Was ist das Gericht 'Tiramisu'?",
+        "answer": "Italienisches Dessert mit Löffelbiskuits, Mascarpone, Kaffee und Kakao."
+    },
+    {
+        "question": "Was ist das Buch 'The Very Hungry Caterpillar'?",
+        "answer": "Die Geschichte einer kleinen Raupe, die sich durch eine Menge Essen frisst, bevor sie sich in einen schönen Schmetterling verwandelt."
+    },
+    {
+        "question": "Was ist das Buch 'Goodnight Moon'?",
+        "answer": "Eine liebevolle Gutenachtgeschichte, in der ein kleines Häschen seine Umgebung vor dem Schlafengehen verabschiedet."
+    },
+    {
+        "question": "Was ist das Buch 'Where the Wild Things Are'?",
+        "answer": "Die Abenteuer eines Jungen namens Max, der in eine Welt voller wilder Kreaturen reist und ihr König wird."
+    },
+    {
+        "question": "Was ist das Buch 'Green Eggs and Ham'?",
+        "answer": "Ein humorvolles Buch über einen Charakter, der verschiedene Arten von grünen Eiern und Schinken ausprobiert."
+    },
+    {
+        "question": "Was ist das Buch 'The Tale of Peter Rabbit'?",
+        "answer": "Die Geschichte eines frechen kleinen Kaninchens, das in den Garten von Mr. McGregor eindringt."
+    },
+    {
+        "question": "Was ist das Buch 'Corduroy'?",
+        "answer": "Die Geschichte eines kleinen Teddybären, der in einem Kaufhaus auf ein Abenteuer geht, um einen fehlenden Knopf zu finden."
+    },
+    {
+        "question": "Was ist das Buch 'Guess How Much I Love You'?",
+        "answer": "Ein herzerwärmendes Buch, in dem ein kleiner Hase und ein großer Hase ihre Liebe zueinander messen."
+    },
+    {
+        "question": "Was ist das Buch 'Winnie the Pooh'?",
+        "answer": "Die Abenteuer von Winnie Puuh, einem liebenswerten Bären, und seinen Freunden im Hundert-Morgen-Wald."
+    },
+    {
+        "question": "Was ist der Film 'Toy Story'?",
+        "answer": "Ein animierter Film über das geheime Leben von Spielzeugen, wenn ihre Besitzer nicht da sind."
+    },
+    {
+        "question": "Was ist der Film 'Finding Nemo'?",
+        "answer": "Eine Abenteuerreise eines Clownfisch-Vaters, der nach seinem vermissten Sohn sucht."
+    },
+    {
+        "question": "Was ist der Film 'The Lion King'?",
+        "answer": "Die Geschichte eines jungen Löwen namens Simba, der lernen muss, seinen Platz im Kreis des Lebens zu finden."
+    },
+    {
+        "question": "Was ist der Film 'Frozen'?",
+        "answer": "Die Geschichte von zwei Schwestern, Anna und Elsa, und Elsas magischen Kräften, die das Königreich Arendelle in ewigen Winter stürzen."
+    },
+    {
+        "question": "Was ist der Film 'Moana'?",
+        "answer": "Ein mutiges Mädchen namens Moana begibt sich auf eine Reise, um ihr Volk zu retten und entdeckt dabei ihre eigene Identität."
+    },
+    {
+        "question": "Was ist der Film 'Despicable Me'?",
+        "answer": "Ein Superschurke namens Gru plant, den Mond zu stehlen, trifft aber auf drei Waisenmädchen, die sein Leben verändern."
+    },
+    {
+        "question": "Was ist der Film 'The Incredibles'?",
+        "answer": "Eine Familie von Superhelden, die sich verstecken müssen, bis sie erneut gezwungen werden, die Welt zu retten."
+    },
+    {
+        "question": "Was ist der Film 'Shrek'?",
+        "answer": "Ein grüner Oger namens Shrek begibt sich auf eine Mission, um Prinzessin Fiona zu retten und Frieden in sein Sumpfheim zu bringen."
+    },
+    {
+        "question": "Was ist die Frucht 'Apple'?",
+        "answer": "A sweet, edible fruit produced by an apple tree."
+    },
+    {
+        "question": "Was ist die Frucht 'Banana'?",
+        "answer": "A long, curved fruit with a yellow skin and soft, sweet, white flesh inside."
+    },
+    {
+        "question": "Was ist die Frucht 'Cherry'?",
+        "answer": "A small, round stone fruit that is typically bright or dark red."
+    },
+    {
+        "question": "Was ist die Frucht 'Date'?",
+        "answer": "A sweet fruit from the date palm tree, typically oval and brown."
+    },
+    {
+        "question": "Was ist die Frucht 'Elderberry'?",
+        "answer": "A small, dark berry from the elder tree, often used in jams and syrups."
+    },
+    {
+        "question": "Was ist das Tier 'Dog'?",
+        "answer": "A domesticated carnivorous mammal that typically has a long snout, an acute sense of smell, non-retractable claws, and a barking, howling, or whining voice."
+    },
+    {
+        "question": "Was ist das Tier 'Cat'?",
+        "answer": "A small domesticated carnivorous mammal with soft fur, a short snout, and retractile claws. It is widely kept as a pet or for catching mice."
+    },
+    {
+        "question": "Was ist das Tier 'Elephant'?",
+        "answer": "A large herbivorous mammal with a trunk and tusks, native to Africa and southern Asia."
+    },
+    {
+        "question": "Was ist das Tier 'Frog'?",
+        "answer": "A small, tailless amphibian with a short squat body, moist smooth skin, and very long hind legs for leaping."
+    },
+    {
+        "question": "Was ist das Tier 'Giraffe'?",
+        "answer": "A large African mammal with a very long neck and forelegs, having a coat patterned with brown patches separated by lighter lines."
+    },
+    {
+        "question": "Was ist Windows Windows 95?",
+        "answer": "Windows 95 introduced the Start menu, taskbar, and focused on multitasking and user-friendly interfaces."
+    },
+    {
+        "question": "Was ist Windows Windows XP?",
+        "answer": "Windows XP combined stability and efficiency with a more refined and user-friendly interface."
+    },
+    {
+        "question": "Was ist Windows Windows Vista?",
+        "answer": "Windows Vista introduced a new visual style and enhanced security features, but was criticized for its performance and compatibility issues."
+    },
+    {
+        "question": "Was ist Windows Windows 7?",
+        "answer": "Windows 7 was a major improvement over Vista, focusing on performance enhancements and usability."
+    },
+    {
+        "question": "Was ist Windows Windows 8?",
+        "answer": "Windows 8 introduced a new Start screen with live tiles and was optimized for touchscreens."
+    },
+    {
+        "question": "Was ist Windows Windows 10?",
+        "answer": "Windows 10 brought back the Start menu and introduced a unified platform for PCs, tablets, and phones."
+    },
+    {
+        "question": "Was ist Windows Windows 11?",
+        "answer": "Windows 11 introduced a new design, improved performance, and enhanced support for virtual desktops and gaming."
+    },
+    {
+        "question": "Was ist das Thema 'Lesen und Verstehen'?",
+        "answer": "Texte lesen und das Gelesene verstehen, Fragen zum Text beantworten."
+    },
+    {
+        "question": "Was ist das Thema 'Grammatik'?",
+        "answer": "Grundlegende Grammatikthemen wie Satzbau, Wortarten und Zeitenlehre."
+    },
+    {
+        "question": "Was ist das Thema 'Rechtschreibung'?",
+        "answer": "Wichtige Regeln der Rechtschreibung und Anwendung in Diktaten und Schreibübungen."
+    },
+    {
+        "question": "Was ist das Thema 'Aufsatz'?",
+        "answer": "Verfassen von Erzählungen, Berichten und Beschreibungen."
+    },
+    {
+        "question": "Was ist das Super Mario Spiel 'Super Mario Bros.'?",
+        "answer": "Ein klassisches Plattformspiel, in dem Mario und Luigi Prinzessin Peach vor Bowser retten müssen."
+    },
+    {
+        "question": "Was ist das Super Mario Spiel 'Super Mario Bros. 3'?",
+        "answer": "Ein Plattformspiel mit neuen Power-Ups, Spielmechaniken und einer Weltkarte."
+    },
+    {
+        "question": "Was ist das Super Mario Spiel 'Super Mario 64'?",
+        "answer": "Das erste 3D-Spiel der Serie, in dem Mario Prinzessin Peach im Schloss vor Bowser retten muss."
+    },
+    {
+        "question": "Was ist das Super Mario Spiel 'Super Mario Sunshine'?",
+        "answer": "Mario muss die tropische Insel Delfino von einer mysteriösen Verschmutzung befreien."
+    },
+    {
+        "question": "Was ist das Super Mario Spiel 'New Super Mario Bros.'?",
+        "answer": "Ein modernes 2D-Plattformspiel mit neuen Power-Ups und Multiplayer-Modus."
+    },
+    {
+        "question": "Was ist das Super Mario Spiel 'Super Mario Galaxy'?",
+        "answer": "Mario reist durch verschiedene Galaxien, um Prinzessin Peach zu retten und Bowser zu besiegen."
+    },
+    {
+        "question": "Was ist das Super Mario Spiel 'Super Mario Odyssey'?",
+        "answer": "Mario reist mit seinem neuen Begleiter Cappy durch verschiedene Welten, um Prinzessin Peach vor Bowser zu retten."
+    },
+    {
+        "question": "Was ist das Thema 'Grundlagen der Informatik'?",
+        "answer": "Einführung in die grundlegenden Konzepte der Informatik, wie Hardware, Software und Netzwerke."
+    },
+    {
+        "question": "Was ist 'Hardware vs. Software'?",
+        "answer": "Unterschiede zwischen Hardware (physische Komponenten eines Computers) und Software (Programme und Betriebssysteme)."
+    },
+    {
+        "question": "Was ist 'Netzwerke'?",
+        "answer": "Grundlegende Konzepte von Netzwerken, einschließlich LAN, WAN und das Internet."
+    },
+    {
+        "question": "Was ist das Thema 'Programmieren'?",
+        "answer": "Einführung in die Programmierung und die Erstellung einfacher Programme mit einer visuellen Programmiersprache."
+    },
+    {
+        "question": "Was ist 'Einführung in Scratch'?",
+        "answer": "Lernen, wie man einfache Programme mit der visuellen Programmiersprache Scratch erstellt."
+    },
+    {
+        "question": "Was ist 'Grundlegende Algorithmen'?",
+        "answer": "Verständnis von grundlegenden Algorithmen und ihrer Implementierung in Scratch."
+    },
+    {
+        "question": "Was ist das Thema 'Datenschutz und Sicherheit'?",
+        "answer": "Verständnis der Bedeutung von Datenschutz und Sicherheit im Internet."
+    },
+    {
+        "question": "Was ist 'Passwörter'?",
+        "answer": "Wie man sichere Passwörter erstellt und warum sie wichtig sind."
+    },
+    {
+        "question": "Was ist 'Datenschutz im Internet'?",
+        "answer": "Maßnahmen zum Schutz der eigenen Daten beim Surfen im Internet."
+    },
+    {
+        "question": "Was ist das Thema 'Bruchrechnen'?",
+        "answer": "Grundlagen des Bruchrechnens, einschließlich Addition, Subtraktion, Multiplikation und Division von Brüchen."
+    },
+    {
+        "question": "Was ist 'Addition von Brüchen'?",
+        "answer": "Zwei oder mehr Brüche werden addiert, indem sie auf einen gemeinsamen Nenner gebracht werden."
+    },
+    {
+        "question": "Was ist 'Multiplikation von Brüchen'?",
+        "answer": "Zwei Brüche werden multipliziert, indem die Zähler und Nenner miteinander multipliziert werden."
+    },
+    {
+        "question": "Was ist das Thema 'Geometrie'?",
+        "answer": "Grundlegende geometrische Konzepte, einschließlich Formen, Winkel und Flächenberechnung."
+    },
+    {
+        "question": "Was ist 'Flächenberechnung'?",
+        "answer": "Berechnung der Fläche von Rechtecken, Dreiecken und Kreisen."
+    },
+    {
+        "question": "Was ist 'Winkelmessung'?",
+        "answer": "Messung von Winkeln mit einem Winkelmesser und Verständnis der verschiedenen Arten von Winkeln."
+    },
+    {
+        "question": "Was ist das Thema 'Prozentrechnung'?",
+        "answer": "Grundlagen der Prozentrechnung, einschließlich Berechnung von Prozentwerten, Grundwerten und Prozentsätzen."
+    },
+    {
+        "question": "Was ist 'Berechnung von Prozentsätzen'?",
+        "answer": "Berechnung des Prozentsatzes eines gegebenen Wertes."
+    },
+    {
+        "question": "Was ist 'Grundwertberechnung'?",
+        "answer": "Bestimmung des Grundwerts, wenn der Prozentsatz und der Prozentwert gegeben sind."
+    },
+    {
+        "question": "TAG",
+        "answer": "TAG Guten Tag jajaja"
+    },
+    {
+        "question": "Was ist die Comic-Serie 'The Amazing Spider-Man'?",
+        "answer": "Die Abenteuer von Peter Parker, einem jungen Mann, der nach einem Spinnenbiss Superkräfte erlangt und als Spider-Man gegen Bösewichte kämpft."
+    },
+    {
+        "question": "Was ist die Comic-Serie 'Batman'?",
+        "answer": "Die Geschichte von Bruce Wayne, der nach dem Mord an seinen Eltern als Batman gegen das Verbrechen in Gotham City kämpft."
+    },
+    {
+        "question": "Was ist die Comic-Serie 'Wonder Woman'?",
+        "answer": "Die Abenteuer von Diana Prince, einer amazonischen Kriegerin, die als Wonder Woman für Gerechtigkeit und Frieden kämpft."
+    },
+    {
+        "question": "Was ist die Comic-Serie 'X-Men'?",
+        "answer": "Eine Gruppe von Mutanten, die ihre übernatürlichen Fähigkeiten nutzen, um die Menschheit zu schützen und gegen Vorurteile zu kämpfen."
+    },
+    {
+        "question": "Was ist die Comic-Serie 'The Walking Dead'?",
+        "answer": "Die Geschichte einer Gruppe von Überlebenden in einer post-apokalyptischen Welt, die von Zombies überrannt wurde."
+    },
+    {
+        "question": "Was ist die Comic-Serie 'Attack on Titan'?",
+        "answer": "In einer Welt, in der riesige humanoide Wesen die Menschheit bedrohen, kämpfen Eren Yeager und seine Freunde ums Überleben."
+    },
+    {
+        "question": "Was ist das Gericht 'Spaghetti Carbonara'?",
+        "answer": "Klassisches italienisches Gericht mit Spaghetti, Speck, Ei, Parmesan und Pfeffer."
+    },
+    {
+        "question": "Was ist das Gericht 'Tom Kha Gai'?",
+        "answer": "Thailändische Hühnersuppe mit Kokosmilch, Zitronengras, Galgant und Koriander."
+    },
+    {
+        "question": "Was ist das Gericht 'Butter Chicken'?",
+        "answer": "Indisches Currygericht mit zartem Hühnerfleisch in cremiger Tomatensauce."
+    },
+    {
+        "question": "Was ist das Gericht 'Creme Brulee'?",
+        "answer": "Französisches Dessert mit einer knusprigen Karamellschicht und einer cremigen Vanillefüllung."
+    },
+    {
+        "question": "Was ist das Gericht 'Caesar Salad'?",
+        "answer": "Salat mit Römersalat, Croutons, Parmesan und Caesar-Dressing."
+    },
+    {
+        "question": "Was ist das Gericht 'Pad Thai'?",
+        "answer": "Thailändisches Nudelgericht mit Reisnudeln, Tofu, Ei, Erdnüssen und Limette."
+    },
+    {
+        "question": "Was ist das Gericht 'Ratatouille'?",
+        "answer": "Französisches Gemüsegericht mit Zucchini, Auberginen, Paprika und Tomaten."
+    },
+    {
+        "question": "Was ist das Gericht 'Tiramisu'?",
+        "answer": "Italienisches Dessert mit Löffelbiskuits, Mascarpone, Kaffee und Kakao."
+    },
+    {
+        "question": "Was ist das Buch 'The Very Hungry Caterpillar'?",
+        "answer": "Die Geschichte einer kleinen Raupe, die sich durch eine Menge Essen frisst, bevor sie sich in einen schönen Schmetterling verwandelt."
+    },
+    {
+        "question": "Was ist das Buch 'Goodnight Moon'?",
+        "answer": "Eine liebevolle Gutenachtgeschichte, in der ein kleines Häschen seine Umgebung vor dem Schlafengehen verabschiedet."
+    },
+    {
+        "question": "Was ist das Buch 'Where the Wild Things Are'?",
+        "answer": "Die Abenteuer eines Jungen namens Max, der in eine Welt voller wilder Kreaturen reist und ihr König wird."
+    },
+    {
+        "question": "Was ist das Buch 'Green Eggs and Ham'?",
+        "answer": "Ein humorvolles Buch über einen Charakter, der verschiedene Arten von grünen Eiern und Schinken ausprobiert."
+    },
+    {
+        "question": "Was ist das Buch 'The Tale of Peter Rabbit'?",
+        "answer": "Die Geschichte eines frechen kleinen Kaninchens, das in den Garten von Mr. McGregor eindringt."
+    },
+    {
+        "question": "Was ist das Buch 'Corduroy'?",
+        "answer": "Die Geschichte eines kleinen Teddybären, der in einem Kaufhaus auf ein Abenteuer geht, um einen fehlenden Knopf zu finden."
+    },
+    {
+        "question": "Was ist das Buch 'Guess How Much I Love You'?",
+        "answer": "Ein herzerwärmendes Buch, in dem ein kleiner Hase und ein großer Hase ihre Liebe zueinander messen."
+    },
+    {
+        "question": "Was ist das Buch 'Winnie the Pooh'?",
+        "answer": "Die Abenteuer von Winnie Puuh, einem liebenswerten Bären, und seinen Freunden im Hundert-Morgen-Wald."
+    },
+    {
+        "question": "Was ist der Film 'Toy Story'?",
+        "answer": "Ein animierter Film über das geheime Leben von Spielzeugen, wenn ihre Besitzer nicht da sind."
+    },
+    {
+        "question": "Was ist der Film 'Finding Nemo'?",
+        "answer": "Eine Abenteuerreise eines Clownfisch-Vaters, der nach seinem vermissten Sohn sucht."
+    },
+    {
+        "question": "Was ist der Film 'The Lion King'?",
+        "answer": "Die Geschichte eines jungen Löwen namens Simba, der lernen muss, seinen Platz im Kreis des Lebens zu finden."
+    },
+    {
+        "question": "Was ist der Film 'Frozen'?",
+        "answer": "Die Geschichte von zwei Schwestern, Anna und Elsa, und Elsas magischen Kräften, die das Königreich Arendelle in ewigen Winter stürzen."
+    },
+    {
+        "question": "Was ist der Film 'Moana'?",
+        "answer": "Ein mutiges Mädchen namens Moana begibt sich auf eine Reise, um ihr Volk zu retten und entdeckt dabei ihre eigene Identität."
+    },
+    {
+        "question": "Was ist der Film 'Despicable Me'?",
+        "answer": "Ein Superschurke namens Gru plant, den Mond zu stehlen, trifft aber auf drei Waisenmädchen, die sein Leben verändern."
+    },
+    {
+        "question": "Was ist der Film 'The Incredibles'?",
+        "answer": "Eine Familie von Superhelden, die sich verstecken müssen, bis sie erneut gezwungen werden, die Welt zu retten."
+    },
+    {
+        "question": "Was ist der Film 'Shrek'?",
+        "answer": "Ein grüner Oger namens Shrek begibt sich auf eine Mission, um Prinzessin Fiona zu retten und Frieden in sein Sumpfheim zu bringen."
+    },
+    {
+        "question": "Was ist die Frucht 'Apple'?",
+        "answer": "A sweet, edible fruit produced by an apple tree."
+    },
+    {
+        "question": "Was ist die Frucht 'Banana'?",
+        "answer": "A long, curved fruit with a yellow skin and soft, sweet, white flesh inside."
+    },
+    {
+        "question": "Was ist die Frucht 'Cherry'?",
+        "answer": "A small, round stone fruit that is typically bright or dark red."
+    },
+    {
+        "question": "Was ist die Frucht 'Date'?",
+        "answer": "A sweet fruit from the date palm tree, typically oval and brown."
+    },
+    {
+        "question": "Was ist die Frucht 'Elderberry'?",
+        "answer": "A small, dark berry from the elder tree, often used in jams and syrups."
+    },
+    {
+        "question": "Was ist das Tier 'Dog'?",
+        "answer": "A domesticated carnivorous mammal that typically has a long snout, an acute sense of smell, non-retractable claws, and a barking, howling, or whining voice."
+    },
+    {
+        "question": "Was ist das Tier 'Cat'?",
+        "answer": "A small domesticated carnivorous mammal with soft fur, a short snout, and retractile claws. It is widely kept as a pet or for catching mice."
+    },
+    {
+        "question": "Was ist das Tier 'Elephant'?",
+        "answer": "A large herbivorous mammal with a trunk and tusks, native to Africa and southern Asia."
+    },
+    {
+        "question": "Was ist das Tier 'Frog'?",
+        "answer": "A small, tailless amphibian with a short squat body, moist smooth skin, and very long hind legs for leaping."
+    },
+    {
+        "question": "Was ist das Tier 'Giraffe'?",
+        "answer": "A large African mammal with a very long neck and forelegs, having a coat patterned with brown patches separated by lighter lines."
+    },
+    {
+        "question": "Was ist Windows Windows 95?",
+        "answer": "Windows 95 introduced the Start menu, taskbar, and focused on multitasking and user-friendly interfaces."
+    },
+    {
+        "question": "Was ist Windows Windows XP?",
+        "answer": "Windows XP combined stability and efficiency with a more refined and user-friendly interface."
+    },
+    {
+        "question": "Was ist Windows Windows Vista?",
+        "answer": "Windows Vista introduced a new visual style and enhanced security features, but was criticized for its performance and compatibility issues."
+    },
+    {
+        "question": "Was ist Windows Windows 7?",
+        "answer": "Windows 7 was a major improvement over Vista, focusing on performance enhancements and usability."
+    },
+    {
+        "question": "Was ist Windows Windows 8?",
+        "answer": "Windows 8 introduced a new Start screen with live tiles and was optimized for touchscreens."
+    },
+    {
+        "question": "Was ist Windows Windows 10?",
+        "answer": "Windows 10 brought back the Start menu and introduced a unified platform for PCs, tablets, and phones."
+    },
+    {
+        "question": "Was ist Windows Windows 11?",
+        "answer": "Windows 11 introduced a new design, improved performance, and enhanced support for virtual desktops and gaming."
+    },
+    {
+        "question": "Was ist das Thema 'Lesen und Verstehen'?",
+        "answer": "Texte lesen und das Gelesene verstehen, Fragen zum Text beantworten."
+    },
+    {
+        "question": "Was ist das Thema 'Grammatik'?",
+        "answer": "Grundlegende Grammatikthemen wie Satzbau, Wortarten und Zeitenlehre."
+    },
+    {
+        "question": "Was ist das Thema 'Rechtschreibung'?",
+        "answer": "Wichtige Regeln der Rechtschreibung und Anwendung in Diktaten und Schreibübungen."
+    },
+    {
+        "question": "Was ist das Thema 'Aufsatz'?",
+        "answer": "Verfassen von Erzählungen, Berichten und Beschreibungen."
+    },
+    {
+        "question": "Was ist das Super Mario Spiel 'Super Mario Bros.'?",
+        "answer": "Ein klassisches Plattformspiel, in dem Mario und Luigi Prinzessin Peach vor Bowser retten müssen."
+    },
+    {
+        "question": "Was ist das Super Mario Spiel 'Super Mario Bros. 3'?",
+        "answer": "Ein Plattformspiel mit neuen Power-Ups, Spielmechaniken und einer Weltkarte."
+    },
+    {
+        "question": "Was ist das Super Mario Spiel 'Super Mario 64'?",
+        "answer": "Das erste 3D-Spiel der Serie, in dem Mario Prinzessin Peach im Schloss vor Bowser retten muss."
+    },
+    {
+        "question": "Was ist das Super Mario Spiel 'Super Mario Sunshine'?",
+        "answer": "Mario muss die tropische Insel Delfino von einer mysteriösen Verschmutzung befreien."
+    },
+    {
+        "question": "Was ist das Super Mario Spiel 'New Super Mario Bros.'?",
+        "answer": "Ein modernes 2D-Plattformspiel mit neuen Power-Ups und Multiplayer-Modus."
+    },
+    {
+        "question": "Was ist das Super Mario Spiel 'Super Mario Galaxy'?",
+        "answer": "Mario reist durch verschiedene Galaxien, um Prinzessin Peach zu retten und Bowser zu besiegen."
+    },
+    {
+        "question": "Was ist das Super Mario Spiel 'Super Mario Odyssey'?",
+        "answer": "Mario reist mit seinem neuen Begleiter Cappy durch verschiedene Welten, um Prinzessin Peach vor Bowser zu retten."
+    },
+    {
+        "question": "Was ist das Thema 'Grundlagen der Informatik'?",
+        "answer": "Einführung in die grundlegenden Konzepte der Informatik, wie Hardware, Software und Netzwerke."
+    },
+    {
+        "question": "Was ist 'Hardware vs. Software'?",
+        "answer": "Unterschiede zwischen Hardware (physische Komponenten eines Computers) und Software (Programme und Betriebssysteme)."
+    },
+    {
+        "question": "Was ist 'Netzwerke'?",
+        "answer": "Grundlegende Konzepte von Netzwerken, einschließlich LAN, WAN und das Internet."
+    },
+    {
+        "question": "Was ist das Thema 'Programmieren'?",
+        "answer": "Einführung in die Programmierung und die Erstellung einfacher Programme mit einer visuellen Programmiersprache."
+    },
+    {
+        "question": "Was ist 'Einführung in Scratch'?",
+        "answer": "Lernen, wie man einfache Programme mit der visuellen Programmiersprache Scratch erstellt."
+    },
+    {
+        "question": "Was ist 'Grundlegende Algorithmen'?",
+        "answer": "Verständnis von grundlegenden Algorithmen und ihrer Implementierung in Scratch."
+    },
+    {
+        "question": "Was ist das Thema 'Datenschutz und Sicherheit'?",
+        "answer": "Verständnis der Bedeutung von Datenschutz und Sicherheit im Internet."
+    },
+    {
+        "question": "Was ist 'Passwörter'?",
+        "answer": "Wie man sichere Passwörter erstellt und warum sie wichtig sind."
+    },
+    {
+        "question": "Was ist 'Datenschutz im Internet'?",
+        "answer": "Maßnahmen zum Schutz der eigenen Daten beim Surfen im Internet."
+    },
+    {
+        "question": "Was ist das Thema 'Bruchrechnen'?",
+        "answer": "Grundlagen des Bruchrechnens, einschließlich Addition, Subtraktion, Multiplikation und Division von Brüchen."
+    },
+    {
+        "question": "Was ist 'Addition von Brüchen'?",
+        "answer": "Zwei oder mehr Brüche werden addiert, indem sie auf einen gemeinsamen Nenner gebracht werden."
+    },
+    {
+        "question": "Was ist 'Multiplikation von Brüchen'?",
+        "answer": "Zwei Brüche werden multipliziert, indem die Zähler und Nenner miteinander multipliziert werden."
+    },
+    {
+        "question": "Was ist das Thema 'Geometrie'?",
+        "answer": "Grundlegende geometrische Konzepte, einschließlich Formen, Winkel und Flächenberechnung."
+    },
+    {
+        "question": "Was ist 'Flächenberechnung'?",
+        "answer": "Berechnung der Fläche von Rechtecken, Dreiecken und Kreisen."
+    },
+    {
+        "question": "Was ist 'Winkelmessung'?",
+        "answer": "Messung von Winkeln mit einem Winkelmesser und Verständnis der verschiedenen Arten von Winkeln."
+    },
+    {
+        "question": "Was ist das Thema 'Prozentrechnung'?",
+        "answer": "Grundlagen der Prozentrechnung, einschließlich Berechnung von Prozentwerten, Grundwerten und Prozentsätzen."
+    },
+    {
+        "question": "Was ist 'Berechnung von Prozentsätzen'?",
+        "answer": "Berechnung des Prozentsatzes eines gegebenen Wertes."
+    },
+    {
+        "question": "Was ist 'Grundwertberechnung'?",
+        "answer": "Bestimmung des Grundwerts, wenn der Prozentsatz und der Prozentwert gegeben sind."
+    },
+    {
+        "question": "TAG",
+        "answer": "TAG"
+    },
+    {
+        "question": "Was ist die Comic-Serie 'The Amazing Spider-Man'?",
+        "answer": "Die Abenteuer von Peter Parker, einem jungen Mann, der nach einem Spinnenbiss Superkräfte erlangt und als Spider-Man gegen Bösewichte kämpft."
+    },
+    {
+        "question": "Was ist die Comic-Serie 'Batman'?",
+        "answer": "Die Geschichte von Bruce Wayne, der nach dem Mord an seinen Eltern als Batman gegen das Verbrechen in Gotham City kämpft."
+    },
+    {
+        "question": "Was ist die Comic-Serie 'Wonder Woman'?",
+        "answer": "Die Abenteuer von Diana Prince, einer amazonischen Kriegerin, die als Wonder Woman für Gerechtigkeit und Frieden kämpft."
+    },
+    {
+        "question": "Was ist die Comic-Serie 'X-Men'?",
+        "answer": "Eine Gruppe von Mutanten, die ihre übernatürlichen Fähigkeiten nutzen, um die Menschheit zu schützen und gegen Vorurteile zu kämpfen."
+    },
+    {
+        "question": "Was ist die Comic-Serie 'The Walking Dead'?",
+        "answer": "Die Geschichte einer Gruppe von Überlebenden in einer post-apokalyptischen Welt, die von Zombies überrannt wurde."
+    },
+    {
+        "question": "Was ist die Comic-Serie 'Attack on Titan'?",
+        "answer": "In einer Welt, in der riesige humanoide Wesen die Menschheit bedrohen, kämpfen Eren Yeager und seine Freunde ums Überleben."
+    },
+    {
+        "question": "Was ist das Gericht 'Spaghetti Carbonara'?",
+        "answer": "Klassisches italienisches Gericht mit Spaghetti, Speck, Ei, Parmesan und Pfeffer."
+    },
+    {
+        "question": "Was ist das Gericht 'Tom Kha Gai'?",
+        "answer": "Thailändische Hühnersuppe mit Kokosmilch, Zitronengras, Galgant und Koriander."
+    },
+    {
+        "question": "Was ist das Gericht 'Butter Chicken'?",
+        "answer": "Indisches Currygericht mit zartem Hühnerfleisch in cremiger Tomatensauce."
+    },
+    {
+        "question": "Was ist das Gericht 'Creme Brulee'?",
+        "answer": "Französisches Dessert mit einer knusprigen Karamellschicht und einer cremigen Vanillefüllung."
+    },
+    {
+        "question": "Was ist das Gericht 'Caesar Salad'?",
+        "answer": "Salat mit Römersalat, Croutons, Parmesan und Caesar-Dressing."
+    },
+    {
+        "question": "Was ist das Gericht 'Pad Thai'?",
+        "answer": "Thailändisches Nudelgericht mit Reisnudeln, Tofu, Ei, Erdnüssen und Limette."
+    },
+    {
+        "question": "Was ist das Gericht 'Ratatouille'?",
+        "answer": "Französisches Gemüsegericht mit Zucchini, Auberginen, Paprika und Tomaten."
+    },
+    {
+        "question": "Was ist das Gericht 'Tiramisu'?",
+        "answer": "Italienisches Dessert mit Löffelbiskuits, Mascarpone, Kaffee und Kakao."
+    },
+    {
+        "question": "Was ist das Buch 'The Very Hungry Caterpillar'?",
+        "answer": "Die Geschichte einer kleinen Raupe, die sich durch eine Menge Essen frisst, bevor sie sich in einen schönen Schmetterling verwandelt."
+    },
+    {
+        "question": "Was ist das Buch 'Goodnight Moon'?",
+        "answer": "Eine liebevolle Gutenachtgeschichte, in der ein kleines Häschen seine Umgebung vor dem Schlafengehen verabschiedet."
+    },
+    {
+        "question": "Was ist das Buch 'Where the Wild Things Are'?",
+        "answer": "Die Abenteuer eines Jungen namens Max, der in eine Welt voller wilder Kreaturen reist und ihr König wird."
+    },
+    {
+        "question": "Was ist das Buch 'Green Eggs and Ham'?",
+        "answer": "Ein humorvolles Buch über einen Charakter, der verschiedene Arten von grünen Eiern und Schinken ausprobiert."
+    },
+    {
+        "question": "Was ist das Buch 'The Tale of Peter Rabbit'?",
+        "answer": "Die Geschichte eines frechen kleinen Kaninchens, das in den Garten von Mr. McGregor eindringt."
+    },
+    {
+        "question": "Was ist das Buch 'Corduroy'?",
+        "answer": "Die Geschichte eines kleinen Teddybären, der in einem Kaufhaus auf ein Abenteuer geht, um einen fehlenden Knopf zu finden."
+    },
+    {
+        "question": "Was ist das Buch 'Guess How Much I Love You'?",
+        "answer": "Ein herzerwärmendes Buch, in dem ein kleiner Hase und ein großer Hase ihre Liebe zueinander messen."
+    },
+    {
+        "question": "Was ist das Buch 'Winnie the Pooh'?",
+        "answer": "Die Abenteuer von Winnie Puuh, einem liebenswerten Bären, und seinen Freunden im Hundert-Morgen-Wald."
+    },
+    {
+        "question": "Was ist der Film 'Toy Story'?",
+        "answer": "Ein animierter Film über das geheime Leben von Spielzeugen, wenn ihre Besitzer nicht da sind."
+    },
+    {
+        "question": "Was ist der Film 'Finding Nemo'?",
+        "answer": "Eine Abenteuerreise eines Clownfisch-Vaters, der nach seinem vermissten Sohn sucht."
+    },
+    {
+        "question": "Was ist der Film 'The Lion King'?",
+        "answer": "Die Geschichte eines jungen Löwen namens Simba, der lernen muss, seinen Platz im Kreis des Lebens zu finden."
+    },
+    {
+        "question": "Was ist der Film 'Frozen'?",
+        "answer": "Die Geschichte von zwei Schwestern, Anna und Elsa, und Elsas magischen Kräften, die das Königreich Arendelle in ewigen Winter stürzen."
+    },
+    {
+        "question": "Was ist der Film 'Moana'?",
+        "answer": "Ein mutiges Mädchen namens Moana begibt sich auf eine Reise, um ihr Volk zu retten und entdeckt dabei ihre eigene Identität."
+    },
+    {
+        "question": "Was ist der Film 'Despicable Me'?",
+        "answer": "Ein Superschurke namens Gru plant, den Mond zu stehlen, trifft aber auf drei Waisenmädchen, die sein Leben verändern."
+    },
+    {
+        "question": "Was ist der Film 'The Incredibles'?",
+        "answer": "Eine Familie von Superhelden, die sich verstecken müssen, bis sie erneut gezwungen werden, die Welt zu retten."
+    },
+    {
+        "question": "Was ist der Film 'Shrek'?",
+        "answer": "Ein grüner Oger namens Shrek begibt sich auf eine Mission, um Prinzessin Fiona zu retten und Frieden in sein Sumpfheim zu bringen."
+    },
+    {
+        "question": "Was ist die Frucht 'Apple'?",
+        "answer": "A sweet, edible fruit produced by an apple tree."
+    },
+    {
+        "question": "Was ist die Frucht 'Banana'?",
+        "answer": "A long, curved fruit with a yellow skin and soft, sweet, white flesh inside."
+    },
+    {
+        "question": "Was ist die Frucht 'Cherry'?",
+        "answer": "A small, round stone fruit that is typically bright or dark red."
+    },
+    {
+        "question": "Was ist die Frucht 'Date'?",
+        "answer": "A sweet fruit from the date palm tree, typically oval and brown."
+    },
+    {
+        "question": "Was ist die Frucht 'Elderberry'?",
+        "answer": "A small, dark berry from the elder tree, often used in jams and syrups."
+    },
+    {
+        "question": "Was ist das Tier 'Dog'?",
+        "answer": "A domesticated carnivorous mammal that typically has a long snout, an acute sense of smell, non-retractable claws, and a barking, howling, or whining voice."
+    },
+    {
+        "question": "Was ist das Tier 'Cat'?",
+        "answer": "A small domesticated carnivorous mammal with soft fur, a short snout, and retractile claws. It is widely kept as a pet or for catching mice."
+    },
+    {
+        "question": "Was ist das Tier 'Elephant'?",
+        "answer": "A large herbivorous mammal with a trunk and tusks, native to Africa and southern Asia."
+    },
+    {
+        "question": "Was ist das Tier 'Frog'?",
+        "answer": "A small, tailless amphibian with a short squat body, moist smooth skin, and very long hind legs for leaping."
+    },
+    {
+        "question": "Was ist das Tier 'Giraffe'?",
+        "answer": "A large African mammal with a very long neck and forelegs, having a coat patterned with brown patches separated by lighter lines."
+    },
+    {
+        "question": "Was ist Windows Windows 95?",
+        "answer": "Windows 95 introduced the Start menu, taskbar, and focused on multitasking and user-friendly interfaces."
+    },
+    {
+        "question": "Was ist Windows Windows XP?",
+        "answer": "Windows XP combined stability and efficiency with a more refined and user-friendly interface."
+    },
+    {
+        "question": "Was ist Windows Windows Vista?",
+        "answer": "Windows Vista introduced a new visual style and enhanced security features, but was criticized for its performance and compatibility issues."
+    },
+    {
+        "question": "Was ist Windows Windows 7?",
+        "answer": "Windows 7 was a major improvement over Vista, focusing on performance enhancements and usability."
+    },
+    {
+        "question": "Was ist Windows Windows 8?",
+        "answer": "Windows 8 introduced a new Start screen with live tiles and was optimized for touchscreens."
+    },
+    {
+        "question": "Was ist Windows Windows 10?",
+        "answer": "Windows 10 brought back the Start menu and introduced a unified platform for PCs, tablets, and phones."
+    },
+    {
+        "question": "Was ist Windows Windows 11?",
+        "answer": "Windows 11 introduced a new design, improved performance, and enhanced support for virtual desktops and gaming."
+    },
+    {
+        "question": "Was ist das Thema 'Lesen und Verstehen'?",
+        "answer": "Texte lesen und das Gelesene verstehen, Fragen zum Text beantworten."
+    },
+    {
+        "question": "Was ist das Thema 'Grammatik'?",
+        "answer": "Grundlegende Grammatikthemen wie Satzbau, Wortarten und Zeitenlehre."
+    },
+    {
+        "question": "Was ist das Thema 'Rechtschreibung'?",
+        "answer": "Wichtige Regeln der Rechtschreibung und Anwendung in Diktaten und Schreibübungen."
+    },
+    {
+        "question": "Was ist das Thema 'Aufsatz'?",
+        "answer": "Verfassen von Erzählungen, Berichten und Beschreibungen."
+    },
+    {
+        "question": "Was ist das Super Mario Spiel 'Super Mario Bros.'?",
+        "answer": "Ein klassisches Plattformspiel, in dem Mario und Luigi Prinzessin Peach vor Bowser retten müssen."
+    },
+    {
+        "question": "Was ist das Super Mario Spiel 'Super Mario Bros. 3'?",
+        "answer": "Ein Plattformspiel mit neuen Power-Ups, Spielmechaniken und einer Weltkarte."
+    },
+    {
+        "question": "Was ist das Super Mario Spiel 'Super Mario 64'?",
+        "answer": "Das erste 3D-Spiel der Serie, in dem Mario Prinzessin Peach im Schloss vor Bowser retten muss."
+    },
+    {
+        "question": "Was ist das Super Mario Spiel 'Super Mario Sunshine'?",
+        "answer": "Mario muss die tropische Insel Delfino von einer mysteriösen Verschmutzung befreien."
+    },
+    {
+        "question": "Was ist das Super Mario Spiel 'New Super Mario Bros.'?",
+        "answer": "Ein modernes 2D-Plattformspiel mit neuen Power-Ups und Multiplayer-Modus."
+    },
+    {
+        "question": "Was ist das Super Mario Spiel 'Super Mario Galaxy'?",
+        "answer": "Mario reist durch verschiedene Galaxien, um Prinzessin Peach zu retten und Bowser zu besiegen."
+    },
+    {
+        "question": "Was ist das Super Mario Spiel 'Super Mario Odyssey'?",
+        "answer": "Mario reist mit seinem neuen Begleiter Cappy durch verschiedene Welten, um Prinzessin Peach vor Bowser zu retten."
+    },
+    {
+        "question": "Was ist das Thema 'Grundlagen der Informatik'?",
+        "answer": "Einführung in die grundlegenden Konzepte der Informatik, wie Hardware, Software und Netzwerke."
+    },
+    {
+        "question": "Was ist 'Hardware vs. Software'?",
+        "answer": "Unterschiede zwischen Hardware (physische Komponenten eines Computers) und Software (Programme und Betriebssysteme)."
+    },
+    {
+        "question": "Was ist 'Netzwerke'?",
+        "answer": "Grundlegende Konzepte von Netzwerken, einschließlich LAN, WAN und das Internet."
+    },
+    {
+        "question": "Was ist das Thema 'Programmieren'?",
+        "answer": "Einführung in die Programmierung und die Erstellung einfacher Programme mit einer visuellen Programmiersprache."
+    },
+    {
+        "question": "Was ist 'Einführung in Scratch'?",
+        "answer": "Lernen, wie man einfache Programme mit der visuellen Programmiersprache Scratch erstellt."
+    },
+    {
+        "question": "Was ist 'Grundlegende Algorithmen'?",
+        "answer": "Verständnis von grundlegenden Algorithmen und ihrer Implementierung in Scratch."
+    },
+    {
+        "question": "Was ist das Thema 'Datenschutz und Sicherheit'?",
+        "answer": "Verständnis der Bedeutung von Datenschutz und Sicherheit im Internet."
+    },
+    {
+        "question": "Was ist 'Passwörter'?",
+        "answer": "Wie man sichere Passwörter erstellt und warum sie wichtig sind."
+    },
+    {
+        "question": "Was ist 'Datenschutz im Internet'?",
+        "answer": "Maßnahmen zum Schutz der eigenen Daten beim Surfen im Internet."
+    },
+    {
+        "question": "Was ist das Thema 'Bruchrechnen'?",
+        "answer": "Grundlagen des Bruchrechnens, einschließlich Addition, Subtraktion, Multiplikation und Division von Brüchen."
+    },
+    {
+        "question": "Was ist 'Addition von Brüchen'?",
+        "answer": "Zwei oder mehr Brüche werden addiert, indem sie auf einen gemeinsamen Nenner gebracht werden."
+    },
+    {
+        "question": "Was ist 'Multiplikation von Brüchen'?",
+        "answer": "Zwei Brüche werden multipliziert, indem die Zähler und Nenner miteinander multipliziert werden."
+    },
+    {
+        "question": "Was ist das Thema 'Geometrie'?",
+        "answer": "Grundlegende geometrische Konzepte, einschließlich Formen, Winkel und Flächenberechnung."
+    },
+    {
+        "question": "Was ist 'Flächenberechnung'?",
+        "answer": "Berechnung der Fläche von Rechtecken, Dreiecken und Kreisen."
+    },
+    {
+        "question": "Was ist 'Winkelmessung'?",
+        "answer": "Messung von Winkeln mit einem Winkelmesser und Verständnis der verschiedenen Arten von Winkeln."
+    },
+    {
+        "question": "Was ist das Thema 'Prozentrechnung'?",
+        "answer": "Grundlagen der Prozentrechnung, einschließlich Berechnung von Prozentwerten, Grundwerten und Prozentsätzen."
+    },
+    {
+        "question": "Was ist 'Berechnung von Prozentsätzen'?",
+        "answer": "Berechnung des Prozentsatzes eines gegebenen Wertes."
+    },
+    {
+        "question": "Was ist 'Grundwertberechnung'?",
+        "answer": "Bestimmung des Grundwerts, wenn der Prozentsatz und der Prozentwert gegeben sind."
+    },
+    {
+        "question": "TAG",
+        "answer": "TAG"
+    },
+    {
+        "question": "Was ist die Comic-Serie 'The Amazing Spider-Man'?",
+        "answer": "Die Abenteuer von Peter Parker, einem jungen Mann, der nach einem Spinnenbiss Superkräfte erlangt und als Spider-Man gegen Bösewichte kämpft."
+    },
+    {
+        "question": "Was ist die Comic-Serie 'Batman'?",
+        "answer": "Die Geschichte von Bruce Wayne, der nach dem Mord an seinen Eltern als Batman gegen das Verbrechen in Gotham City kämpft."
+    },
+    {
+        "question": "Was ist die Comic-Serie 'Wonder Woman'?",
+        "answer": "Die Abenteuer von Diana Prince, einer amazonischen Kriegerin, die als Wonder Woman für Gerechtigkeit und Frieden kämpft."
+    },
+    {
+        "question": "Was ist die Comic-Serie 'X-Men'?",
+        "answer": "Eine Gruppe von Mutanten, die ihre übernatürlichen Fähigkeiten nutzen, um die Menschheit zu schützen und gegen Vorurteile zu kämpfen."
+    },
+    {
+        "question": "Was ist die Comic-Serie 'The Walking Dead'?",
+        "answer": "Die Geschichte einer Gruppe von Überlebenden in einer post-apokalyptischen Welt, die von Zombies überrannt wurde."
+    },
+    {
+        "question": "Was ist die Comic-Serie 'Attack on Titan'?",
+        "answer": "In einer Welt, in der riesige humanoide Wesen die Menschheit bedrohen, kämpfen Eren Yeager und seine Freunde ums Überleben."
+    },
+    {
+        "question": "Was ist das Gericht 'Spaghetti Carbonara'?",
+        "answer": "Klassisches italienisches Gericht mit Spaghetti, Speck, Ei, Parmesan und Pfeffer."
+    },
+    {
+        "question": "Was ist das Gericht 'Tom Kha Gai'?",
+        "answer": "Thailändische Hühnersuppe mit Kokosmilch, Zitronengras, Galgant und Koriander."
+    },
+    {
+        "question": "Was ist das Gericht 'Butter Chicken'?",
+        "answer": "Indisches Currygericht mit zartem Hühnerfleisch in cremiger Tomatensauce."
+    },
+    {
+        "question": "Was ist das Gericht 'Creme Brulee'?",
+        "answer": "Französisches Dessert mit einer knusprigen Karamellschicht und einer cremigen Vanillefüllung."
+    },
+    {
+        "question": "Was ist das Gericht 'Caesar Salad'?",
+        "answer": "Salat mit Römersalat, Croutons, Parmesan und Caesar-Dressing."
+    },
+    {
+        "question": "Was ist das Gericht 'Pad Thai'?",
+        "answer": "Thailändisches Nudelgericht mit Reisnudeln, Tofu, Ei, Erdnüssen und Limette."
+    },
+    {
+        "question": "Was ist das Gericht 'Ratatouille'?",
+        "answer": "Französisches Gemüsegericht mit Zucchini, Auberginen, Paprika und Tomaten."
+    },
+    {
+        "question": "Was ist das Gericht 'Tiramisu'?",
+        "answer": "Italienisches Dessert mit Löffelbiskuits, Mascarpone, Kaffee und Kakao."
+    },
+    {
+        "question": "Was ist das Buch 'The Very Hungry Caterpillar'?",
+        "answer": "Die Geschichte einer kleinen Raupe, die sich durch eine Menge Essen frisst, bevor sie sich in einen schönen Schmetterling verwandelt."
+    },
+    {
+        "question": "Was ist das Buch 'Goodnight Moon'?",
+        "answer": "Eine liebevolle Gutenachtgeschichte, in der ein kleines Häschen seine Umgebung vor dem Schlafengehen verabschiedet."
+    },
+    {
+        "question": "Was ist das Buch 'Where the Wild Things Are'?",
+        "answer": "Die Abenteuer eines Jungen namens Max, der in eine Welt voller wilder Kreaturen reist und ihr König wird."
+    },
+    {
+        "question": "Was ist das Buch 'Green Eggs and Ham'?",
+        "answer": "Ein humorvolles Buch über einen Charakter, der verschiedene Arten von grünen Eiern und Schinken ausprobiert."
+    },
+    {
+        "question": "Was ist das Buch 'The Tale of Peter Rabbit'?",
+        "answer": "Die Geschichte eines frechen kleinen Kaninchens, das in den Garten von Mr. McGregor eindringt."
+    },
+    {
+        "question": "Was ist das Buch 'Corduroy'?",
+        "answer": "Die Geschichte eines kleinen Teddybären, der in einem Kaufhaus auf ein Abenteuer geht, um einen fehlenden Knopf zu finden."
+    },
+    {
+        "question": "Was ist das Buch 'Guess How Much I Love You'?",
+        "answer": "Ein herzerwärmendes Buch, in dem ein kleiner Hase und ein großer Hase ihre Liebe zueinander messen."
+    },
+    {
+        "question": "Was ist das Buch 'Winnie the Pooh'?",
+        "answer": "Die Abenteuer von Winnie Puuh, einem liebenswerten Bären, und seinen Freunden im Hundert-Morgen-Wald."
+    },
+    {
+        "question": "Was ist der Film 'Toy Story'?",
+        "answer": "Ein animierter Film über das geheime Leben von Spielzeugen, wenn ihre Besitzer nicht da sind."
+    },
+    {
+        "question": "Was ist der Film 'Finding Nemo'?",
+        "answer": "Eine Abenteuerreise eines Clownfisch-Vaters, der nach seinem vermissten Sohn sucht."
+    },
+    {
+        "question": "Was ist der Film 'The Lion King'?",
+        "answer": "Die Geschichte eines jungen Löwen namens Simba, der lernen muss, seinen Platz im Kreis des Lebens zu finden."
+    },
+    {
+        "question": "Was ist der Film 'Frozen'?",
+        "answer": "Die Geschichte von zwei Schwestern, Anna und Elsa, und Elsas magischen Kräften, die das Königreich Arendelle in ewigen Winter stürzen."
+    },
+    {
+        "question": "Was ist der Film 'Moana'?",
+        "answer": "Ein mutiges Mädchen namens Moana begibt sich auf eine Reise, um ihr Volk zu retten und entdeckt dabei ihre eigene Identität."
+    },
+    {
+        "question": "Was ist der Film 'Despicable Me'?",
+        "answer": "Ein Superschurke namens Gru plant, den Mond zu stehlen, trifft aber auf drei Waisenmädchen, die sein Leben verändern."
+    },
+    {
+        "question": "Was ist der Film 'The Incredibles'?",
+        "answer": "Eine Familie von Superhelden, die sich verstecken müssen, bis sie erneut gezwungen werden, die Welt zu retten."
+    },
+    {
+        "question": "Was ist der Film 'Shrek'?",
+        "answer": "Ein grüner Oger namens Shrek begibt sich auf eine Mission, um Prinzessin Fiona zu retten und Frieden in sein Sumpfheim zu bringen."
+    },
+    {
+        "question": "Was ist die Frucht 'Apple'?",
+        "answer": "A sweet, edible fruit produced by an apple tree."
+    },
+    {
+        "question": "Was ist die Frucht 'Banana'?",
+        "answer": "A long, curved fruit with a yellow skin and soft, sweet, white flesh inside."
+    },
+    {
+        "question": "Was ist die Frucht 'Cherry'?",
+        "answer": "A small, round stone fruit that is typically bright or dark red."
+    },
+    {
+        "question": "Was ist die Frucht 'Date'?",
+        "answer": "A sweet fruit from the date palm tree, typically oval and brown."
+    },
+    {
+        "question": "Was ist die Frucht 'Elderberry'?",
+        "answer": "A small, dark berry from the elder tree, often used in jams and syrups."
+    },
+    {
+        "question": "Was ist das Tier 'Dog'?",
+        "answer": "A domesticated carnivorous mammal that typically has a long snout, an acute sense of smell, non-retractable claws, and a barking, howling, or whining voice."
+    },
+    {
+        "question": "Was ist das Tier 'Cat'?",
+        "answer": "A small domesticated carnivorous mammal with soft fur, a short snout, and retractile claws. It is widely kept as a pet or for catching mice."
+    },
+    {
+        "question": "Was ist das Tier 'Elephant'?",
+        "answer": "A large herbivorous mammal with a trunk and tusks, native to Africa and southern Asia."
+    },
+    {
+        "question": "Was ist das Tier 'Frog'?",
+        "answer": "A small, tailless amphibian with a short squat body, moist smooth skin, and very long hind legs for leaping."
+    },
+    {
+        "question": "Was ist das Tier 'Giraffe'?",
+        "answer": "A large African mammal with a very long neck and forelegs, having a coat patterned with brown patches separated by lighter lines."
+    },
+    {
+        "question": "Was ist Windows Windows 95?",
+        "answer": "Windows 95 introduced the Start menu, taskbar, and focused on multitasking and user-friendly interfaces."
+    },
+    {
+        "question": "Was ist Windows Windows XP?",
+        "answer": "Windows XP combined stability and efficiency with a more refined and user-friendly interface."
+    },
+    {
+        "question": "Was ist Windows Windows Vista?",
+        "answer": "Windows Vista introduced a new visual style and enhanced security features, but was criticized for its performance and compatibility issues."
+    },
+    {
+        "question": "Was ist Windows Windows 7?",
+        "answer": "Windows 7 was a major improvement over Vista, focusing on performance enhancements and usability."
+    },
+    {
+        "question": "Was ist Windows Windows 8?",
+        "answer": "Windows 8 introduced a new Start screen with live tiles and was optimized for touchscreens."
+    },
+    {
+        "question": "Was ist Windows Windows 10?",
+        "answer": "Windows 10 brought back the Start menu and introduced a unified platform for PCs, tablets, and phones."
+    },
+    {
+        "question": "Was ist Windows Windows 11?",
+        "answer": "Windows 11 introduced a new design, improved performance, and enhanced support for virtual desktops and gaming."
+    },
+    {
+        "question": "Was ist das Thema 'Lesen und Verstehen'?",
+        "answer": "Texte lesen und das Gelesene verstehen, Fragen zum Text beantworten."
+    },
+    {
+        "question": "Was ist das Thema 'Grammatik'?",
+        "answer": "Grundlegende Grammatikthemen wie Satzbau, Wortarten und Zeitenlehre."
+    },
+    {
+        "question": "Was ist das Thema 'Rechtschreibung'?",
+        "answer": "Wichtige Regeln der Rechtschreibung und Anwendung in Diktaten und Schreibübungen."
+    },
+    {
+        "question": "Was ist das Thema 'Aufsatz'?",
+        "answer": "Verfassen von Erzählungen, Berichten und Beschreibungen."
+    },
+    {
+        "question": "Was ist das Super Mario Spiel 'Super Mario Bros.'?",
+        "answer": "Ein klassisches Plattformspiel, in dem Mario und Luigi Prinzessin Peach vor Bowser retten müssen."
+    },
+    {
+        "question": "Was ist das Super Mario Spiel 'Super Mario Bros. 3'?",
+        "answer": "Ein Plattformspiel mit neuen Power-Ups, Spielmechaniken und einer Weltkarte."
+    },
+    {
+        "question": "Was ist das Super Mario Spiel 'Super Mario 64'?",
+        "answer": "Das erste 3D-Spiel der Serie, in dem Mario Prinzessin Peach im Schloss vor Bowser retten muss."
+    },
+    {
+        "question": "Was ist das Super Mario Spiel 'Super Mario Sunshine'?",
+        "answer": "Mario muss die tropische Insel Delfino von einer mysteriösen Verschmutzung befreien."
+    },
+    {
+        "question": "Was ist das Super Mario Spiel 'New Super Mario Bros.'?",
+        "answer": "Ein modernes 2D-Plattformspiel mit neuen Power-Ups und Multiplayer-Modus."
+    },
+    {
+        "question": "Was ist das Super Mario Spiel 'Super Mario Galaxy'?",
+        "answer": "Mario reist durch verschiedene Galaxien, um Prinzessin Peach zu retten und Bowser zu besiegen."
+    },
+    {
+        "question": "Was ist das Super Mario Spiel 'Super Mario Odyssey'?",
+        "answer": "Mario reist mit seinem neuen Begleiter Cappy durch verschiedene Welten, um Prinzessin Peach vor Bowser zu retten."
+    },
+    {
+        "question": "Was ist das Thema 'Grundlagen der Informatik'?",
+        "answer": "Einführung in die grundlegenden Konzepte der Informatik, wie Hardware, Software und Netzwerke."
+    },
+    {
+        "question": "Was ist 'Hardware vs. Software'?",
+        "answer": "Unterschiede zwischen Hardware (physische Komponenten eines Computers) und Software (Programme und Betriebssysteme)."
+    },
+    {
+        "question": "Was ist 'Netzwerke'?",
+        "answer": "Grundlegende Konzepte von Netzwerken, einschließlich LAN, WAN und das Internet."
+    },
+    {
+        "question": "Was ist das Thema 'Programmieren'?",
+        "answer": "Einführung in die Programmierung und die Erstellung einfacher Programme mit einer visuellen Programmiersprache."
+    },
+    {
+        "question": "Was ist 'Einführung in Scratch'?",
+        "answer": "Lernen, wie man einfache Programme mit der visuellen Programmiersprache Scratch erstellt."
+    },
+    {
+        "question": "Was ist 'Grundlegende Algorithmen'?",
+        "answer": "Verständnis von grundlegenden Algorithmen und ihrer Implementierung in Scratch."
+    },
+    {
+        "question": "Was ist das Thema 'Datenschutz und Sicherheit'?",
+        "answer": "Verständnis der Bedeutung von Datenschutz und Sicherheit im Internet."
+    },
+    {
+        "question": "Was ist 'Passwörter'?",
+        "answer": "Wie man sichere Passwörter erstellt und warum sie wichtig sind."
+    },
+    {
+        "question": "Was ist 'Datenschutz im Internet'?",
+        "answer": "Maßnahmen zum Schutz der eigenen Daten beim Surfen im Internet."
+    },
+    {
+        "question": "Was ist das Thema 'Bruchrechnen'?",
+        "answer": "Grundlagen des Bruchrechnens, einschließlich Addition, Subtraktion, Multiplikation und Division von Brüchen."
+    },
+    {
+        "question": "Was ist 'Addition von Brüchen'?",
+        "answer": "Zwei oder mehr Brüche werden addiert, indem sie auf einen gemeinsamen Nenner gebracht werden."
+    },
+    {
+        "question": "Was ist 'Multiplikation von Brüchen'?",
+        "answer": "Zwei Brüche werden multipliziert, indem die Zähler und Nenner miteinander multipliziert werden."
+    },
+    {
+        "question": "Was ist das Thema 'Geometrie'?",
+        "answer": "Grundlegende geometrische Konzepte, einschließlich Formen, Winkel und Flächenberechnung."
+    },
+    {
+        "question": "Was ist 'Flächenberechnung'?",
+        "answer": "Berechnung der Fläche von Rechtecken, Dreiecken und Kreisen."
+    },
+    {
+        "question": "Was ist 'Winkelmessung'?",
+        "answer": "Messung von Winkeln mit einem Winkelmesser und Verständnis der verschiedenen Arten von Winkeln."
+    },
+    {
+        "question": "Was ist das Thema 'Prozentrechnung'?",
+        "answer": "Grundlagen der Prozentrechnung, einschließlich Berechnung von Prozentwerten, Grundwerten und Prozentsätzen."
+    },
+    {
+        "question": "Was ist 'Berechnung von Prozentsätzen'?",
+        "answer": "Berechnung des Prozentsatzes eines gegebenen Wertes."
+    },
+    {
+        "question": "Was ist 'Grundwertberechnung'?",
+        "answer": "Bestimmung des Grundwerts, wenn der Prozentsatz und der Prozentwert gegeben sind."
+    },
+    {
+        "question": "TAG",
+        "answer": "TAG"
+    },
+    {
+        "question": "TAG",
+        "answer": "TAG"
+    },
+    {
+        "question": "TAG",
+        "answer": "TAG"
+    },
+    {
+        "question": "TAG",
+        "answer": "TAG"
+    },
+    {
+        "question": "TAG",
+        "answer": "TAG"
+    },
+    {
+        "question": "TAG",
+        "answer": "TAG"
+    },
+    {
+        "question": "TAG",
+        "answer": "TAG"
     }
 ]

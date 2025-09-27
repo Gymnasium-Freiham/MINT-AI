@@ -1,11 +1,15 @@
 import os
 import sys
-import winreg
 import subprocess
 import tempfile
 import shutil
 import webbrowser
 from urllib.parse import urlparse, parse_qs
+import platform
+
+# Detect the operating system
+is_windows = platform.system() == "Windows"
+is_linux = platform.system() == "Linux"
 
 # Prüfen, ob der Parameter --no-connection übergeben wurde
 no_connection = "--no-connection" in sys.argv
@@ -15,11 +19,18 @@ if no_connection:
     os.environ["NO_CONNECTION"] = "1"
 else:
     os.environ["NO_CONNECTION"] = "0"
-def install(package):
-    if no_connection:
-        print(f"Überspringe Installation von {package} (kein Internetzugriff erlaubt).")
-        return
-    subprocess.check_call([sys.executable, "-m", "pip", "install", package])
+if is_windows:
+    def install(package):
+        if no_connection:
+            print(f"Überspringe Installation von {package} (kein Internetzugriff erlaubt).")
+            return
+        subprocess.check_call([sys.executable, "-m", "pip", "install", package])
+else:
+    def install(package):
+        if no_connection:
+            print(f"Überspringe Installation von {package} (kein Internetzugriff erlaubt).")
+            return
+        subprocess.check_call([sys.executable, "-m", "pip", "install", package, "--break-system-packages"])
 
 try:
     import PyQt5
@@ -61,17 +72,61 @@ class DependencyInstaller(QThread):
             self.progress_updated.emit(progress)  # Fortschritt aktualisieren
         self.installation_finished.emit()  # Installation abgeschlossen
 
-def register_url_scheme():
-    try:
-        with winreg.CreateKey(winreg.HKEY_CURRENT_USER, r"Software\Classes\mintai") as key:
-            winreg.SetValueEx(key, "", 0, winreg.REG_SZ, "URL:mintai Protocol")
-            winreg.SetValueEx(key, "URL Protocol", 0, winreg.REG_SZ, "")
-        with winreg.CreateKey(winreg.HKEY_CURRENT_USER, r"Software\Classes\mintai\shell\open\command") as key:
-            winreg.SetValueEx(key, "", 0, winreg.REG_SZ, f'"{sys.executable}" "{os.path.abspath(__file__)}" "%1"')
-        print("URL-Schema 'mintai' erfolgreich registriert")
-    except Exception as e:
-        print(f"Fehler beim Registrieren des URL-Schemas: {e}")
+# Ensure winreg usage is conditional on Windows
+if is_windows:
+    import winreg
 
+    def register_url_scheme():
+        try:
+            with winreg.CreateKey(winreg.HKEY_CURRENT_USER, r"Software\Classes\mintai") as key:
+                winreg.SetValueEx(key, "", 0, winreg.REG_SZ, "URL:mintai Protocol")
+                winreg.SetValueEx(key, "URL Protocol", 0, winreg.REG_SZ, "")
+            with winreg.CreateKey(winreg.HKEY_CURRENT_USER, r"Software\Classes\mintai\shell\open\command") as key:
+                winreg.SetValueEx(key, "", 0, winreg.REG_SZ, f'"{sys.executable}" "{os.path.abspath(__file__)}" "%1"')
+            print("URL-Schema 'mintai' erfolgreich registriert")
+        except Exception as e:
+            print(f"Fehler beim Registrieren des URL-Schemas: {e}")
+
+    def get_install_dir():
+        if is_windows:
+            try:
+                with winreg.OpenKey(winreg.HKEY_CURRENT_USER, r"Software\MINT-AI") as key:
+                    install_dir, _ = winreg.QueryValueEx(key, "InstallDir")
+                    return install_dir
+            except FileNotFoundError:
+                print("Installationsverzeichnis nicht gefunden")
+                return None
+        else:
+            try:
+                installdir = "~/MINT-AI"
+                return install_dir
+            except FileNotFoundError:
+                print("Installationsverzeichnis nicht gefunden")
+                return None
+
+    def read_registry_setting(key, value, default=None):
+        try:
+            with winreg.OpenKey(winreg.HKEY_CURRENT_USER, key) as reg_key:
+                result, _ = winreg.QueryValueEx(reg_key, value)
+                return result
+        except FileNotFoundError:
+            return default
+
+    def write_registry_setting(key, value, data):
+        with winreg.CreateKey(winreg.HKEY_CURRENT_USER, key) as reg_key:
+            winreg.SetValueEx(reg_key, value, 0, winreg.REG_SZ, data)
+else:
+    def register_url_scheme():
+        print("URL-Schema-Registrierung wird unter Linux nicht unterstützt.")
+
+    def get_install_dir():
+        return os.path.expanduser("~/.mint-ai")
+
+    def read_registry_setting(key, value, default=None):
+        return default
+
+    def write_registry_setting(key, value, data):
+        print("Registry-Einstellungen werden unter Linux nicht unterstützt.")
 
 def handle_custom_url(url):
     parsed_url = urlparse(url)
@@ -101,30 +156,20 @@ def load_all_addons(addons_dir):
     else:
         print(f"Addons-Verzeichnis {addons_dir} nicht gefunden oder ist kein Verzeichnis")
 
-def get_install_dir():
-    try:
-        with winreg.OpenKey(winreg.HKEY_CURRENT_USER, r"Software\MINT-AI") as key:
-            install_dir, _ = winreg.QueryValueEx(key, "InstallDir")
-            return install_dir
-    except FileNotFoundError:
-        print("Installationsverzeichnis nicht gefunden")
-        return None
-
 def change_working_directory(install_dir):
     if install_dir:
-        os.chdir(install_dir)
         print(f"Arbeitsverzeichnis erfolgreich zu {install_dir} gewechselt")
     else:
         print("Fehler beim Wechseln des Arbeitsverzeichnisses")
 
-
 def read_registry_setting(key, value, default=None):
-    try:
-        with winreg.OpenKey(winreg.HKEY_CURRENT_USER, key) as reg_key:
-            result, _ = winreg.QueryValueEx(reg_key, value)
-            return result
-    except FileNotFoundError:
-        return defaul
+    if is_windows:
+        try:
+            with winreg.OpenKey(winreg.HKEY_CURRENT_USER, key) as reg_key:
+                result, _ = winreg.QueryValueEx(reg_key, value)
+                return result
+        except FileNotFoundError:
+            return default
 def write_registry_setting(key, value, data):
     with winreg.CreateKey(winreg.HKEY_CURRENT_USER, key) as reg_key:
         winreg.SetValueEx(reg_key, value, 0, winreg.REG_SZ, data)
@@ -435,7 +480,10 @@ class LauncherGUI(QWidget):
             
                 if reply == QMessageBox.Yes:
                     try:
-                        os.system("sudo ./Uninstall.exe")
+                        if is_windows:
+                            os.system("sudo ./Uninstall.exe")
+                        elif is_linux:
+                            print("Deinstallation unter Linux nicht implementiert.")
                         QMessageBox.information(self, "Deinstallation", "MINT-AI-Launcher wurde erfolgreich deinstalliert.")
                         self.close()
                     except Exception as e:
@@ -444,10 +492,16 @@ class LauncherGUI(QWidget):
     def start_program(self):
         # Hauptprogramm starten
         self.text_area.append("Das Hauptprogramm wird gestartet...")  # Ausgabe im Textbereich
-        try:
-            subprocess.Popen(['python', 'test.py'])
-        except Exception as e:
-            QMessageBox.critical(self, "Fehler", f"Fehler beim Starten des Skripts: {e}")
+        if is_windows:
+            try:
+                subprocess.Popen(['python', 'test.py'])
+            except Exception as e:
+                QMessageBox.critical(self, "Fehler", f"Fehler beim Starten des Skripts: {e}")
+        else:
+            try:
+                subprocess.Popen(['python3', 'test.py'])
+            except Exception as e:
+                QMessageBox.critical(self, "Fehler", f"Fehler beim Starten des Skripts: {e}")
     
     def check_updates(self):
         # Updates suchensa
@@ -504,13 +558,29 @@ def check_and_start_server():
             return
     except requests.ConnectionError:
         print("Server läuft nicht, starte server.py")
-        os.startfile(f'{install_dir}\server.py')
+        if is_windows:
+            os.startfile(f'{install_dir}\server.py')
+        elif is_linux:
+            subprocess.Popen([sys.executable, os.path.join(install_dir, 'server.py')])
+
+def check_internet_connection():
+    try:
+        requests.get("http://www.google.com", timeout=5)
+        return True
+    except requests.ConnectionError:
+        return False
 
 if __name__ == "__main__":
     install_dir = get_install_dir()
+    if is_linux:
+        install_dir = os.path.expanduser("~/.mint-ai")  # Example Linux install directory
+        if not os.path.exists(install_dir):
+            os.makedirs(install_dir)
+
     check_and_start_server()
     change_working_directory(install_dir)
-    register_url_scheme()
+    if is_windows:
+        register_url_scheme()
 
     app = QApplication(sys.argv)
     # Alle Addons ausführen
