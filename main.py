@@ -25,15 +25,40 @@ else:
             print(f"Überspringe Installation von {package} (kein Internetzugriff erlaubt).")
             return
         subprocess.check_call([sys.executable, "-m", "pip", "install", package, *args, "--break-system-packages"])
+try:
+    import nltk
+except:
+    install("nltk")
+    import nltk
+try:
+    import sklearn
 
-install("nltk")
-install("scikit-learn")
-install("numpy")
-install("requests")
-install("groq")
-install("PyQt5")
-install("torch==2.0.1+cpu", "-f", "https://download.pytorch.org/whl/torch_stable.html")
-install("matplotlib")
+except:
+    install("scikit-learn")
+try:
+    import numpy
+except:
+    install("numpy")
+try:
+    import requests
+except:
+    install("requests")
+try:
+    import groq
+except:
+    install("groq")
+try:
+    import PyQt5
+except:
+    install("PyQt5")
+try:
+    import torch
+except:
+    install("torch==2.8.0+cpu", "-f", "https://download.pytorch.org/whl/torch_stable.html")
+try:
+    import matplotlib
+except:
+    install("matplotlib")
 
 from groq import Groq
 import json
@@ -122,20 +147,28 @@ optimizer = torch.optim.Adam(text_classifier.parameters(), lr=0.001)
 # Funktion zum Trainieren des PyTorch-Modells
 # Ensure the model's output layer matches the number of classes before training
 def train_model(X, y, epochs=10):
-    global text_classifier, optimizer, criterion
+    global text_classifier, optimizer, criterion, input_dim, hidden_dim
 
-    # Check if the model's output layer matches the number of classes
+    # Konvertiere X und y in Tensoren
+    X_tensor = torch.tensor(X, dtype=torch.float32)
+    y_tensor = torch.tensor(y, dtype=torch.long)
+
+    # Input-Dimension aus X ableiten
+    input_dim = X_tensor.shape[1]
     num_classes = max(y) + 1
-    if text_classifier.fc2.out_features != num_classes:
+
+    # Modell neu initialisieren, wenn nötig
+    if not hasattr(text_classifier, 'fc2') or text_classifier.fc2.out_features != num_classes:
         text_classifier = TextClassifier(input_dim, hidden_dim, num_classes)
         optimizer = torch.optim.Adam(text_classifier.parameters(), lr=0.001)
         criterion = nn.CrossEntropyLoss()
 
+    # Training starten
     text_classifier.train()
     for epoch in range(epochs):
         optimizer.zero_grad()
-        outputs = text_classifier(torch.tensor(X, dtype=torch.float32))
-        loss = criterion(outputs, torch.tensor(y, dtype=torch.long))
+        outputs = text_classifier(X_tensor)
+        loss = criterion(outputs, y_tensor)
         loss.backward()
         optimizer.step()
 
@@ -154,7 +187,7 @@ class TransformerModel(nn.Module):
     def __init__(self, input_dim, model_dim, num_heads, num_layers, output_dim):
         super(TransformerModel, self).__init__()
         self.embedding = nn.Embedding(input_dim, model_dim)
-        self.transformer = nn.Transformer(model_dim, num_heads, num_layers)
+        self.transformer = nn.Transformer(model_dim, num_heads, num_layers, batch_first=True)
         self.fc = nn.Linear(model_dim, output_dim)
 
     def forward(self, src, tgt):
