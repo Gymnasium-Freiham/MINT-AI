@@ -6,7 +6,7 @@ We only support current versions and a few times the version above.
 
 | Version | Supported          | End of Service |
 | ------- | ------------------ | -------------- |
-| 1.0.0 ⚠️ Warning! Too Deprecated Version! Do not works anymore!   | :x:                | November 2024|
+| 1.0.0 ⚠️ Warning! Too Deprecated Version! Does not work anymore!   | :x:                | November 2024|
 | 2.0.0   | :x:                | December 2024|
 | 2.0.1   | :x: | December 2024 |
 | 2.1.0   | :x: | December 2024 |
