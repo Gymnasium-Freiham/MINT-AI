@@ -1,0 +1,71 @@
+{
+    "informatik6klassebayern": [
+      {
+        "topic": "Grundlagen der Informatik",
+        "description": "Einführung in die grundlegenden Konzepte der Informatik, wie Hardware, Software und Netzwerke.",
+        "examples": [
+          {
+            "title": "Hardware vs. Software",
+            "summary": "Unterschiede zwischen Hardware (physische Komponenten eines Computers) und Software (Programme und Betriebssysteme).",
+            "questions": [
+              "Was ist der Unterschied zwischen Hardware und Software?",
+              "Nenne drei Beispiele für Hardware."
+            ]
+          },
+          {
+            "title": "Netzwerke",
+            "summary": "Grundlegende Konzepte von Netzwerken, einschließlich LAN, WAN und das Internet.",
+            "questions": [
+              "Was ist ein LAN?",
+              "Wie unterscheidet sich ein WAN von einem LAN?"
+            ]
+          }
+        ]
+      },
+      {
+        "topic": "Programmieren",
+        "description": "Einführung in die Programmierung und die Erstellung einfacher Programme mit einer visuellen Programmiersprache.",
+        "examples": [
+          {
+            "title": "Einführung in Scratch",
+            "summary": "Lernen, wie man einfache Programme mit der visuellen Programmiersprache Scratch erstellt.",
+            "questions": [
+              "Was ist Scratch?",
+              "Wie erstellt man eine Schleife in Scratch?"
+            ]
+          },
+          {
+            "title": "Grundlegende Algorithmen",
+            "summary": "Verständnis von grundlegenden Algorithmen und ihrer Implementierung in Scratch.",
+            "questions": [
+              "Was ist ein Algorithmus?",
+              "Gib ein Beispiel für einen einfachen Algorithmus."
+            ]
+          }
+        ]
+      },
+      {
+        "topic": "Datenschutz und Sicherheit",
+        "description": "Verständnis der Bedeutung von Datenschutz und Sicherheit im Internet.",
+        "examples": [
+          {
+            "title": "Passwörter",
+            "summary": "Wie man sichere Passwörter erstellt und warum sie wichtig sind.",
+            "questions": [
+              "Was macht ein Passwort sicher?",
+              "Warum sollte man unterschiedliche Passwörter für verschiedene Konten verwenden?"
+            ]
+          },
+          {
+            "title": "Datenschutz im Internet",
+            "summary": "Maßnahmen zum Schutz der eigenen Daten beim Surfen im Internet.",
+            "questions": [
+              "Welche Maßnahmen kannst du ergreifen, um deine Daten online zu schützen?",
+              "Warum ist Datenschutz im Internet wichtig?"
+            ]
+          }
+        ]
+      }
+    ]
+  }
+  

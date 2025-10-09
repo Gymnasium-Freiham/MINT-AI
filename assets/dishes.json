@@ -1,0 +1,69 @@
+{
+    "dishes": [
+      {
+        "name": "Spaghetti Carbonara",
+        "description": "Klassisches italienisches Gericht mit Spaghetti, Speck, Ei, Parmesan und Pfeffer.",
+        "category": "Hauptgericht",
+        "ingredients": ["Spaghetti", "Speck", "Eier", "Parmesan", "Pfeffer"],
+        "preparationTime": "20 Minuten",
+        "calories": "550 kcal"
+      },
+      {
+        "name": "Tom Kha Gai",
+        "description": "Thailändische Hühnersuppe mit Kokosmilch, Zitronengras, Galgant und Koriander.",
+        "category": "Vorspeise",
+        "ingredients": ["Hühnerfleisch", "Kokosmilch", "Zitronengras", "Galgant", "Koriander"],
+        "preparationTime": "30 Minuten",
+        "calories": "350 kcal"
+      },
+      {
+        "name": "Butter Chicken",
+        "description": "Indisches Currygericht mit zartem Hühnerfleisch in cremiger Tomatensauce.",
+        "category": "Hauptgericht",
+        "ingredients": ["Hühnerfleisch", "Tomatensauce", "Butter", "Gewürze"],
+        "preparationTime": "45 Minuten",
+        "calories": "600 kcal"
+      },
+      {
+        "name": "Creme Brulee",
+        "description": "Französisches Dessert mit einer knusprigen Karamellschicht und einer cremigen Vanillefüllung.",
+        "category": "Dessert",
+        "ingredients": ["Sahne", "Eigelb", "Vanille", "Zucker"],
+        "preparationTime": "50 Minuten",
+        "calories": "320 kcal"
+      },
+      {
+        "name": "Caesar Salad",
+        "description": "Salat mit Römersalat, Croutons, Parmesan und Caesar-Dressing.",
+        "category": "Vorspeise",
+        "ingredients": ["Römersalat", "Croutons", "Parmesan", "Caesar-Dressing"],
+        "preparationTime": "15 Minuten",
+        "calories": "200 kcal"
+      },
+      {
+        "name": "Pad Thai",
+        "description": "Thailändisches Nudelgericht mit Reisnudeln, Tofu, Ei, Erdnüssen und Limette.",
+        "category": "Hauptgericht",
+        "ingredients": ["Reisnudeln", "Tofu", "Ei", "Erdnüsse", "Limette"],
+        "preparationTime": "25 Minuten",
+        "calories": "450 kcal"
+      },
+      {
+        "name": "Ratatouille",
+        "description": "Französisches Gemüsegericht mit Zucchini, Auberginen, Paprika und Tomaten.",
+        "category": "Hauptgericht",
+        "ingredients": ["Zucchini", "Auberginen", "Paprika", "Tomaten", "Kräuter"],
+        "preparationTime": "40 Minuten",
+        "calories": "300 kcal"
+      },
+      {
+        "name": "Tiramisu",
+        "description": "Italienisches Dessert mit Löffelbiskuits, Mascarpone, Kaffee und Kakao.",
+        "category": "Dessert",
+        "ingredients": ["Löffelbiskuits", "Mascarpone", "Kaffee", "Kakao"],
+        "preparationTime": "30 Minuten",
+        "calories": "400 kcal"
+      }
+    ]
+  }
+  

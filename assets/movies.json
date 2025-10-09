@@ -1,0 +1,53 @@
+{
+    "movies": [
+      {
+        "title": "Toy Story",
+        "director": "John Lasseter",
+        "description": "Ein animierter Film über das geheime Leben von Spielzeugen, wenn ihre Besitzer nicht da sind.",
+        "genre": "Animation"
+      },
+      {
+        "title": "Finding Nemo",
+        "director": "Andrew Stanton",
+        "description": "Eine Abenteuerreise eines Clownfisch-Vaters, der nach seinem vermissten Sohn sucht.",
+        "genre": "Familie"
+      },
+      {
+        "title": "The Lion King",
+        "director": "Roger Allers, Rob Minkoff",
+        "description": "Die Geschichte eines jungen Löwen namens Simba, der lernen muss, seinen Platz im Kreis des Lebens zu finden.",
+        "genre": "Animation"
+      },
+      {
+        "title": "Frozen",
+        "director": "Chris Buck, Jennifer Lee",
+        "description": "Die Geschichte von zwei Schwestern, Anna und Elsa, und Elsas magischen Kräften, die das Königreich Arendelle in ewigen Winter stürzen.",
+        "genre": "Animation"
+      },
+      {
+        "title": "Moana",
+        "director": "Ron Clements, John Musker",
+        "description": "Ein mutiges Mädchen namens Moana begibt sich auf eine Reise, um ihr Volk zu retten und entdeckt dabei ihre eigene Identität.",
+        "genre": "Animation"
+      },
+      {
+        "title": "Despicable Me",
+        "director": "Pierre Coffin, Chris Renaud",
+        "description": "Ein Superschurke namens Gru plant, den Mond zu stehlen, trifft aber auf drei Waisenmädchen, die sein Leben verändern.",
+        "genre": "Animation"
+      },
+      {
+        "title": "The Incredibles",
+        "director": "Brad Bird",
+        "description": "Eine Familie von Superhelden, die sich verstecken müssen, bis sie erneut gezwungen werden, die Welt zu retten.",
+        "genre": "Animation"
+      },
+      {
+        "title": "Shrek",
+        "director": "Andrew Adamson, Vicky Jenson",
+        "description": "Ein grüner Oger namens Shrek begibt sich auf eine Mission, um Prinzessin Fiona zu retten und Frieden in sein Sumpfheim zu bringen.",
+        "genre": "Animation"
+      }
+    ]
+  }
+  

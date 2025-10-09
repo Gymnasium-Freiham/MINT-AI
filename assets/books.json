@@ -1,0 +1,53 @@
+{
+    "books": [
+      {
+        "title": "The Very Hungry Caterpillar",
+        "author": "Eric Carle",
+        "description": "Die Geschichte einer kleinen Raupe, die sich durch eine Menge Essen frisst, bevor sie sich in einen schönen Schmetterling verwandelt.",
+        "genre": "Kinderbuch"
+      },
+      {
+        "title": "Goodnight Moon",
+        "author": "Margaret Wise Brown",
+        "description": "Eine liebevolle Gutenachtgeschichte, in der ein kleines Häschen seine Umgebung vor dem Schlafengehen verabschiedet.",
+        "genre": "Kinderbuch"
+      },
+      {
+        "title": "Where the Wild Things Are",
+        "author": "Maurice Sendak",
+        "description": "Die Abenteuer eines Jungen namens Max, der in eine Welt voller wilder Kreaturen reist und ihr König wird.",
+        "genre": "Kinderbuch"
+      },
+      {
+        "title": "Green Eggs and Ham",
+        "author": "Dr. Seuss",
+        "description": "Ein humorvolles Buch über einen Charakter, der verschiedene Arten von grünen Eiern und Schinken ausprobiert.",
+        "genre": "Kinderbuch"
+      },
+      {
+        "title": "The Tale of Peter Rabbit",
+        "author": "Beatrix Potter",
+        "description": "Die Geschichte eines frechen kleinen Kaninchens, das in den Garten von Mr. McGregor eindringt.",
+        "genre": "Kinderbuch"
+      },
+      {
+        "title": "Corduroy",
+        "author": "Don Freeman",
+        "description": "Die Geschichte eines kleinen Teddybären, der in einem Kaufhaus auf ein Abenteuer geht, um einen fehlenden Knopf zu finden.",
+        "genre": "Kinderbuch"
+      },
+      {
+        "title": "Guess How Much I Love You",
+        "author": "Sam McBratney",
+        "description": "Ein herzerwärmendes Buch, in dem ein kleiner Hase und ein großer Hase ihre Liebe zueinander messen.",
+        "genre": "Kinderbuch"
+      },
+      {
+        "title": "Winnie the Pooh",
+        "author": "A. A. Milne",
+        "description": "Die Abenteuer von Winnie Puuh, einem liebenswerten Bären, und seinen Freunden im Hundert-Morgen-Wald.",
+        "genre": "Kinderbuch"
+      }
+    ]
+  }
+  

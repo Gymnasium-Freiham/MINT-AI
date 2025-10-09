@@ -1,0 +1,42 @@
+[
+    {
+      "name": "octocat/Hello-World",
+      "url": "https://github.com/octocat/Hello-World"
+    },
+    {
+      "name": "tensorflow/tensorflow",
+      "url": "https://github.com/tensorflow/tensorflow"
+    },
+    {
+      "name": "microsoft/vscode",
+      "url": "https://github.com/microsoft/vscode"
+    },
+    {
+      "name": "facebook/react",
+      "url": "https://github.com/facebook/react"
+    },
+    {
+      "name": "vuejs/vue",
+      "url": "https://github.com/vuejs/vue"
+    },
+    {
+      "name": "jquery/jquery",
+      "url": "https://github.com/jquery/jquery"
+    },
+    {
+      "name": "angular/angular",
+      "url": "https://github.com/angular/angular"
+    },
+    {
+      "name": "docker/docker",
+      "url": "https://github.com/docker/docker"
+    },
+    {
+      "name": "kubernetes/kubernetes",
+      "url": "https://github.com/kubernetes/kubernetes"
+    },
+    {
+      "name": "rails/rails",
+      "url": "https://github.com/rails/rails"
+    }
+  ]

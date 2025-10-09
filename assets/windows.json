@@ -1,0 +1,47 @@
+{
+    "windowsVersions": [
+      {
+        "version": "Windows 95",
+        "releaseDate": "August 24, 1995",
+        "description": "Windows 95 introduced the Start menu, taskbar, and focused on multitasking and user-friendly interfaces.",
+        "keyFeatures": ["Start menu", "Taskbar", "Plug and Play support"]
+      },
+      {
+        "version": "Windows XP",
+        "releaseDate": "October 25, 2001",
+        "description": "Windows XP combined stability and efficiency with a more refined and user-friendly interface.",
+        "keyFeatures": ["Improved user interface", "Remote Desktop", "ClearType"]
+      },
+      {
+        "version": "Windows Vista",
+        "releaseDate": "January 30, 2007",
+        "description": "Windows Vista introduced a new visual style and enhanced security features, but was criticized for its performance and compatibility issues.",
+        "keyFeatures": ["Aero interface", "User Account Control", "Windows Defender"]
+      },
+      {
+        "version": "Windows 7",
+        "releaseDate": "October 22, 2009",
+        "description": "Windows 7 was a major improvement over Vista, focusing on performance enhancements and usability.",
+        "keyFeatures": ["Improved taskbar", "Snap", "HomeGroup"]
+      },
+      {
+        "version": "Windows 8",
+        "releaseDate": "October 26, 2012",
+        "description": "Windows 8 introduced a new Start screen with live tiles and was optimized for touchscreens.",
+        "keyFeatures": ["Start screen", "Live tiles", "Windows Store"]
+      },
+      {
+        "version": "Windows 10",
+        "releaseDate": "July 29, 2015",
+        "description": "Windows 10 brought back the Start menu and introduced a unified platform for PCs, tablets, and phones.",
+        "keyFeatures": ["Start menu", "Cortana", "Continuum"]
+      },
+      {
+        "version": "Windows 11",
+        "releaseDate": "October 5, 2021",
+        "description": "Windows 11 introduced a new design, improved performance, and enhanced support for virtual desktops and gaming.",
+        "keyFeatures": ["New design", "Improved performance", "Enhanced virtual desktops"]
+      }
+    ]
+  }
+  

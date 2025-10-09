@@ -1,0 +1,30 @@
+{
+    "fruits": [
+      {
+        "name": "Apple",
+        "description": "A sweet, edible fruit produced by an apple tree.",
+        "category": "Fruit"
+      },
+      {
+        "name": "Banana",
+        "description": "A long, curved fruit with a yellow skin and soft, sweet, white flesh inside.",
+        "category": "Fruit"
+      },
+      {
+        "name": "Cherry",
+        "description": "A small, round stone fruit that is typically bright or dark red.",
+        "category": "Fruit"
+      },
+      {
+        "name": "Date",
+        "description": "A sweet fruit from the date palm tree, typically oval and brown.",
+        "category": "Fruit"
+      },
+      {
+        "name": "Elderberry",
+        "description": "A small, dark berry from the elder tree, often used in jams and syrups.",
+        "category": "Fruit"
+      }
+    ]
+  }
+  
