@@ -15,6 +15,11 @@ def append_data(training_data, new_data, key):
             question = f"Was ist die Comic-Serie '{entry['title']}'?"
             answer = entry['description']
             training_data.append({"question": question, "answer": answer})
+    elif key == "githubrepos":
+        for entry in new_data["githubrepos"]:
+            question = f"Welche URL hat '{entry['names']}'?"
+            answer = entry['url']
+            training_data.append({"question": question, "answer": answer})
     elif key == "dishes":
         for entry in new_data["dishes"]:
             question = f"Was ist das Gericht '{entry['name']}'?"

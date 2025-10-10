@@ -78,6 +78,7 @@ training_data = load_and_append_data(training_data, './assets/deutsch6klassebaye
 training_data = load_and_append_data(training_data, './assets/superMarioGames.json', 'superMarioGames')
 training_data = load_and_append_data(training_data, './assets/informatik6klassebayern.json', 'informatik6klassebayern')
 training_data = load_and_append_data(training_data, './assets/mathematik6klassebayern.json', 'mathematik6klassebayern')
+training_data = load_and_append_data(training_data, './assets/githubrepos.json', 'githubrepos')
 
 if not training_data:
     raise ValueError("Das Trainingsdatenset ist leer. Bitte überprüfen Sie die Quelle der Daten.")
