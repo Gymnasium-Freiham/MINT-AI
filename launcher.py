@@ -201,6 +201,7 @@ class LauncherGUI(QWidget):
         self.initUI()
         self.load_dev_options()
         self.temp_addon_files = []
+        self.main_process = None  # track the running main program to avoid multiple launches
         app.installEventFilter(self)
 
     def initUI(self):
@@ -434,12 +435,12 @@ class LauncherGUI(QWidget):
 
     def uninstall_program(self):
         reply = QMessageBox.question(self, 'Bestätigung', 
-        'Sind Sie sicher, dass der LATIN-AI-Launcher deinstalliert wird?',
+        'Sind Sie sicher, dass der LATIN-AI-Launcher deinstalliert werden soll?',
         QMessageBox.Yes | QMessageBox.No, QMessageBox.No)
 
         if reply == QMessageBox.Yes:
             reply = QMessageBox.question(self, 'Bestätigung', 
-                                         'Sind Sie wirklich sicher, dass der LATIN-AI-Launcher deinstalliert wird?',
+                                         'Sind Sie wirklich sicher, dass der LATIN-AI-Launcher deinstalliert werden soll?',
                                          QMessageBox.Yes | QMessageBox.No, QMessageBox.No)
         
             if reply == QMessageBox.Yes:
@@ -458,11 +459,42 @@ class LauncherGUI(QWidget):
     def start_program(self):
         # Hauptprogramm starten
         self.text_area.append("Das Hauptprogramm wird gestartet...")  # Ausgabe im Textbereich
+        # Verhindere mehrfaches Starten, falls bereits ein Prozess läuft
+        if self.main_process is not None and self.main_process.state() != QProcess.NotRunning:
+            self.text_area.append("Das Programm läuft bereits. Bitte warten, bis es beendet ist.")
+            return
+
+        # Erstelle und starte QProcess, damit Qt den Prozessstatus liefern kann
         try:
-            subprocess.Popen(['python', 'test.py'] + (['--gibberlink=true'] if GIBBERLINK_EXPERIMENTAL else []))
+            self.main_process = QProcess(self)
+            # Optional: weiterleiten von stdout/stderr, falls benötigt
+            self.main_process.readyReadStandardOutput.connect(lambda: self.text_area.append(bytes(self.main_process.readAllStandardOutput()).decode('latin-1')))
+            self.main_process.readyReadStandardError.connect(lambda: self.text_area.append(bytes(self.main_process.readAllStandardError()).decode('latin-1')))
+            self.main_process.finished.connect(self.on_main_finished)
+
+            # Button deaktivieren, bis der Prozess fertig ist
+            self.start_button.setEnabled(False)
+
+            program = sys.executable  # verwende das aktuelle Python-Executable
+            args = ['test.py'] + (['--gibberlink=true'] if GIBBERLINK_EXPERIMENTAL else [])
+            self.main_process.start(program, args)
+            if not self.main_process.waitForStarted(3000):
+                # Falls Start fehlschlägt, aufräumen und melden
+                self.text_area.append("Fehler: Das Programm konnte nicht gestartet werden.")
+                self.start_button.setEnabled(True)
+                self.main_process = None
         except Exception as e:
             QMessageBox.critical(self, "Fehler", f"Fehler beim Starten des Skripts: {e}")
-    
+            self.start_button.setEnabled(True)
+            self.main_process = None
+
+    def on_main_finished(self, exitCode, exitStatus):
+        # Wieder aktivieren und Status melden
+        self.text_area.append(f"Hauptprogramm beendet (ExitCode={exitCode}, Status={int(exitStatus)}).")
+        self.start_button.setEnabled(True)
+        # Prozessreferenz freigeben
+        self.main_process = None
+
     def check_updates(self):
         # Updates suchensa
         if self.prevent_updates_checkbox.isChecked():
