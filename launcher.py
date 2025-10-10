@@ -103,7 +103,7 @@ def load_all_addons(addons_dir):
 
 def get_install_dir():
     try:
-        with winreg.OpenKey(winreg.HKEY_CURRENT_USER, r"Software\LATIN-AI") as key:
+        with winreg.OpenKey(winreg.HKEY_CURRENT_USER, r"Software\LATIN AI") as key:
             install_dir, _ = winreg.QueryValueEx(key, "InstallDir")
             return install_dir
     except FileNotFoundError:
