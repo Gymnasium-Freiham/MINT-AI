@@ -194,7 +194,7 @@ class LauncherGUI(QWidget):
         app.installEventFilter(self)
 
     def initUI(self):
-        self.setWindowTitle('MINT AI Launcher')
+        self.setWindowTitle('LATIN AI Launcher')
         self.setGeometry(100, 100, 800, 600)
         
         # Hintergrundfarbe
@@ -215,7 +215,7 @@ class LauncherGUI(QWidget):
         layout.addWidget(self.logo_label)
         
         # Titel
-        self.title_label = QLabel('Welcome to MINT AI Launcher!', self)
+        self.title_label = QLabel('Welcome to LATIN AI Launcher!', self)
         self.title_label.setAlignment(Qt.AlignCenter)
         self.title_label.setFont(QFont('Arial', 24))
         self.title_label.setStyleSheet("color: white;")
@@ -223,7 +223,7 @@ class LauncherGUI(QWidget):
         
 
         # Button zum Starten des Hauptprogramms
-        self.start_button = QPushButton('Start MINT AI', self)
+        self.start_button = QPushButton('Start LATIN AI', self)
         self.start_button.setFont(QFont('Arial', 18))
         self.start_button.setStyleSheet("background-color: green; color: white; padding: 10px;")
         self.start_button.clicked.connect(self.start_program)
