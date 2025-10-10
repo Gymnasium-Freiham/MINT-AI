@@ -8,7 +8,7 @@ import tkinter as tk
 from tkinter import messagebox
 import os
 if activation==False:
-    sys.exit("Error-code: 0x43R43DESACTIVATED36")
+    sys.exit("Error-code: 0x43R43DESACTIV7ATED36")
 
 # Installiere notwendige Bibliotheken
 def install(package):
