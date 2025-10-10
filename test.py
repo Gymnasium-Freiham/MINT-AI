@@ -79,8 +79,13 @@ class TerminalGUI(QMainWindow):
         self.process.readyReadStandardError.connect(self.read_error)
         self.process.started.connect(self.process_started)
         self.process.finished.connect(self.process_finished)
+        # Start main.py via QProcess so its stdout/stderr are delivered to this GUI
+        program = sys.executable
+        args = ['main.py'] + (['--gibberlink=true'] if GIBBERLINK_EXPERIMENTAL else [])
         try:
-            subprocess.Popen(['python', 'main.py'] + (['--gibberlink=true'] if GIBBERLINK_EXPERIMENTAL else []))
+            self.process.start(program, args)
+            if not self.process.waitForStarted(3000):
+                raise RuntimeError("Start failed")
         except Exception as e:
             self.text_area.append(f"Fehler beim Starten des Skripts: {e}")
             self.status_bar.setStyleSheet("background-color: red; color: white;")

@@ -208,7 +208,8 @@ class LauncherGUI(QWidget):
         self.initUI()
         self.load_dev_options()
         self.temp_addon_files = []
-        self.main_process = None  # track the running main program to avoid multiple launches
+        # track a short-lived launch state to avoid rapid repeated clicks
+        self._launch_in_progress = False
         app.installEventFilter(self)
 
     def initUI(self):
@@ -466,63 +467,22 @@ class LauncherGUI(QWidget):
     def start_program(self):
         # Hauptprogramm starten
         self.text_area.append("Das Hauptprogramm wird gestartet...")  # Ausgabe im Textbereich
-        # Verhindere mehrfaches Starten, falls bereits ein Prozess läuft
-        if self.main_process is not None and self.main_process.state() != QProcess.NotRunning:
-            self.text_area.append("Das Programm läuft bereits. Bitte warten, bis es beendet ist.")
+        # prevent very rapid repeated launches
+        if self._launch_in_progress:
+            self.text_area.append("Start wird bereits ausgeführt. Bitte warten...")
             return
-
-        # Erstelle und starte QProcess, damit Qt den Prozessstatus liefern kann
+        self._launch_in_progress = True
+        self.start_button.setEnabled(False)
+        program = sys.executable
+        args = ['test.py'] + (['--gibberlink=true'] if GIBBERLINK_EXPERIMENTAL else [])
         try:
-            self.main_process = QProcess(self)
-            # connect to safe slots that use sender() to avoid referencing a deleted QProcess
-            self.main_process.readyReadStandardOutput.connect(self.on_main_stdout)
-            self.main_process.readyReadStandardError.connect(self.on_main_stderr)
-            self.main_process.finished.connect(self.on_main_finished)
-
-            # Button deaktivieren, bis der Prozess fertig ist
-            self.start_button.setEnabled(False)
-
-            program = sys.executable  # verwende das aktuelle Python-Executable
-            args = ['test.py'] + (['--gibberlink=true'] if GIBBERLINK_EXPERIMENTAL else [])
-            self.main_process.start(program, args)
-            if not self.main_process.waitForStarted(3000):
-                # Falls Start fehlschlägt, aufräumen und melden
-                self.text_area.append("Fehler: Das Programm konnte nicht gestartet werden.")
-                self.start_button.setEnabled(True)
-                self.main_process = None
+            # Start detached so launcher does NOT capture child's stdout/stderr
+            QProcess.startDetached(program, args)
+            self.text_area.append("Hauptprogramm (test.py) im Hintergrund gestartet.")
         except Exception as e:
             QMessageBox.critical(self, "Fehler", f"Fehler beim Starten des Skripts: {e}")
-            self.start_button.setEnabled(True)
-            self.main_process = None
-
-    def on_main_stdout(self):
-        proc = self.sender()
-        if proc is None:
-            return
-        try:
-            out = proc.readAllStandardOutput().data().decode('latin-1')
-            if out:
-                self.text_area.append(out)
-        except Exception:
-            pass
-
-    def on_main_stderr(self):
-        proc = self.sender()
-        if proc is None:
-            return
-        try:
-            err = proc.readAllStandardError().data().decode('latin-1')
-            if err:
-                self.text_area.append(err)
-        except Exception:
-            pass
-
-    def on_main_finished(self, exitCode, exitStatus):
-        # Wieder aktivieren und Status melden
-        self.text_area.append(f"Hauptprogramm beendet (ExitCode={exitCode}, Status={int(exitStatus)}).")
-        self.start_button.setEnabled(True)
-        # Prozessreferenz freigeben
-        self.main_process = None
+        # re-enable button after a short interval to prevent accidental flooding
+        QTimer.singleShot(1000, lambda: (setattr(self, "_launch_in_progress", False), self.start_button.setEnabled(True)))
 
     def check_updates(self):
         # Updates suchensa
