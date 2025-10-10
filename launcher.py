@@ -9,7 +9,7 @@ from urllib.parse import urlparse, parse_qs
 
 # Prüfen, ob der Parameter --no-connection übergeben wurde
 no_connection = "--no-connection" in sys.argv
-
+GIBBERLINK_EXPERIMENTAL = "--gibberlink=true" in sys.argv  # oder False, je nach Bedarf
 # Setze eine Umgebungsvariable, die von anderen Skripten gelesen werden kann
 if no_connection:
     os.environ["NO_CONNECTION"] = "1"
@@ -124,7 +124,7 @@ def read_registry_setting(key, value, default=None):
             result, _ = winreg.QueryValueEx(reg_key, value)
             return result
     except FileNotFoundError:
-        return defaul
+        return default
 def write_registry_setting(key, value, data):
     with winreg.CreateKey(winreg.HKEY_CURRENT_USER, key) as reg_key:
         winreg.SetValueEx(reg_key, value, 0, winreg.REG_SZ, data)
@@ -267,6 +267,10 @@ class LauncherGUI(QWidget):
 
         self.logo_checkbox = QCheckBox("Schnellzugriffslogos deaktivieren", self)
         self.logo_checkbox.stateChanged.connect(self.save_dev_options)
+        self.dev_options_layout.addRow(self.logo_checkbox)
+
+        self.gibberlink_checkbox = QCheckBox("Gibberlink aktivieren", self)
+        self.gibberlink_checkbox.stateChanged.connect(self.save_dev_options)
         self.dev_options_layout.addRow(self.logo_checkbox)
 
         self.uninstall_button = QPushButton("Uninstall LATIN-AI Launcher", self)
@@ -445,7 +449,7 @@ class LauncherGUI(QWidget):
         # Hauptprogramm starten
         self.text_area.append("Das Hauptprogramm wird gestartet...")  # Ausgabe im Textbereich
         try:
-            subprocess.Popen(['python', 'test.py'])
+            subprocess.Popen(['python', 'test.py'] + (['--gibberlink=true'] if GIBBERLINK_EXPERIMENTAL else []))
         except Exception as e:
             QMessageBox.critical(self, "Fehler", f"Fehler beim Starten des Skripts: {e}")
     
@@ -472,6 +476,7 @@ class LauncherGUI(QWidget):
     def save_dev_options(self):
         write_registry_setting(r"Software\MINT-AI", "PreventUpdates", "True" if self.prevent_updates_checkbox.isChecked() else "False")
         write_registry_setting(r"Software\MINT-AI", "DisableLogos", "True" if self.logo_checkbox.isChecked() else "False")
+        GIBBERLINK_EXPERIMENTAL= True if self.gibberlink_checkbox.isChecked() else False
         self.toggle_logo()
 
     def toggle_logo(self):

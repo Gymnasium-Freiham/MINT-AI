@@ -4,7 +4,7 @@ import sys
 from PyQt5.QtWidgets import QApplication, QWidget, QVBoxLayout, QLineEdit, QPushButton, QTextEdit, QHBoxLayout, QLabel, QComboBox, QStatusBar, QMainWindow, QProgressBar
 from PyQt5.QtGui import QFont, QPalette, QColor, QPixmap, QIcon
 from PyQt5.QtCore import QProcess, Qt, QTimer
-
+GIBBERLINK_EXPERIMENTAL = "--gibberlink=true" in sys.argv  # oder False, je nach Bedarf
 class TerminalGUI(QMainWindow):
     def __init__(self):
         super().__init__()
@@ -80,7 +80,7 @@ class TerminalGUI(QMainWindow):
         self.process.started.connect(self.process_started)
         self.process.finished.connect(self.process_finished)
         try:
-            self.process.start('python', ['main.py'])
+            subprocess.Popen(['python', 'test.py'] + (['--gibberlink=true'] if GIBBERLINK_EXPERIMENTAL else []))
         except Exception as e:
             self.text_area.append(f"Fehler beim Starten des Skripts: {e}")
             self.status_bar.setStyleSheet("background-color: red; color: white;")
