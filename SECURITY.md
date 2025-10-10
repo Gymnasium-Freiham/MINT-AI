@@ -16,7 +16,8 @@ We only support current versions and a few times the version above.
 | 2.2.0pre4   | :x: | April 2025 |
 | 2.2.0   | :x: | June 2025 |
 | 2.2.0.1   | :x: | June 2025 |
-| 2.2.1   | :white_check_mark: | EXTENDED Octobre 2025 |
+| 2.2.1   | :x: | EXTENDED October 2025 |
+| 2.2.2   | :white_check_mark: | December 2025 |
 ## Compatibility with Python versions
 
 | Version | Supported          |
@@ -26,7 +27,7 @@ We only support current versions and a few times the version above.
 |  3.9  | :white_check_mark: |
 | 3.10   | :white_check_mark: |
 |  3.11  | :white_check_mark: |
-| 3.12   | :white_check_mark: |+
+| 3.12   | :white_check_mark: |
 | 3.13   | :white_check_mark: |
 
 ## Reporting a Vulnerability
