@@ -6,6 +6,7 @@ import tempfile
 import shutil
 import webbrowser
 from urllib.parse import urlparse, parse_qs
+import socket
 
 # Prüfen, ob der Parameter --no-connection übergeben wurde
 no_connection = "--no-connection" in sys.argv
@@ -21,6 +22,15 @@ def install(package):
         return
     subprocess.check_call([sys.executable, "-m", "pip", "install", package])
 
+
+def check_internet_connection(timeout=3):
+    try:
+        # Versuche, eine Verbindung zu einem bekannten Server (Google DNS)
+        socket.setdefaulttimeout(timeout)
+        socket.socket(socket.AF_INET, socket.SOCK_STREAM).connect(("8.8.8.8", 53))
+        return True
+    except socket.error:
+        return False
 try:
     import PyQt5
 except ImportError:
@@ -271,7 +281,7 @@ class LauncherGUI(QWidget):
 
         self.gibberlink_checkbox = QCheckBox("Gibberlink aktivieren", self)
         self.gibberlink_checkbox.stateChanged.connect(self.save_dev_options)
-        self.dev_options_layout.addRow(self.logo_checkbox)
+        self.dev_options_layout.addRow(self.gibberlink_checkbox)
 
         self.uninstall_button = QPushButton("Uninstall LATIN-AI Launcher", self)
         self.uninstall_button.clicked.connect(self.uninstall_program)
@@ -424,8 +434,8 @@ class LauncherGUI(QWidget):
 
     def uninstall_program(self):
         reply = QMessageBox.question(self, 'Bestätigung', 
-                                     'Sind Sie sicher, dass der LATIN-AI-Launcher deinstalliert wird?',
-                                     QMessageBox.Yes | QMessageBox.No, QMessageBox.No)
+        'Sind Sie sicher, dass der LATIN-AI-Launcher deinstalliert wird?',
+        QMessageBox.Yes | QMessageBox.No, QMessageBox.No)
 
         if reply == QMessageBox.Yes:
             reply = QMessageBox.question(self, 'Bestätigung', 
