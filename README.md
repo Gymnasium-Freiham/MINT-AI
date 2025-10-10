@@ -1,5 +1,5 @@
 ![image](./logo.png)
-# MINT AI
+# LATIN AI
 An AI for chatting.
 
 ### Important: This is the main branch which includes the newest unstable canary build. Please switch to a version tag for the normal version.
