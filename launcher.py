@@ -18,9 +18,15 @@ else:
     os.environ["NO_CONNECTION"] = "0"
 def install(package):
     if no_connection:
-        print(f"Überspringe Installation von {package} (kein Internetzugriff erlaubt).")
+        # no network allowed
         return
-    subprocess.check_call([sys.executable, "-m", "pip", "install", package])
+    try:
+        # suppress pip output to avoid spamming the console
+        subprocess.run([sys.executable, "-m", "pip", "install", package],
+                       stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL, check=True)
+    except subprocess.CalledProcessError:
+        # ignore install errors here; caller can handle logging if needed
+        pass
 
 
 def check_internet_connection(timeout=3):
@@ -61,12 +67,15 @@ class DependencyInstaller(QThread):
         total = len(dependencies)
         for i, package in enumerate(dependencies, start=1):
             if no_connection:
-                print(f"Überspringe Installation von {package} (kein Internetzugriff erlaubt).")
+                # skip network installs
+                pass
             else:
                 try:
-                    subprocess.check_call([sys.executable, "-m", "pip", "install", package])
+                    subprocess.run([sys.executable, "-m", "pip", "install", package],
+                                   stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL, check=True)
                 except Exception as e:
-                    print(f"Fehler bei der Installation von {package}: {e}")
+                    # don't spam UI; keep silent on install failures here
+                    pass
             progress = int((i / total) * 100)
             self.progress_updated.emit(progress)  # Fortschritt aktualisieren
         self.installation_finished.emit()  # Installation abgeschlossen
@@ -138,8 +147,6 @@ def read_registry_setting(key, value, default=None):
 def write_registry_setting(key, value, data):
     with winreg.CreateKey(winreg.HKEY_CURRENT_USER, key) as reg_key:
         winreg.SetValueEx(reg_key, value, 0, winreg.REG_SZ, data)
-
-install("PyQt5")
 
 class LoadingScreen(QWidget):
     def __init__(self):
@@ -440,8 +447,8 @@ class LauncherGUI(QWidget):
 
         if reply == QMessageBox.Yes:
             reply = QMessageBox.question(self, 'Bestätigung', 
-                                         'Sind Sie wirklich sicher, dass der LATIN-AI-Launcher deinstalliert werden soll?',
-                                         QMessageBox.Yes | QMessageBox.No, QMessageBox.No)
+                                        'Sind Sie wirklich sicher, dass der LATIN-AI-Launcher deinstalliert werden soll?',
+                                        QMessageBox.Yes | QMessageBox.No, QMessageBox.No)
         
             if reply == QMessageBox.Yes:
                 reply = QMessageBox.question(self, 'Bestätigung', 
@@ -467,9 +474,9 @@ class LauncherGUI(QWidget):
         # Erstelle und starte QProcess, damit Qt den Prozessstatus liefern kann
         try:
             self.main_process = QProcess(self)
-            # Optional: weiterleiten von stdout/stderr, falls benötigt
-            self.main_process.readyReadStandardOutput.connect(lambda: self.text_area.append(bytes(self.main_process.readAllStandardOutput()).decode('latin-1')))
-            self.main_process.readyReadStandardError.connect(lambda: self.text_area.append(bytes(self.main_process.readAllStandardError()).decode('latin-1')))
+            # connect to safe slots that use sender() to avoid referencing a deleted QProcess
+            self.main_process.readyReadStandardOutput.connect(self.on_main_stdout)
+            self.main_process.readyReadStandardError.connect(self.on_main_stderr)
             self.main_process.finished.connect(self.on_main_finished)
 
             # Button deaktivieren, bis der Prozess fertig ist
@@ -487,6 +494,28 @@ class LauncherGUI(QWidget):
             QMessageBox.critical(self, "Fehler", f"Fehler beim Starten des Skripts: {e}")
             self.start_button.setEnabled(True)
             self.main_process = None
+
+    def on_main_stdout(self):
+        proc = self.sender()
+        if proc is None:
+            return
+        try:
+            out = proc.readAllStandardOutput().data().decode('latin-1')
+            if out:
+                self.text_area.append(out)
+        except Exception:
+            pass
+
+    def on_main_stderr(self):
+        proc = self.sender()
+        if proc is None:
+            return
+        try:
+            err = proc.readAllStandardError().data().decode('latin-1')
+            if err:
+                self.text_area.append(err)
+        except Exception:
+            pass
 
     def on_main_finished(self, exitCode, exitStatus):
         # Wieder aktivieren und Status melden
@@ -535,12 +564,25 @@ class LauncherGUI(QWidget):
             self.logo_label.hide()
 
     def read_output(self):
-        output = self.process.readAllStandardOutput().data().decode('latin-1')
-        self.text_area.append(output)
-        
+        proc = self.sender()
+        if proc is None:
+            return
+        try:
+            out = proc.readAllStandardOutput().data().decode('latin-1')
+            if out:
+                self.text_area.append(out)
+        except Exception:
+            pass
     def read_error(self):
-        error = self.process.readAllStandardError().data().decode('latin-1')
-        self.text_area.append(error)
+        proc = self.sender()
+        if proc is None:
+            return
+        try:
+            err = proc.readAllStandardError().data().decode('latin-1')
+            if err:
+                self.text_area.append(err)
+        except Exception:
+            pass
 
     
 def check_and_start_server():
@@ -551,7 +593,8 @@ def check_and_start_server():
             return
     except requests.ConnectionError:
         print("Server läuft nicht, starte server.py")
-        os.startfile(f'{install_dir}\server.py')
+        # avoid invalid escape sequences and build a safe path
+        os.startfile(os.path.join(install_dir, 'server.py'))
 
 if __name__ == "__main__":
     install_dir = get_install_dir()

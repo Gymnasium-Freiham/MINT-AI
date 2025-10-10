@@ -80,7 +80,7 @@ class TerminalGUI(QMainWindow):
         self.process.started.connect(self.process_started)
         self.process.finished.connect(self.process_finished)
         try:
-            subprocess.Popen(['python', 'test.py'] + (['--gibberlink=true'] if GIBBERLINK_EXPERIMENTAL else []))
+            subprocess.Popen(['python', 'main.py'] + (['--gibberlink=true'] if GIBBERLINK_EXPERIMENTAL else []))
         except Exception as e:
             self.text_area.append(f"Fehler beim Starten des Skripts: {e}")
             self.status_bar.setStyleSheet("background-color: red; color: white;")
@@ -112,7 +112,11 @@ class TerminalGUI(QMainWindow):
         
     def send_input(self):
         user_input = self.entry.text()
-        self.process.write(user_input.encode() + b'\n')
+        # Only write to the process if it's running
+        if hasattr(self, 'process') and self.process.state() == QProcess.Running:
+            self.process.write(user_input.encode() + b'\n')
+        else:
+            self.text_area.append("Kein Backend-Prozess verbunden; Eingabe nicht gesendet.")
         self.entry.clear()
         self.update_progress(100)
         QTimer.singleShot(500, self.reset_progress)
