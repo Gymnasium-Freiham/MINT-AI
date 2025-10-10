@@ -11,7 +11,7 @@ class TerminalGUI(QMainWindow):
         self.initUI()
         
     def initUI(self):
-        self.setWindowTitle('MINT AI')
+        self.setWindowTitle('LATIN AI')
         self.setGeometry(100, 100, 800, 600)
         
         # Anwendungssymbol festlegen
