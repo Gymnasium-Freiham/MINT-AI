@@ -1,4 +1,4 @@
-MINT-AI Software
+LATIN-AI Software
 
 Copyright (C) 2025 Adam Basly
 

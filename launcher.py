@@ -269,7 +269,7 @@ class LauncherGUI(QWidget):
         self.logo_checkbox.stateChanged.connect(self.save_dev_options)
         self.dev_options_layout.addRow(self.logo_checkbox)
 
-        self.uninstall_button = QPushButton("Uninstall MINT-AI Launcher", self)
+        self.uninstall_button = QPushButton("Uninstall LATIN-AI Launcher", self)
         self.uninstall_button.clicked.connect(self.uninstall_program)
         self.dev_options_layout.addRow(self.uninstall_button)
 
@@ -420,12 +420,12 @@ class LauncherGUI(QWidget):
 
     def uninstall_program(self):
         reply = QMessageBox.question(self, 'Bestätigung', 
-                                     'Sind Sie sicher, dass der MINT-AI-Launcher deinstalliert wird?',
+                                     'Sind Sie sicher, dass der LATIN-AI-Launcher deinstalliert wird?',
                                      QMessageBox.Yes | QMessageBox.No, QMessageBox.No)
 
         if reply == QMessageBox.Yes:
             reply = QMessageBox.question(self, 'Bestätigung', 
-                                         'Sind Sie wirklich sicher, dass der MINT-AI-Launcher deinstalliert wird?',
+                                         'Sind Sie wirklich sicher, dass der LATIN-AI-Launcher deinstalliert wird?',
                                          QMessageBox.Yes | QMessageBox.No, QMessageBox.No)
         
             if reply == QMessageBox.Yes:
@@ -436,7 +436,7 @@ class LauncherGUI(QWidget):
                 if reply == QMessageBox.Yes:
                     try:
                         os.system("sudo ./Uninstall.exe")
-                        QMessageBox.information(self, "Deinstallation", "MINT-AI-Launcher wurde erfolgreich deinstalliert.")
+                        QMessageBox.information(self, "Deinstallation", "LATIN-AI-Launcher wurde erfolgreich deinstalliert.")
                         self.close()
                     except Exception as e:
                         QMessageBox.critical(self, "Fehler", f"Fehler bei der Deinstallation: {e}")  

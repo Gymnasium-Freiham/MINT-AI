@@ -94,7 +94,7 @@ model.fit(X, answers)
 # Zusatzfunktionen für NLP
 stemmer = PorterStemmer()
 lemmatizer = WordNetLemmatizer()
-modelofAI = input("Wähle ein Modell aus (Gemma2-9b-it[1] MINT-AI[2]):")
+modelofAI = input("Wähle ein Modell aus (Gemma2-9b-it[1] LATIN-AI[2]):")
 
 def send_gibberlink_sound(text, ultrasound=False):
     try:
