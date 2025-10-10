@@ -1,20 +1,22 @@
 @echo off
-setlocal
+echo Starte MINT-AI Installation...
 
-:: Verzeichnis, in dem die Batch-Datei liegt
-set "SCRIPT_DIR=%~dp0"
+REM Prüfen ob git verfügbar ist
+where git >nul 2>nul
+IF ERRORLEVEL 1 (
+    echo Fehler: Git ist nicht installiert oder nicht im PATH.
+    exit /b 1
+)
 
-:: Zielverzeichnis
-set "TARGET=%USERPROFILE%\MINT-AI"
+REM In das aktuelle Verzeichnis wechseln
+cd /d "%~dp0"
 
-:: Zielverzeichnis erstellen
-mkdir "%TARGET%"
+REM Repository direkt in dieses Verzeichnis klonen
+git clone --depth 1 --single-branch --branch main https://github.com/Gymnasium-Freiham/MINT-AI.git . >nul 2>&1
+IF ERRORLEVEL 1 (
+    echo Fehler beim Klonen.
+    exit /b 1
+)
 
-:: ZIP entpacken aus dem Verzeichnis, wo die Batch-Datei liegt
-powershell -Command "Expand-Archive -Path '%SCRIPT_DIR%mintai.zip' -DestinationPath '%TARGET%' -Force"
-
-:: Registry-Eintrag setzen
-reg add "HKCU\Software\MINT-AI" /v InstallDir /t REG_SZ /d "%TARGET%" /f
-
-echo Installation abgeschlossen.
-endlocal
+echo Installation abgeschlossen
+exit /b 0
