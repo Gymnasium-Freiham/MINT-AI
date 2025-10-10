@@ -3,7 +3,7 @@ import os
 import requests
 
 # GitHub API URL für das Repository
-repo_url = "https://api.github.com/repos/Gymnasium-Freiham/MINT-AI/contents/"
+repo_url = "https://api.github.com/repos/Gymnasium-Freiham/LATIN-AI/contents/"
 
 # Directory where files will be saved
 directory = "./"
