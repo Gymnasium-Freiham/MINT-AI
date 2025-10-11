@@ -200,7 +200,11 @@ if modelofAI == "2":
         except Exception as e:
             return f"Fehler beim Auswerten des Ausdrucks: {str(e)}"
     import re
-
+    def open_vscode():
+        os.system("code")
+    def search_web(query):
+        query = "Unimplemented Feature"
+        return query
     def visualize_calculation_steps(expression, filename="calculation_steps.png"):
         try:
             # Zerlege den Ausdruck in Schritte
