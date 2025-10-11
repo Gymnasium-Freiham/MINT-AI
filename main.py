@@ -201,7 +201,10 @@ if modelofAI == "2":
             return f"Fehler beim Auswerten des Ausdrucks: {str(e)}"
     import re
     def open_vscode():
-        os.system("code")
+        try:
+            os.system("code")
+        except Exception as e:
+            print(f"Visual Studio code not installed or not on path; {e}")
     def search_web(query):
         query = "Unimplemented Feature"
         return query
