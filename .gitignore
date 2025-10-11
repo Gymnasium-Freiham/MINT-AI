@@ -8,3 +8,8 @@ Python-3.12-Installer.exe
 ~installer.DDF
 __pycache__/
 assets/commonurl.json
+executors/python.zip
+executors/python_installer.exe
+executors/python
+executors/get-pip.py
+/pythoninstaller.bat

@@ -1,13 +1,11 @@
-# main.py
-#©Adam Basly. All rights reserved. 
-#Any distribution without naming the author will be punished. 
+#main.py
 activation=True
 import subprocess
 import sys
-import tkinter as tk
-from tkinter import messagebox
 import os
 import unicodedata
+sys.path.insert(0, os.path.dirname(__file__))
+
 if activation==False:
     sys.exit("Error-code: 0x43R43DESACTIV7ATED36")
 
@@ -21,12 +19,20 @@ install("numpy")
 install("requests")
 install("groq")
 install("PyQt5")
-install("torch")
+try:
+    import torch
+except:
+    install("torch")
 install("matplotlib")
-install("simpleaudio")
+GIBBERLINK_EXPERIMENTAL = True
+try:
+    install("simpleaudio")
+except:
+    GIBBERLINK_EXPERIMENTAL=False
 
 from urllib.parse import quote
-import simpleaudio as sa
+if GIBBERLINK_EXPERIMENTAL != False:
+    import simpleaudio as sa
 from groq import Groq
 import json
 import nltk
@@ -403,7 +409,9 @@ if modelofAI == "2":
         return None, None
 
     # Funktion zur Beantwortung von Fragen
-    GIBBERLINK_EXPERIMENTAL = "--gibberlink=true" in sys.argv  # oder False, je nach Bedarf
+    if GIBBERLINK_EXPERIMENTAL != False:
+        GIBBERLINK_EXPERIMENTAL = "--gibberlink=true" in sys.argv  # oder False, je nach Bedarf
+    
 
     def chatbot_response(question):
         print(question)
