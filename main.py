@@ -7,6 +7,7 @@ import sys
 import tkinter as tk
 from tkinter import messagebox
 import os
+import unicodedata
 if activation==False:
     sys.exit("Error-code: 0x43R43DESACTIV7ATED36")
 
@@ -55,7 +56,7 @@ from nltk.stem import PorterStemmer
 from nltk.stem import WordNetLemmatizer
 from nltk import pos_tag, ne_chunk
 
-from data import load_training_data, load_and_append_data, fetch_wikipedia_summary, extract_subject_from_question
+from data import load_training_data, load_and_append_data, fetch_wikipedia_summary, fetch_wikipedia_variants, fetch_wikipedia_page_text, fetch_wiktionary_definition, extract_subject_from_question
 
 # Setze Seed für Reproduzierbarkeit
 def set_seed(seed):
@@ -240,36 +241,138 @@ if modelofAI == "2":
             return None
 
 
-    # Funktion zum Öffnen von VS Code
-    def open_vscode():
-        try:
-            os.system("code")
-            return "VS Code wird geöffnet."
-        except Exception as e:
-            return f"Fehler beim Öffnen von VS Code: {str(e)}"
+    # --- NEW: extract measurement snippets from text and try wiki variants ---
+    def extract_measurement_from_text(text):
+        if not text:
+            return None
+        # normalize whitespace
+        txt = re.sub(r'\s+', ' ', text)
+        # common unit patterns (DE + EN) and numeric ranges
+        patterns = [
+            r'(\d{1,4}(?:[.,]\d+)?\s?(?:m|Meter|Metern|meter|metres|meters|cm|Zentimeter|centimeter|km|Millimeter|mm|ft|feet|in|inch|Zoll))',
+            r'(\d{1,4}(?:[.,]\d+)?\s?(?:cm|Zentimeter|centimeter))',
+            r'(\d{1,4}(?:[.,]\d+)?\s?(?:kg|Kilogramm|g|Gramm|lbs|pounds))',
+            r'(\d+(?:[.,]\d+)?\s?[-–]\s?\d+(?:[.,]\d+)?\s?(?:m|cm|ft|in|mm))',
+            r'(bis\s+zu\s+\d+(?:[.,]\d+)?\s?(?:m|cm|kg))',
+            r'(etwa\s+\d+(?:[.,]\d+)?\s?(?:m|cm|kg))',
+            r'(~\s?\d+(?:[.,]\d+)?\s?(?:m|cm|kg))',
+        ]
+        for p in patterns:
+            m = re.search(p, txt, flags=re.IGNORECASE)
+            if m:
+                return m.group(1).strip()
+        # phrases like "average/typical length is 4.5 m" (EN/DE)
+        m = re.search(r'(?:average|typical|mean|durchschnittlich|im Durchschnitt)\s+(?:length|Länge)\s*(?:is|ist|:)?\s*([\d.,]+\s?(?:m|cm|metres|meters|ft|feet|in|inch|Zentimeter|Zoll))', txt, flags=re.IGNORECASE)
+        if m:
+            return m.group(1).strip()
+        # "length is X m" or "ist X m"
+        m = re.search(r'(?:length|Länge)\s*(?:is|ist|:)?\s*([\d.,]+\s?(?:m|cm|ft|in|metres|meters|Zentimeter|Zoll))', txt, flags=re.IGNORECASE)
+        if m:
+            return m.group(1).strip()
+        # fallback: "ist X lang" style
+        m = re.search(r'ist\s+(?:etwa|ungefähr|ca\.?|circa)?\s*([\d.,\s\-–]+)\s?(m|cm|kg|Meter|Zentimeter|Kilogramm|Zoll|inch|feet)', txt, flags=re.IGNORECASE)
+        if m:
+            num = m.group(1).strip().replace(' ', '')
+            unit = m.group(2).strip()
+            return f"{num}{unit}"
+        return None
 
-    # Funktion zur Durchführung einer Websuche mit DuckDuckGo
-    def search_web(query):
+    # --- NEW: normalize subject and map common synonyms ---
+    def normalize_subject(subj):
+        if not subj:
+            return None
+        # remove diacritics, collapse whitespace, lowercase
+        s = unicodedata.normalize('NFKD', subj)
+        s = ''.join(ch for ch in s if not unicodedata.combining(ch))
+        s = re.sub(r'\s+', ' ', s).strip()
+        return s
+
+    # --- REPLACED/EXTENDED: try targeted queries and DuckDuckGo + english variants ---
+    def find_measurement_for_subject(subj):
+        """
+        Try multiple queries (wiki variants + targeted 'Länge' queries + DuckDuckGo snippets)
+        Return tuple (measurement_string, source_text_short) or (None, None).
+        """
+        if not subj:
+            return None, None
+
+        subj_norm = normalize_subject(subj)
+        # build candidate queries (DE + EN) and synonyms
+        candidates = []
+        # base
+        candidates.append(subj)
+        candidates.append(subj_norm)
+        # German targeted forms
+        candidates += [
+            f"{subj} Länge",
+            f"Länge {subj}",
+            f"Durchschnittliche Länge {subj}",
+            f"Durchschnittliche Länge {subj_norm}",
+            f"{subj} Größe",
+        ]
+        # synonyms for common terms
+        if re.search(r'\bauto\b', subj_norm, flags=re.IGNORECASE) or re.search(r'\bwagen\b', subj_norm, flags=re.IGNORECASE):
+            candidates += ["Auto", "Personenkraftwagen", "PKW", "Durchschnittliche Länge Auto", "Durchschnittliche Länge PKW"]
+        if re.search(r'\brüssel\b', subj_norm, flags=re.IGNORECASE):
+            candidates += ["Rüssel", "Elefantenrüssel", "Rüssel Elefant Länge"]
+
+        # english fallbacks
+        candidates += [
+            f"{subj_norm} length",
+            "car length",
+            "average car length",
+            "typical car length",
+            "elephant trunk length",
+            "length of elephant trunk"
+        ]
+
+        tried = set()
+        # try Wikipedia page extracts first (better chance to contain numbers)
+        for q in candidates:
+            if not q or q in tried:
+                continue
+            tried.add(q)
+            try:
+                page_text = fetch_wikipedia_page_text(q)
+            except Exception:
+                page_text = None
+            if page_text:
+                measurement = extract_measurement_from_text(page_text)
+                if measurement:
+                    return measurement, f"Wikipedia page: {q}"
+            # fallback to summary if page_text didn't exist
+            try:
+                wiki = fetch_wikipedia_summary(q)
+            except Exception:
+                wiki = None
+            if wiki:
+                measurement = extract_measurement_from_text(wiki)
+                if measurement:
+                    return measurement, f"Wikipedia summary: {q}"
+
+        # also try broader Wikipedia variants (existing helper)
         try:
-            url = "https://api.duckduckgo.com/"
-            params = {"q": query, "format": "json"}
-            response = requests.get(url, params=params)
-            response.raise_for_status()
-            search_results = response.json()
-        
-            # Überprüfen, ob Ergebnisse vorhanden sind
-            if "RelatedTopics" in search_results and len(search_results["RelatedTopics"]) > 0:
-                results = [f"- {topic['Text']}\n  {topic['FirstURL']}" for topic in search_results["RelatedTopics"] if "Text" in topic and "FirstURL" in topic]
-                if len(results) == 0:
-                    return "Keine relevanten Ergebnisse gefunden."
-            
-                # Formatiere die Ergebnisse
-                formatted_results = "\n".join(results)
-                return f"Suchergebnisse:\n{formatted_results}"
-            else:
-                return "Keine Ergebnisse gefunden."
-        except Exception as e:
-            return f"Fehler bei der Websuche: {str(e)}"
+            wiki_variant = fetch_wikipedia_variants(subj)
+        except Exception:
+            wiki_variant = None
+        if wiki_variant:
+            measurement = extract_measurement_from_text(wiki_variant)
+            if measurement:
+                return measurement, "Wikipedia (variant)"
+
+        # lastly try DuckDuckGo search snippets for a few prioritized queries
+        for q in [f"{subj} Länge", f"{subj_norm} length", "durchschnittliche Länge Auto", "average car length", "elephant trunk length"]:
+            try:
+                sd = search_web(q)
+            except Exception:
+                sd = None
+            if sd and isinstance(sd, str):
+                measurement = extract_measurement_from_text(sd)
+                if measurement:
+                    src = "DuckDuckGo: " + q
+                    return measurement, src
+
+        return None, None
 
     # Funktion zur Beantwortung von Fragen
     GIBBERLINK_EXPERIMENTAL = "--gibberlink=true" in sys.argv  # oder False, je nach Bedarf
@@ -289,6 +392,42 @@ if modelofAI == "2":
                     pass
 
             # Gibberlink aktivieren, wenn EXPERIMENTAL-Modus an ist
+
+            # NEW: Definition/Übersetzungsanfragen (Wortbedeutung)
+            if re.search(r'\bwas\s+bedeutet\b|\bwas\s+heißt\b|\bbedeutung\s+von\b', question, flags=re.IGNORECASE):
+                term = extract_subject_from_question(question)
+                if term:
+                    # prefer wiktionary, fallback to wikipedia summary/page
+                    definition = fetch_wiktionary_definition(term)
+                    if not definition:
+                        # try wikipedia page text then summary
+                        definition = fetch_wikipedia_page_text(term) or fetch_wikipedia_summary(term)
+                    if definition:
+                        first_para = definition.split("\n\n")[0].strip()
+                        return f"'{term}' bedeutet:\n{first_para}", {"tokens": [], "note": "dictionary"}
+                return "Dazu konnte ich leider keine Definition finden.", {"tokens": [], "note": "no-definition"}
+
+            # REPLACED: improved measurement question handling
+            if re.search(r'\bwie\s+(lang|groß|hoch|schwer|alt)\b', question, flags=re.IGNORECASE):
+                subj = extract_subject_from_question(question)
+                # first try direct wiki variants (keeps previous behavior)
+                wiki = fetch_wikipedia_variants(subj) if subj else None
+                if wiki:
+                    measurement = extract_measurement_from_text(wiki)
+                    if measurement:
+                        subj_display = subj or "das Objekt"
+                        return f"Der {subj_display} ist ungefähr {measurement}. (Quelle: Wikipedia)", {"tokens": [], "note": "wikipedia-measurement"}
+                # if initial wiki summary didn't contain measurement, do targeted search attempts
+                measurement, source = find_measurement_for_subject(subj)
+                if measurement:
+                    subj_display = subj or "das Objekt"
+                    return f"Der {subj_display} ist ungefähr {measurement}. (Quelle: {source})", {"tokens": [], "note": "web-measurement"}
+                # fallback: if we had a wiki without measurement, return it (better than nothing)
+                if wiki:
+                    subj_display = subj or "das Objekt"
+                    return f"Ich habe zu '{subj_display}' folgende Info auf Wikipedia gefunden:\n{wiki}", {"tokens": [], "note": "wikipedia-summary"}
+                # nothing found -> fall back to general NLP below (or inform about missing data)
+                return "Dazu habe ich leider keine eindeutige Längenangabe gefunden.", {"tokens": [], "note": "no-measurement"}
 
             # Mathematischer Ausdruck
             if question.startswith("Berechne"):

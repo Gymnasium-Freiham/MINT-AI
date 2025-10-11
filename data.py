@@ -161,6 +161,15 @@ def _extract_subject_from_question(question):
     if _is_math_expression(question):
         return None
 
+    # --- NEW: handle measurement-style questions like "Wie lang ist der Rüssel eines Elefanten?" ---
+    m = re.search(r'wie\s+(lang|groß|hoch|schwer|alt)\s+(?:ist|sind)\s+(?:der|die|das|ein|eine)?\s*(.+?)\?*$', question, flags=re.IGNORECASE)
+    if m:
+        title = m.group(2).strip()
+        # normalize common German constructs: "Rüssel eines Elefanten" -> keep as-is (Wikipedia often resolves)
+        if title.isdigit() or len(title) < 2 or _is_math_expression(title):
+            return None
+        return title
+
     # Prefer quoted subject, then common German patterns "Was ist ... 'X'?" or "Was ist der/die/das X?"
     m = re.search(r'[\"\'‹›«»](.+?)[\"\'›‹«»]', question)
     if m:
@@ -247,6 +256,112 @@ def fetch_wikipedia_summary(title, prefer_langs=('de', 'en'), max_chars=1000):
     """Return a Wikipedia summary for `title` or None. Respects NO_CONNECTION."""
     return _fetch_wikipedia_summary(title, prefer_langs=prefer_langs, max_chars=max_chars)
 
+def fetch_wikipedia_variants(title, prefer_langs=('de','en'), max_chars=1000):
+    """
+    Try title and sensible variants (splits like "X eines Y", last token, english fallback).
+    Returns first non-empty summary or None.
+    """
+    if not title:
+        return None
+    # try exact
+    res = _fetch_wikipedia_summary(title, prefer_langs=prefer_langs, max_chars=max_chars)
+    if res:
+        return res
+    # split constructs like "Rüssel eines Elefanten" -> try "Rüssel" and "Elefant"
+    m = re.search(r'(.+?)\s+(?:von|des|der|die|das|eines|einer)\s+(.+)', title, flags=re.IGNORECASE)
+    if m:
+        parts = [m.group(1).strip(), m.group(2).strip()]
+    else:
+        # comma/parentheses or whitespace-separated fallback
+        parts = re.split(r'[,\(\)]', title)
+        parts = [p.strip() for p in parts if p.strip()]
+    for p in parts:
+        res = _fetch_wikipedia_summary(p, prefer_langs=prefer_langs, max_chars=max_chars)
+        if res:
+            return res
+        last = p.split()[-1] if p.split() else p
+        res = _fetch_wikipedia_summary(last, prefer_langs=prefer_langs, max_chars=max_chars)
+        if res:
+            return res
+    # english-length fallback (limited scope)
+    try:
+        res = _fetch_wikipedia_summary(f"{title} length", prefer_langs=('en',), max_chars=max_chars)
+        if res:
+            return res
+    except Exception:
+        pass
+    return None
+
 def extract_subject_from_question(question):
     """Deterministically extract a subject from a question string (e.g. 'Was ist eine Giraffe?')."""
     return _extract_subject_from_question(question)
+
+def fetch_wikipedia_page_text(title, prefer_langs=('de','en'), max_chars=3000):
+    """
+    Fetch the plaintext page extract via MediaWiki API (action=query&prop=extracts&explaintext).
+    Returns a longer extract (up to max_chars) or None. Respects NO_CONNECTION.
+    """
+    if not title:
+        return None
+    if os.environ.get("NO_CONNECTION") == "1":
+        return None
+    for lang in prefer_langs:
+        try:
+            url = f"https://{lang}.wikipedia.org/w/api.php"
+            params = {
+                "action": "query",
+                "prop": "extracts",
+                "explaintext": "1",
+                "redirects": "1",
+                "format": "json",
+                "titles": title
+            }
+            resp = requests.get(url, params=params, timeout=8, headers={"User-Agent": "LATIN-AI-crawler/1.0"})
+            if resp.status_code != 200:
+                continue
+            data = resp.json()
+            pages = data.get("query", {}).get("pages", {})
+            for pid, page in pages.items():
+                extract = page.get("extract")
+                if extract:
+                    # deterministic truncation
+                    text = extract if len(extract) <= max_chars else extract[:max_chars].rsplit(' ', 1)[0] + "..."
+                    return text
+        except Exception:
+            continue
+    return None
+
+def fetch_wiktionary_definition(title, prefer_langs=('de','en'), max_chars=1000):
+    """
+    Fetch a short definition/intro for `title` from Wiktionary (preferred langs).
+    Returns plaintext intro (truncated to max_chars) or None. Respects NO_CONNECTION.
+    """
+    if not title:
+        return None
+    if os.environ.get("NO_CONNECTION") == "1":
+        return None
+    for lang in prefer_langs:
+        try:
+            url = f"https://{lang}.wiktionary.org/w/api.php"
+            params = {
+                "action": "query",
+                "prop": "extracts",
+                "exintro": "1",
+                "explaintext": "1",
+                "redirects": "1",
+                "format": "json",
+                "titles": title
+            }
+            resp = requests.get(url, params=params, timeout=8, headers={"User-Agent": "LATIN-AI-crawler/1.0"})
+            if resp.status_code != 200:
+                continue
+            data = resp.json()
+            pages = data.get("query", {}).get("pages", {})
+            for pid, page in pages.items():
+                extract = page.get("extract")
+                if extract:
+                    text = extract if len(extract) <= max_chars else extract[:max_chars].rsplit(' ', 1)[0] + "..."
+                    return text
+        except Exception:
+            continue
+    return None
