@@ -79,7 +79,28 @@ training_data = load_and_append_data(training_data, './assets/deutsch6klassebaye
 training_data = load_and_append_data(training_data, './assets/superMarioGames.json', 'superMarioGames')
 training_data = load_and_append_data(training_data, './assets/informatik6klassebayern.json', 'informatik6klassebayern')
 training_data = load_and_append_data(training_data, './assets/mathematik6klassebayern.json', 'mathematik6klassebayern')
-# training_data = load_and_append_data(training_data, './assets/githubrepos.json', 'githubrepos')
+
+def install_addon_datasets(training_data, addons_dir='./addons'):
+    """
+    Scan addons_dir for .json or .mintaiaddon files that contain dataset JSON and append them.
+    Uses load_and_append_data which will parse the file and append heuristically.
+    """
+    if not os.path.isdir(addons_dir):
+        return training_data
+    for fname in sorted(os.listdir(addons_dir)):
+        if not (fname.lower().endswith('.json') or fname.lower().endswith('.mintaiaddon')):
+            continue
+        path = os.path.join(addons_dir, fname)
+        try:
+            # try to append the file as JSON dataset; load_and_append_data will open and infer structure
+            training_data = load_and_append_data(training_data, path, key=None)
+            print(f"Addon-Dataset angehängt: {path}")
+        except Exception as e:
+            print(f"Fehler beim Anhängen von Addon {path}: {e}")
+    return training_data
+
+# Prüfe ./addons auf zusätzliche Datendateien und hänge sie an
+training_data = install_addon_datasets(training_data, './addons')
 
 if not training_data:
     raise ValueError("Das Trainingsdatenset ist leer. Bitte überprüfen Sie die Quelle der Daten.")

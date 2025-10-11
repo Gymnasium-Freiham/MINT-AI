@@ -114,9 +114,16 @@ def load_addon(addon_path):
 def load_all_addons(addons_dir):
     if os.path.exists(addons_dir) and os.path.isdir(addons_dir):
         for file_name in os.listdir(addons_dir):
+            addon_path = os.path.join(addons_dir, file_name)
+            # executable addon (python) -> execute for effects
             if file_name.endswith('.mintaiaddon'):
-                addon_path = os.path.join(addons_dir, file_name)
-                load_addon(addon_path)
+                try:
+                    load_addon(addon_path)
+                except Exception as e:
+                    print(f"Fehler beim Ausführen des Addons {file_name}: {e}")
+            # dataset files (.json) are intentionally left for main.py to pick up at startup
+            elif file_name.endswith('.json'):
+                print(f"Gefundenes Datenset-Addon (wird beim Programmstart von main.py verarbeitet): {file_name}")
     else:
         print(f"Addons-Verzeichnis {addons_dir} nicht gefunden oder ist kein Verzeichnis")
 
@@ -365,10 +372,19 @@ class LauncherGUI(QWidget):
         if ok and downloaded.lower() == 'ja':
             options = QFileDialog.Options()
             options |= QFileDialog.ReadOnly
-            file_name, _ = QFileDialog.getOpenFileName(self, "Addon auswählen", "", "Addon Dateien (*.mintaiaddon);;Alle Dateien (*)", options=options)
+            file_name, _ = QFileDialog.getOpenFileName(self, "Addon auswählen", "", "Addon Dateien (*.mintaiaddon *.json);;Alle Dateien (*)", options=options)
             if file_name:
-                load_addon(file_name)
-                self.text_area.append(f"Addon {file_name} erfolgreich geladen.")
+                # copy selected file into the install's addons directory
+                install_dir = get_install_dir() or os.getcwd()
+                addons_dir = os.path.join(install_dir, 'addons')
+                os.makedirs(addons_dir, exist_ok=True)
+                dest = os.path.join(addons_dir, os.path.basename(file_name))
+                try:
+                    shutil.copyfile(file_name, dest)
+                    self.temp_addon_files.append(dest)
+                    self.text_area.append(f"Addon {file_name} wurde nach {addons_dir} kopiert und wird beim nächsten Start verarbeitet.")
+                except Exception as e:
+                    QMessageBox.critical(self, "Fehler", f"Fehler beim Installieren des Addons: {e}")
         else:
             # Auswahl zwischen den vorgegebenen Addons
             addon_choice, ok = QInputDialog.getItem(self, "Addon auswählen", "Wählen Sie ein Addon aus:", ["Blackbig", "Blueforever", "Dark", "Light", "Blue", "Green", "Red"], 0, False)
@@ -394,16 +410,22 @@ class LauncherGUI(QWidget):
             response = requests.get(url)
             response.raise_for_status()
             addon_code = response.text
-            install_dir = get_install_dir()
+            install_dir = get_install_dir() or os.getcwd()
             addons_dir = os.path.join(install_dir, 'addons')
             if not os.path.exists(addons_dir):
                 os.makedirs(addons_dir)
             addon_name = os.path.basename(url)
             addon_path = os.path.join(addons_dir, addon_name)
-            with open(addon_path, 'w') as file:
+            with open(addon_path, 'w', encoding='utf-8') as file:
                 file.write(addon_code)
-            self.text_area.append(f"Addon von {url} erfolgreich heruntergeladen und gespeichert.")
-            self.start_program()
+            self.temp_addon_files.append(addon_path)
+            self.text_area.append(f"Addon von {url} erfolgreich heruntergeladen und nach {addons_dir} gespeichert.")
+            # if it is a dataset (json) inform user; main.py will pick it up on next start or when started now
+            if addon_name.lower().endswith('.json'):
+                QMessageBox.information(self, "Addon installiert", f"Datendatei {addon_name} wurde in {addons_dir} installiert. Starte das Hauptprogramm, um sie zu laden.")
+            else:
+                # start main program immediately as before
+                self.start_program()
         except requests.RequestException as e:
             QMessageBox.critical(self, "Fehler", f"Fehler beim Herunterladen des Addons: {e}")
 
