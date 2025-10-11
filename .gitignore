@@ -5,5 +5,9 @@ LATIN-AI-Setup.exe
 MINT-AI.SED
 mintai.zip
 Python-3.12-Installer.exe
+<<<<<<< HEAD
 ~installer.DDF
 __pycache__/
+=======
+~installer.DDF
+>>>>>>> 056ef864535479d649c290f5422ca22f37de17dc
