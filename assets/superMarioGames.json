@@ -1,0 +1,47 @@
+{
+    "superMarioGames": [
+      {
+        "title": "Super Mario Bros.",
+        "releaseDate": "September 13, 1985",
+        "platforms": ["NES"],
+        "description": "Ein klassisches Plattformspiel, in dem Mario und Luigi Prinzessin Peach vor Bowser retten müssen."
+      },
+      {
+        "title": "Super Mario Bros. 3",
+        "releaseDate": "October 23, 1988",
+        "platforms": ["NES"],
+        "description": "Ein Plattformspiel mit neuen Power-Ups, Spielmechaniken und einer Weltkarte."
+      },
+      {
+        "title": "Super Mario 64",
+        "releaseDate": "June 23, 1996",
+        "platforms": ["Nintendo 64"],
+        "description": "Das erste 3D-Spiel der Serie, in dem Mario Prinzessin Peach im Schloss vor Bowser retten muss."
+      },
+      {
+        "title": "Super Mario Sunshine",
+        "releaseDate": "July 19, 2002",
+        "platforms": ["GameCube"],
+        "description": "Mario muss die tropische Insel Delfino von einer mysteriösen Verschmutzung befreien."
+      },
+      {
+        "title": "New Super Mario Bros.",
+        "releaseDate": "May 15, 2006",
+        "platforms": ["Nintendo DS"],
+        "description": "Ein modernes 2D-Plattformspiel mit neuen Power-Ups und Multiplayer-Modus."
+      },
+      {
+        "title": "Super Mario Galaxy",
+        "releaseDate": "November 1, 2007",
+        "platforms": ["Wii"],
+        "description": "Mario reist durch verschiedene Galaxien, um Prinzessin Peach zu retten und Bowser zu besiegen."
+      },
+      {
+        "title": "Super Mario Odyssey",
+        "releaseDate": "October 27, 2017",
+        "platforms": ["Nintendo Switch"],
+        "description": "Mario reist mit seinem neuen Begleiter Cappy durch verschiedene Welten, um Prinzessin Peach vor Bowser zu retten."
+      }
+    ]
+  }
+  

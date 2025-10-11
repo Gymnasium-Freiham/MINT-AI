@@ -1,0 +1,79 @@
+{
+    "deutsch6klassebayern": [
+      {
+        "topic": "Lesen und Verstehen",
+        "description": "Texte lesen und das Gelesene verstehen, Fragen zum Text beantworten.",
+        "examples": [
+          {
+            "title": "Der Räuber Hotzenplotz",
+            "author": "Otfried Preußler",
+            "summary": "Kasperl und Seppel machen sich auf die Suche nach dem Räuber Hotzenplotz, der die Kaffeemühle der Großmutter gestohlen hat.",
+            "questions": [
+              "Wer sind die Hauptfiguren der Geschichte?",
+              "Was hat der Räuber Hotzenplotz gestohlen?",
+              "Wie endet die Geschichte?"
+            ]
+          },
+          {
+            "title": "Die kleine Hexe",
+            "author": "Otfried Preußler",
+            "summary": "Die kleine Hexe möchte eine gute Hexe werden und erlebt dabei viele Abenteuer.",
+            "questions": [
+              "Was ist das Ziel der kleinen Hexe?",
+              "Welche Abenteuer erlebt die kleine Hexe?",
+              "Wie wird sie am Ende der Geschichte behandelt?"
+            ]
+          }
+        ]
+      },
+      {
+        "topic": "Grammatik",
+        "description": "Grundlegende Grammatikthemen wie Satzbau, Wortarten und Zeitenlehre.",
+        "examples": [
+          {
+            "concept": "Wortarten",
+            "details": "Nomen, Verben, Adjektive, Artikel, Pronomen, Präpositionen",
+            "exercise": "Markiere die Wortarten im folgenden Satz: 'Der große Hund läuft schnell über die grüne Wiese.'"
+          },
+          {
+            "concept": "Satzbau",
+            "details": "Subjekt, Prädikat, Objekt, Adverbiale Bestimmungen",
+            "exercise": "Baue aus den folgenden Satzteilen einen korrekten Satz: 'läuft - das - Mädchen - im Park - schnell.'"
+          }
+        ]
+      },
+      {
+        "topic": "Rechtschreibung",
+        "description": "Wichtige Regeln der Rechtschreibung und Anwendung in Diktaten und Schreibübungen.",
+        "examples": [
+          {
+            "rule": "Groß- und Kleinschreibung",
+            "details": "Nomen werden großgeschrieben, Verben und Adjektive kleingeschrieben.",
+            "exercise": "Schreibe den folgenden Satz richtig: 'der kleine junge spielt mit seinem roten ball.'"
+          },
+          {
+            "rule": "Doppelkonsonanten",
+            "details": "Doppelkonsonanten nach kurzen Vokalen (z.B. laufen, rennen, sitzen)",
+            "exercise": "Setze die fehlenden Buchstaben ein: 'lau_en, re_nen, si_tzen'"
+          }
+        ]
+      },
+      {
+        "topic": "Aufsatz",
+        "description": "Verfassen von Erzählungen, Berichten und Beschreibungen.",
+        "examples": [
+          {
+            "type": "Erzählung",
+            "prompt": "Schreibe eine Erzählung über ein spannendes Abenteuer, das du erlebt hast.",
+            "structure": "Einleitung, Hauptteil, Schluss"
+          },
+          {
+            "type": "Bericht",
+            "prompt": "Verfasse einen Bericht über deinen letzten Schulausflug.",
+            "structure": "Einleitung, Hauptteil, Schluss"
+          }
+        ]
+      }
+    ]
+  }
+  

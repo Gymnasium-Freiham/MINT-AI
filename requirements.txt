@@ -1,0 +1,12 @@
+PyQt5
+requests
+Flask
+Flask-CORS
+nltk
+scikit-learn
+numpy
+groq
+torch
+matplotlib
+simpleaudio
+logging

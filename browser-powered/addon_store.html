@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Addon App Store</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+            color: #333;
+            margin: 0;
+            padding: 20px;
+        }
+
+        .addon {
+            background-color: #fff;
+            border: 1px solid #ccc;
+            padding: 10px;
+            margin-bottom: 10px;
+            border-radius: 5px;
+        }
+
+            .addon h2 {
+                margin-top: 0;
+            }
+
+            .addon button {
+                background-color: #007bff;
+                color: #fff;
+                border: none;
+                padding: 10px;
+                cursor: pointer;
+                border-radius: 5px;
+            }
+
+                .addon button:hover {
+                    background-color: #0056b3;
+                }
+    </style>
+</head>
+<body>
+    <h1>Addon App Store</h1>
+    <div class="addon">
+        <h2>Blackbig</h2>
+        <p>Ein dunkles Theme für MINT AI.</p>
+        <button onclick="installAddon('https://raw.githubusercontent.com/Gymnasium-Freiham/MINT-AI-Addons/refs/heads/main/style-blackbig/addon-newstyle.mintaiaddon')">Installieren</button>
+    </div>
+    <div class="addon">
+        <h2>Blueforever</h2>
+        <p>Ein blaues Theme für MINT AI.</p>
+        <button onclick="installAddon('https://raw.githubusercontent.com/Gymnasium-Freiham/MINT-AI-Addons/refs/heads/main/style-blueforever/addon-newstyle.mintaiaddon')">Installieren</button>
+    </div>
+    <!-- Weitere Addons hier hinzufügen -->
+    <script>
+        async function installAddon(url) {
+            try {
+                const response = await fetch(url);
+                if (!response.ok) {
+                    throw new Error('Network response was not ok');
+                }
+                const addonCode = await response.text();
+                const installDirResponse = await fetch('http://localhost:5001/install_dir');
+                if (!installDirResponse.ok) {
+                    throw new Error('Installationsverzeichnis nicht gefunden');
+                }
+                const installDirData = await installDirResponse.json();
+                const installDir = installDirData.install_dir;
+                const addonsDir = `${installDir}\\addons`;
+                const addonName = url.split('/').pop();
+                const addonPath = `${addonsDir}\\${addonName}`;
+
+                await saveAddon(addonPath, addonCode);
+                await startLauncher(installDir);
+            } catch (error) {
+                console.error('Fehler beim Installieren des Addons:', error);
+            }
+        }
+
+        async function saveAddon(path, code) {
+            try {
+                const response = await fetch('http://localhost:5001/save_addon', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({ path, code })
+                });
+                if (!response.ok) {
+                    throw new Error('Fehler beim Speichern des Addons');
+                }
+                const result = await response.json();
+                console.log(result.message);
+            } catch (error) {
+                console.error('Fehler beim Speichern des Addons:', error);
+            }
+        }
+
+        async function startLauncher(installDir) {
+            try {
+                const response = await fetch('http://localhost:5001/start_launcher', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({ install_dir: installDir })
+                });
+                if (!response.ok) {
+                    throw new Error('Fehler beim Starten des Launchers');
+                }
+                const result = await response.json();
+                console.log(result.message);
+            } catch (error) {
+                console.error('Fehler beim Starten des Launchers:', error);
+            }
+        }
+    </script>
+</body>
+</html>
+

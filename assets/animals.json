@@ -1,0 +1,30 @@
+{
+    "animals": [
+      {
+        "name": "Dog",
+        "description": "A domesticated carnivorous mammal that typically has a long snout, an acute sense of smell, non-retractable claws, and a barking, howling, or whining voice.",
+        "category": "Mammal"
+      },
+      {
+        "name": "Cat",
+        "description": "A small domesticated carnivorous mammal with soft fur, a short snout, and retractile claws. It is widely kept as a pet or for catching mice.",
+        "category": "Mammal"
+      },
+      {
+        "name": "Elephant",
+        "description": "A large herbivorous mammal with a trunk and tusks, native to Africa and southern Asia.",
+        "category": "Mammal"
+      },
+      {
+        "name": "Frog",
+        "description": "A small, tailless amphibian with a short squat body, moist smooth skin, and very long hind legs for leaping.",
+        "category": "Amphibian"
+      },
+      {
+        "name": "Giraffe",
+        "description": "A large African mammal with a very long neck and forelegs, having a coat patterned with brown patches separated by lighter lines.",
+        "category": "Mammal"
+      }
+    ]
+  }
+  

@@ -1,0 +1,71 @@
+{
+    "mathematik6klassebayern": [
+      {
+        "topic": "Bruchrechnen",
+        "description": "Grundlagen des Bruchrechnens, einschließlich Addition, Subtraktion, Multiplikation und Division von Brüchen.",
+        "examples": [
+          {
+            "title": "Addition von Brüchen",
+            "summary": "Zwei oder mehr Brüche werden addiert, indem sie auf einen gemeinsamen Nenner gebracht werden.",
+            "questions": [
+              "Wie addiert man die Brüche 1/4 und 1/2?",
+              "Warum ist es wichtig, einen gemeinsamen Nenner zu finden?"
+            ]
+          },
+          {
+            "title": "Multiplikation von Brüchen",
+            "summary": "Zwei Brüche werden multipliziert, indem die Zähler und Nenner miteinander multipliziert werden.",
+            "questions": [
+              "Wie multipliziert man die Brüche 2/3 und 3/4?",
+              "Was ist das Ergebnis von 2/3 * 3/4?"
+            ]
+          }
+        ]
+      },
+      {
+        "topic": "Geometrie",
+        "description": "Grundlegende geometrische Konzepte, einschließlich Formen, Winkel und Flächenberechnung.",
+        "examples": [
+          {
+            "title": "Flächenberechnung",
+            "summary": "Berechnung der Fläche von Rechtecken, Dreiecken und Kreisen.",
+            "questions": [
+              "Wie berechnet man die Fläche eines Rechtecks?",
+              "Was ist die Formel zur Berechnung der Fläche eines Kreises?"
+            ]
+          },
+          {
+            "title": "Winkelmessung",
+            "summary": "Messung von Winkeln mit einem Winkelmesser und Verständnis der verschiedenen Arten von Winkeln.",
+            "questions": [
+              "Was ist ein rechter Winkel?",
+              "Wie misst man einen Winkel mit einem Winkelmesser?"
+            ]
+          }
+        ]
+      },
+      {
+        "topic": "Prozentrechnung",
+        "description": "Grundlagen der Prozentrechnung, einschließlich Berechnung von Prozentwerten, Grundwerten und Prozentsätzen.",
+        "examples": [
+          {
+            "title": "Berechnung von Prozentsätzen",
+            "summary": "Berechnung des Prozentsatzes eines gegebenen Wertes.",
+            "questions": [
+              "Wie berechnet man den Prozentsatz von 20 bei einem Gesamtwert von 200?",
+              "Was ist die Formel zur Berechnung des Prozentsatzes?"
+            ]
+          },
+          {
+            "title": "Grundwertberechnung",
+            "summary": "Bestimmung des Grundwerts, wenn der Prozentsatz und der Prozentwert gegeben sind.",
+            "questions": [
+              "Wie berechnet man den Grundwert, wenn 25% von 100 bekannt sind?",
+              "Was ist der Unterschied zwischen Prozentwert und Grundwert?"
+            ]
+          }
+        ]
+      }
+    ]
+  }
+  

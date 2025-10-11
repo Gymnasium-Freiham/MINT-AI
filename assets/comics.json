@@ -1,0 +1,53 @@
+{
+    "comicSeries": [
+      {
+        "title": "The Amazing Spider-Man",
+        "description": "Die Abenteuer von Peter Parker, einem jungen Mann, der nach einem Spinnenbiss Superkräfte erlangt und als Spider-Man gegen Bösewichte kämpft.",
+        "author": "Stan Lee, Steve Ditko",
+        "publisher": "Marvel Comics",
+        "firstIssueDate": "1963",
+        "genre": ["Action", "Superhelden"]
+      },
+      {
+        "title": "Batman",
+        "description": "Die Geschichte von Bruce Wayne, der nach dem Mord an seinen Eltern als Batman gegen das Verbrechen in Gotham City kämpft.",
+        "author": "Bob Kane, Bill Finger",
+        "publisher": "DC Comics",
+        "firstIssueDate": "1939",
+        "genre": ["Action", "Detektiv", "Superhelden"]
+      },
+      {
+        "title": "Wonder Woman",
+        "description": "Die Abenteuer von Diana Prince, einer amazonischen Kriegerin, die als Wonder Woman für Gerechtigkeit und Frieden kämpft.",
+        "author": "William Moulton Marston",
+        "publisher": "DC Comics",
+        "firstIssueDate": "1941",
+        "genre": ["Action", "Abenteuer", "Superhelden"]
+      },
+      {
+        "title": "X-Men",
+        "description": "Eine Gruppe von Mutanten, die ihre übernatürlichen Fähigkeiten nutzen, um die Menschheit zu schützen und gegen Vorurteile zu kämpfen.",
+        "author": "Stan Lee, Jack Kirby",
+        "publisher": "Marvel Comics",
+        "firstIssueDate": "1963",
+        "genre": ["Action", "Science-Fiction", "Superhelden"]
+      },
+      {
+        "title": "The Walking Dead",
+        "description": "Die Geschichte einer Gruppe von Überlebenden in einer post-apokalyptischen Welt, die von Zombies überrannt wurde.",
+        "author": "Robert Kirkman",
+        "publisher": "Image Comics",
+        "firstIssueDate": "2003",
+        "genre": ["Horror", "Drama", "Post-Apokalypse"]
+      },
+      {
+        "title": "Attack on Titan",
+        "description": "In einer Welt, in der riesige humanoide Wesen die Menschheit bedrohen, kämpfen Eren Yeager und seine Freunde ums Überleben.",
+        "author": "Hajime Isayama",
+        "publisher": "Kodansha",
+        "firstIssueDate": "2009",
+        "genre": ["Action", "Fantasy", "Drama"]
+      }
+    ]
+  }
+  
